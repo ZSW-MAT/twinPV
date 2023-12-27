@@ -1,0 +1,170 @@
+////////////////////////////////////////
+//                                    //
+//  length unit                       //
+//                                    //
+////////////////////////////////////////
+// Set unit
+length_scale:
+nm
+
+
+
+////////////////////////////////////////
+//                                    //
+//  points                            //
+//                                    //
+////////////////////////////////////////
+// List of all points that describe all areas
+// columns: index, x, y
+points:
+0	0
+1	100
+2	150
+3	180
+4	380
+5	580
+6	780
+7	980
+8	1180
+9	1380
+10	1580
+11	1780
+12	1980
+13	2180
+14	2380
+15	2580
+16	2780
+
+
+
+////////////////////////////////////////
+//                                    //
+//  segments                          //
+//                                    //
+////////////////////////////////////////
+// List of all segments formed by points above
+// columns: index, point index, point index
+segments:
+0	0	1
+1	1	2
+2	2	3
+3	3	4
+4	4	5
+5	5	6
+6	6	7
+7	7	8
+8	8	9
+9	9	10
+10	10	11
+11	11	12
+12	12	13
+13	13	14
+14	14	15
+15	15	16
+
+
+
+////////////////////////////////////////
+//                                    //
+//  materials                         //
+//                                    //
+////////////////////////////////////////
+// Material attributed to an area by its index
+
+// columns: material ID
+material_before:
+990000000
+
+// columns: area index, material index, isAbsorber, roughness on top of this layer in nm
+materials:
+0	50100000	0	0
+1	50200000	0	0
+2	30000000	0	0
+3	20003023	0	0
+4	20003022	1	0
+5	20003023	0	0
+6	20003024	0	0
+7	20003025	0	0
+8	20003026	0	0
+9	20003027	0	0
+10	20003028	0	0
+11	20003029	0	0
+12	20003030	0	0
+13	20003031	0	0
+14	20003032	0	0
+15	20003033	0	0
+
+// columns: material ID, roughness on top of this layer in nm
+material_behind:
+60000000	0
+
+
+
+////////////////////////////////////////
+//                                    //
+//  Additional optical layers         //
+//                                    //
+////////////////////////////////////////
+// Materials only for optical calculations, no electrical/electronical calculations. NOT attributed to an area
+
+// columns: index, material index,thickness
+incoh_before:
+
+
+
+
+// columns: index, material index, thickness, roughness on top of this layer in nm
+coherent_before:
+0	80000000	110	0
+1	50100000	140	0
+
+
+
+
+// columns: index, material index, thickness, roughness on top of this layer in nm
+coherent_behind:
+
+
+
+
+// columns: index, material index,thickness
+incoh_behind:
+
+
+
+
+////////////////////////////////////////
+//                                    //
+//  gradings                          //
+//                                    //
+////////////////////////////////////////
+// grading attributed to an area by its index
+// columns: area index, x position of first Point, yposition of first point, ... , 5th x position, 5th y position
+gradings:
+3	0	1	0.25	0.99825	0.5	0.9965	0.75	0.99475	1	0.993
+4	0	1	0.25	1.0017	0.5	1.0034	0.75	1.0051	1	1.0068
+5	0	1	0.25	1.002	0.5	1.004	0.75	1.006	1	1.008
+6	0	1	0.25	1.0015	0.5	1.003	0.75	1.0045	1	1.006
+7	0	1	0.25	1.0017	0.5	1.0034	0.75	1.0051	1	1.0068
+8	0	1	0.25	1.0017	0.5	1.0034	0.75	1.0051	1	1.0068
+9	0	1	0.25	1.0017	0.5	1.0034	0.75	1.0051	1	1.0068
+10	0	1	0.25	1.0017	0.5	1.0034	0.75	1.0051	1	1.0068
+11	0	1	0.25	1.001675	0.5	1.00335	0.75	1.005025	1	1.0067
+12	0	1	0.25	1.001675	0.5	1.00335	0.75	1.005025	1	1.0067
+13	0	1	0.25	1.00165	0.5	1.0033	0.75	1.00495	1	1.0066
+14	0	1	0.25	1.00165	0.5	1.0033	0.75	1.00495	1	1.0066
+15	0	1	0.25	1.00185	0.5	1.0037	0.75	1.00555	1	1.0074
+
+
+
+
+////////////////////////////////////////
+//                                    //
+//  boundary conditions               //
+//                                    //
+////////////////////////////////////////
+// columns (tab seperated): geometry type (point, segment,...), index of the geometry element, boundary group (0 = 0V, 1 = Vop, 2 = interface defects), electron SRV in cm/s, hole SRV in cm/s,
+// contactBarrier in eV (only at contacts indicated by boundary group 0 or 1), interfaceTrapEnergy in ev above intrinsic level (indicated by boundary group 2)
+boundary_conditions:
+point 0	0	10000000	0	0	0
+point 16	1	0	10000000	0	0

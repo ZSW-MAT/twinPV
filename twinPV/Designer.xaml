@@ -1,0 +1,840 @@
+﻿<Window
+    x:Class="twinPV.DesignerWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ColorLegend="clr-namespace:AtomicusChart.WpfControl.ColorLegend;assembly=AtomicusChart.WpfControl"
+    xmlns:Legend="clr-namespace:AtomicusChart.WpfControl.Legend;assembly=AtomicusChart.WpfControl"
+    xmlns:WpfControl="clr-namespace:AtomicusChart.WpfControl;assembly=AtomicusChart.WpfControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:twinPV"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Designer"
+    Width="1600"
+    Height="1000"
+    mc:Ignorable="d"
+    WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </Window.Resources>
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            x:Name="textblock_title"
+            Grid.Row="0"
+            Style="{StaticResource textblockTitleStyle}"
+            Text="Designer" />
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <!--
+                ██╗
+                ╚██╗ left column
+                ██╔╝
+                ╚═╝
+            -->
+            <Grid Grid.Row="0" Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <GroupBox Grid.Row="0" Header="Open File">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Orientation="Horizontal">
+                            <Button
+                                x:Name="button_ChooseGeometryFile"
+                                Width="{StaticResource elementHeight}"
+                                BorderThickness="0"
+                                ToolTip="Open a geometry file">
+                                <Image Height="18" Source="Icons/iconFolder.png" />
+                            </Button>
+                            <TextBlock
+                                x:Name="textblock_geometryFile"
+                                Margin="5,0,0,0"
+                                Style="{StaticResource textblockFileStyle}"
+                                Text=""
+                                ToolTip="{Binding Path=Text, RelativeSource={RelativeSource Mode=Self}}" />
+                        </StackPanel>
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Row="2" Header="Edit Regions">
+                    <StackPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Button
+                                x:Name="button_addRegion"
+                                Grid.Row="0"
+                                VerticalAlignment="Center"
+                                Content="Add Region"
+                                ToolTip="Adds a region to the current geometry" />
+
+                            <Button
+                                x:Name="button_addSingle"
+                                Grid.Row="1"
+                                VerticalAlignment="Center"
+                                Content="Add single point"
+                                ToolTip="Adds a single point to the current geometry" />
+
+                            <Grid
+                                x:Name="grid_numericalInput"
+                                Grid.Row="2"
+                                IsEnabled="False">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Separator
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="3"
+                                    Margin="0,10,0,10" />
+                                <TextBlock
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Margin="3,0,0,0"
+                                    Style="{StaticResource textblockTextStyle}"
+                                    Text="x =" />
+                                <TextBox
+                                    x:Name="textbox_x"
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Text="10.0" />
+                                <TextBlock
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    Margin="3,0,0,0"
+                                    Style="{StaticResource textblockTextStyle}"
+                                    Text="y =" />
+                                <TextBox
+                                    x:Name="textbox_y"
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Text="10.0" />
+                                <Button
+                                    x:Name="button_addRegionPoint"
+                                    Grid.Row="1"
+                                    Grid.RowSpan="2"
+                                    Grid.Column="2"
+                                    Width="{StaticResource elementHeight}"
+                                    Margin="10"
+                                    Content="&#xE710;"
+                                    FontFamily="Segoe MDL2 Assets"
+                                    FontSize="17"
+                                    ToolTip="Adds a point with the left coordinates to the current region" />
+                                <Button
+                                    x:Name="button_addSinglePoint"
+                                    Grid.Row="1"
+                                    Grid.RowSpan="2"
+                                    Grid.Column="2"
+                                    Width="{StaticResource elementHeight}"
+                                    Margin="10"
+                                    Content="&#xE710;"
+                                    FontFamily="Segoe MDL2 Assets"
+                                    FontSize="17"
+                                    ToolTip="Adds a point with the left coordinates to the list of single points" />
+                            </Grid>
+
+                            <Grid
+                                x:Name="grid_Buttons"
+                                Grid.Row="3"
+                                IsEnabled="False">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Separator
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="3"
+                                    Margin="0,10,0,10" />
+                                <Button
+                                    x:Name="button_removeLastRegionPoint"
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Width="{StaticResource elementHeight}"
+                                    Content="&#xE7A7;"
+                                    FontFamily="Segoe MDL2 Assets"
+                                    FontSize="17"
+                                    ToolTip="Removes the last added region point" />
+                                <Button
+                                    x:Name="button_removeAllRegionPoints"
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Width="{StaticResource elementHeight}"
+                                    Content="&#xE74D;"
+                                    FontFamily="Segoe MDL2 Assets"
+                                    FontSize="17"
+                                    ToolTip="Removes all last added region points" />
+                                <Button
+                                    x:Name="button_addSinglePointCancel"
+                                    Grid.Row="1"
+                                    Grid.Column="2"
+                                    Width="{StaticResource elementHeight}"
+                                    Content="&#xE711;"
+                                    FontFamily="Segoe MDL2 Assets"
+                                    FontSize="17"
+                                    ToolTip="Cancel adding" />
+                            </Grid>
+                        </Grid>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Grid.Row="4" Header="Adjacent materials" Visibility="{Binding Path=isSemiconductor, Converter={StaticResource BoolToVis}}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Material Before" Grid.Row="0" Style="{StaticResource textblockTextStyle}"></TextBlock>
+                        <ComboBox x:Name="combo_MaterialBefore"  DropDownOpened="LoadMaterialList" Grid.Row="1"></ComboBox>
+                        <Separator Grid.Row="2" Margin="0,10,0,10" />
+                        <TextBlock Text="Material Behind" Grid.Row="3" Style="{StaticResource textblockTextStyle}"></TextBlock>
+                        <ComboBox x:Name="combo_MaterialBehind"  DropDownOpened="LoadMaterialList" Grid.Row="4"></ComboBox>
+                        <StackPanel Grid.Row="5" Orientation="Horizontal">
+                            <TextBlock Text="Roughness:"  Style="{StaticResource textblockTextStyle}" VerticalAlignment="Center" ></TextBlock>
+                            <TextBox x:Name="textbox_roughnessBehind" IsEnabled="False" ToolTip="Not enabled in this version" Text="0" Width="80" Margin="5,0,5,0" ></TextBox>
+                            <TextBlock Text="nm"  Style="{StaticResource textblockTextStyle}" VerticalAlignment="Center" ></TextBlock>
+                        </StackPanel>
+                    </Grid>
+                </GroupBox>
+                <GroupBox Grid.Row="4" Header="Module properties" x:Name="groupbox_moduleProperties" Visibility="Collapsed">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="165"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <TextBlock Text="Contact series resistance at P2:" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource textblockTextStyle}"/>
+                        <TextBox x:Name="textbox_contactResistanceP2" Text="0" Grid.Row="1" Grid.Column="0" TextAlignment="Right" ToolTip="Contact resistance between the front contact and the back contact at the P2 interconnect"/>
+                        <TextBlock Text="Ωm²" Grid.Row="1" Margin="0,5.5,0,0" Grid.Column="1" Style="{StaticResource textblockTextStyle}"></TextBlock>
+                        
+                        <TextBlock Text="Amount of cells in row:" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource textblockTextStyle}"/>
+                        <TextBox x:Name="textbox_amountCells" Text="1" Grid.Row="3" Grid.Column="0" TextAlignment="Right" ToolTip="Amount of cells in one single row, which form the module (voltage is multiplied by this factor)"/>
+                        
+                        <TextBlock Text="Strech along P1 line:" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource textblockTextStyle}"/>
+                        <TextBox x:Name="textbox_strechAlongP1" Text="1" Grid.Row="5" Grid.Column="0" TextAlignment="Right" ToolTip="Factor, how many times broader the cell-strips are than in the given geometry (current is multiplied by this factor)"/>
+                        
+                        <TextBlock Text="Edge area:" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource textblockTextStyle}"/>
+                        <TextBox x:Name="textbox_edgeArea" Text="0" Grid.Row="7" Grid.Column="0" TextAlignment="Right" ToolTip="Total edge area in m^2 at the side of the module which is not included in the geometry"/>
+                        <TextBlock Text="m²" Grid.Row="7" Margin="0,5.5,0,0" Grid.Column="1" Style="{StaticResource textblockTextStyle}"></TextBlock>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+
+            <!--
+                ██╗
+                ╚██╗ middle column
+                ██╔╝
+                ╚═╝
+            -->
+            <WpfControl:ChartControl
+                x:Name="chart_designer"
+                Grid.Column="1"
+                Margin="20,0,20,0" />
+
+            <!--
+                ██╗
+                ╚██╗ right column
+                ██╔╝
+                ╚═╝
+            -->
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <GroupBox
+                    Grid.Row="0"
+                    VerticalAlignment="Stretch"
+                    Header="Points">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="0" Visibility="{Binding Path=isCell, Converter={StaticResource BoolToVis}}" Orientation="Horizontal">
+                            <TextBlock Text="index" Style="{StaticResource textblockTextStyle}" Margin="7,0,0,0"/>
+                            <TextBlock Text="front resistance [Ohm]" Style="{StaticResource textblockTextStyle}" Margin="73,0,0,0"/>
+                            <TextBlock Text="back resistance [Ohm]" Style="{StaticResource textblockTextStyle}" Margin="28,0,0,0"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="0" Visibility="{Binding Path=isSemiconductor, Converter={StaticResource BoolToVis}}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="index" Style="{StaticResource textblockTextStyle}" Margin="7,0,0,0"/>
+                                <TextBlock Text="type" Style="{StaticResource textblockTextStyle}" Margin="130,0,0,0"/>
+                                <TextBlock Text="SRV_e" Style="{StaticResource textblockTextStyle}" Margin="36,0,0,0"/>
+                                <TextBlock Text="SRV_h" Style="{StaticResource textblockTextStyle}" Margin="36,0,0,0"/>
+                                <TextBlock Text="barrier height" Style="{StaticResource textblockTextStyle}" Margin="19,0,0,0"/>
+                                <TextBlock Text="IF Et-Ei" Style="{StaticResource textblockTextStyle}" Margin="15,0,0,0"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="" Style="{StaticResource textblockTextStyle}" Margin="7,0,0,0"/>
+                                <TextBlock Text="" Style="{StaticResource textblockTextStyle}" Margin="10,0,0,0"/>
+                                <TextBlock Text="[m/s]" Style="{StaticResource textblockTextStyle}" Margin="209,0,0,0"/>
+                                <TextBlock Text="[m/s]" Style="{StaticResource textblockTextStyle}" Margin="41,0,0,0"/>
+                                <TextBlock Text="[eV]" Style="{StaticResource textblockTextStyle}" Margin="48,0,0,0"/>
+                                <TextBlock Text="[eV]" Style="{StaticResource textblockTextStyle}" Margin="50,0,0,0"/>
+                            </StackPanel>
+                        </StackPanel>
+                        <ListBox
+                            x:Name="listbox_externalContactsPoints"
+                            Grid.Row="1"
+                            Margin="0,0,10,0"
+                            HorizontalContentAlignment="Stretch"
+                            Background="{StaticResource brushBackgroundLocal}"
+                            SelectionMode="Extended">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Height="22">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="34" />
+                                            <ColumnDefinition Width="20" />
+                                            <ColumnDefinition Width="74" />
+
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock
+                                            x:Name="type"
+                                            Grid.Column="0"
+                                            Style="{StaticResource textblockTextStyle}"
+                                            Text="{Binding type}" />
+                                        <TextBlock
+                                            x:Name="index"
+                                            Grid.Column="1"
+                                            Style="{StaticResource textblockTextStyle}"
+                                            Text="{Binding index}" />
+                                        <Button
+                                            x:Name="button_deleteSinglePoint"
+                                            Grid.Column="2"
+                                            Width="22"
+                                            Click="DeleteSinglePoint"
+                                            Content="&#xE74D;"
+                                            FontFamily="Segoe MDL2 Assets"
+                                            FontSize="13"
+                                            ToolTip="Removes this point"
+                                            Visibility="{Binding Path=isSinglePoint, Converter={StaticResource BoolToVis}}" />
+
+                                        <Grid Grid.Column="3" Visibility="{Binding Path=isCell, Converter={StaticResource BoolToVis}}">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="35" />
+                                                <ColumnDefinition Width="80" />
+                                                <ColumnDefinition Width="0" />
+
+                                                <ColumnDefinition Width="35" />
+                                                <ColumnDefinition Width="80" />
+                                                <ColumnDefinition Width="0" />
+                                            </Grid.ColumnDefinitions>
+                                            <CheckBox
+                                                Grid.Column="0"
+                                                Margin="15,0,5,0"
+                                                IsChecked="{Binding isFrontContact}" />
+                                            <TextBox
+                                                Grid.Column="1"
+                                                Margin="5,0,5,0"
+                                                Text="{Binding frontContactResistance}"
+                                                TextAlignment="Right"
+                                                Visibility="{Binding Path=isFrontContact, Converter={StaticResource BoolToVis}}" />
+                                            <TextBlock
+                                                Grid.Column="2"
+                                                VerticalAlignment="Center"
+                                                Text="Ohm"
+                                                TextAlignment="Left"
+                                                Visibility="{Binding Path=isFrontContact, Converter={StaticResource BoolToVis}}" />
+                                            <CheckBox
+                                                Grid.Column="3"
+                                                Margin="15,0,5,0"
+                                                IsChecked="{Binding isBackContact}" />
+                                            <TextBox
+                                                Grid.Column="4"
+                                                Margin="5,0,5,0"
+                                                Text="{Binding backContactResistance}"
+                                                TextAlignment="Right"
+                                                Visibility="{Binding Path=isBackContact, Converter={StaticResource BoolToVis}}" />
+                                            <TextBlock
+                                                Grid.Column="5"
+                                                VerticalAlignment="Center"
+                                                Text="Ohm"
+                                                TextAlignment="Left"
+                                                Visibility="{Binding Path=isBackContact, Converter={StaticResource BoolToVis}}" />
+                                        </Grid>
+
+                                        <Grid Grid.Column="3" Visibility="{Binding Path=isSemiconductor, Converter={StaticResource BoolToVis}}">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="53" />
+                                                <ColumnDefinition Width="70" />
+                                                <ColumnDefinition Width="70" />
+                                                <ColumnDefinition Width="70" />
+                                                <ColumnDefinition Width="70" />
+                                            </Grid.ColumnDefinitions>
+                                            <CheckBox Grid.Column="0" IsChecked="{Binding hasBoundaryCondition}" />
+                                            <ComboBox
+                                                x:Name="combobox_voltage"
+                                                Grid.Column="1"
+                                                Margin="5,0,0,0"
+                                                SelectedIndex="{Binding Path=voltageBoundaryType}"
+                                                Visibility="{Binding Path=hasBoundaryCondition, Converter={StaticResource BoolToVis}}">
+                                                <ComboBoxItem>0V</ComboBoxItem>
+                                                <ComboBoxItem>Vop</ComboBoxItem>
+                                                <ComboBoxItem>IF</ComboBoxItem>
+                                            </ComboBox>
+                                            <TextBox
+                                                x:Name="textbox_surfaceRecElectrons"
+                                                Grid.Column="2"
+                                                Margin="5,0,0,0"
+                                                TextAlignment="Right"
+                                                Text="{Binding surfaceRecElectrons}"
+                                                Visibility="{Binding Path=hasBoundaryCondition, Converter={StaticResource BoolToVis}}" />
+                                            <TextBox
+                                                x:Name="textbox_surfaceRecHoles"
+                                                Grid.Column="3"
+                                                Margin="5,0,0,0"
+                                                TextAlignment="Right"
+                                                Text="{Binding surfaceRecHoles}"
+                                                Visibility="{Binding Path=hasBoundaryCondition, Converter={StaticResource BoolToVis}}" />
+                                            <TextBox
+                                                x:Name="textbox_barrierHeight"
+                                                Grid.Column="4"
+                                                Margin="5,0,0,0"
+                                                TextAlignment="Right"
+                                                Text="{Binding barrierHeight}"
+                                                Visibility="{Binding Path=hasBoundaryCondition, Converter={StaticResource BoolToVis}}" />
+                                            <TextBox
+                                                x:Name="textbox_interfaceTrapDensity"
+                                                Grid.Column="5"
+                                                Margin="5,0,0,0"
+                                                TextAlignment="Right"
+                                                Text="{Binding interfaceTrapEnergy}"
+                                                Visibility="{Binding Path=hasBoundaryCondition, Converter={StaticResource BoolToVis}}" />
+                                        </Grid>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox
+                    Grid.Row="2"
+                    VerticalAlignment="Stretch"
+                    Header="Segments">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="0" Visibility="{Binding Path=isCell, Converter={StaticResource BoolToVis}}" Orientation="Horizontal">
+                            <TextBlock Text="index" Style="{StaticResource textblockTextStyle}" Margin="7,0,0,0"/>
+                            <TextBlock Text="front resistance [Ohm]" Style="{StaticResource textblockTextStyle}" Margin="73,0,0,0"/>
+                            <TextBlock Text="back resistance [Ohm]" Style="{StaticResource textblockTextStyle}" Margin="28,0,0,0"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="0" Visibility="{Binding Path=isSemiconductor, Converter={StaticResource BoolToVis}}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="index" Style="{StaticResource textblockTextStyle}" Margin="7,0,0,0"/>
+                                <TextBlock Text="type" Style="{StaticResource textblockTextStyle}" Margin="130,0,0,0"/>
+                                <TextBlock Text="SRV_e" Style="{StaticResource textblockTextStyle}" Margin="36,0,0,0"/>
+                                <TextBlock Text="SRV_h" Style="{StaticResource textblockTextStyle}" Margin="36,0,0,0"/>
+                                <TextBlock Text="barrier height" Style="{StaticResource textblockTextStyle}" Margin="19,0,0,0"/>
+                                <TextBlock Text="IF Et-Ei" Style="{StaticResource textblockTextStyle}" Margin="15,0,0,0"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="" Style="{StaticResource textblockTextStyle}" Margin="7,0,0,0"/>
+                                <TextBlock Text="" Style="{StaticResource textblockTextStyle}" Margin="10,0,0,0"/>
+                                <TextBlock Text="[m/s]" Style="{StaticResource textblockTextStyle}" Margin="209,0,0,0"/>
+                                <TextBlock Text="[m/s]" Style="{StaticResource textblockTextStyle}" Margin="41,0,0,0"/>
+                                <TextBlock Text="[eV]" Style="{StaticResource textblockTextStyle}" Margin="48,0,0,0"/>
+                                <TextBlock Text="[eV]" Style="{StaticResource textblockTextStyle}" Margin="50,0,0,0"/>
+                            </StackPanel>
+                        </StackPanel>
+                        <ListBox
+                            x:Name="listbox_externalContactsSegments"
+                            Grid.Row="1"
+                            Margin="0,0,10,0"
+                            HorizontalContentAlignment="Stretch"
+                            Background="{StaticResource brushBackgroundLocal}"
+                            SelectionMode="Extended">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Height="22">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="52" />
+                                            <ColumnDefinition Width="76" />
+
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock
+                                            x:Name="type"
+                                            Grid.Column="0"
+                                            Style="{StaticResource textblockTextStyle}"
+                                            Text="{Binding type}" />
+                                        <TextBlock
+                                            Grid.Column="1"
+                                            Style="{StaticResource textblockTextStyle}"
+                                            Text="{Binding index}" />
+
+                                        <Grid Grid.Column="2" Visibility="{Binding Path=isCell, Converter={StaticResource BoolToVis}}">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="35" />
+                                                <ColumnDefinition Width="80" />
+                                                <ColumnDefinition Width="0" />
+
+                                                <ColumnDefinition Width="35" />
+                                                <ColumnDefinition Width="80" />
+                                                <ColumnDefinition Width="0" />
+                                            </Grid.ColumnDefinitions>
+                                            <CheckBox
+                                                Grid.Column="0"
+                                                Margin="15,0,5,0"
+                                                IsChecked="{Binding isFrontContact}" />
+                                            <TextBox
+                                                Grid.Column="1"
+                                                Margin="5,0,5,0"
+                                                Text="{Binding frontContactResistance}"
+                                                TextAlignment="Right"
+                                                Visibility="{Binding Path=isFrontContact, Converter={StaticResource BoolToVis}}" />
+                                            <TextBlock
+                                                Grid.Column="2"
+                                                VerticalAlignment="Center"
+                                                Style="{StaticResource textblockTextStyle}"
+                                                Text="Ohm*m"
+                                                TextAlignment="Left"
+                                                Visibility="{Binding Path=isFrontContact, Converter={StaticResource BoolToVis}}" />
+                                            <CheckBox
+                                                Grid.Column="3"
+                                                Margin="15,0,5,0"
+                                                IsChecked="{Binding isBackContact}" />
+                                            <TextBox
+                                                Grid.Column="4"
+                                                Margin="5,0,5,0"
+                                                Text="{Binding backContactResistance}"
+                                                TextAlignment="Right"
+                                                Visibility="{Binding Path=isBackContact, Converter={StaticResource BoolToVis}}" />
+                                            <TextBlock
+                                                Grid.Column="5"
+                                                VerticalAlignment="Center"
+                                                Style="{StaticResource textblockTextStyle}"
+                                                Text="Ohm*m"
+                                                TextAlignment="Left"
+                                                Visibility="{Binding Path=isBackContact, Converter={StaticResource BoolToVis}}" />
+                                        </Grid>
+
+                                        <Grid Grid.Column="2" Visibility="{Binding Path=isSemiconductor, Converter={StaticResource BoolToVis}}">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="53" />
+                                                <ColumnDefinition Width="70" />
+                                                <ColumnDefinition Width="70" />
+                                                <ColumnDefinition Width="70" />
+                                                <ColumnDefinition Width="70" />
+                                            </Grid.ColumnDefinitions>
+                                            <CheckBox Grid.Column="0" IsChecked="{Binding hasBoundaryCondition}" />
+                                            <ComboBox
+                                                x:Name="combobox_voltage"
+                                                Grid.Column="1"
+                                                Margin="5,0,0,0"
+                                                SelectedIndex="{Binding Path=voltageBoundaryType}"
+                                                Visibility="{Binding Path=hasBoundaryCondition, Converter={StaticResource BoolToVis}}">
+                                                <ComboBoxItem>0V</ComboBoxItem>
+                                                <ComboBoxItem>Vop</ComboBoxItem>
+                                                <ComboBoxItem>IF</ComboBoxItem>
+                                            </ComboBox>
+                                            <TextBox
+                                                x:Name="textbox_surfaceRecElectrons"
+                                                Grid.Column="2"
+                                                Margin="5,0,0,0"
+                                                TextAlignment="Right"
+                                                Text="{Binding surfaceRecElectrons}"
+                                                Visibility="{Binding Path=hasBoundaryCondition, Converter={StaticResource BoolToVis}}" />
+                                            <TextBox
+                                                x:Name="textbox_surfaceRecHoles"
+                                                Grid.Column="3"
+                                                Margin="5,0,0,0"
+                                                TextAlignment="Right"
+                                                Text="{Binding surfaceRecHoles}"
+                                                Visibility="{Binding Path=hasBoundaryCondition, Converter={StaticResource BoolToVis}}" />
+                                            <TextBox
+                                                x:Name="textbox_barrierHeight"
+                                                Grid.Column="4"
+                                                Margin="5,0,0,0"
+                                                TextAlignment="Right"
+                                                Text="{Binding barrierHeight}"
+                                                Visibility="{Binding Path=hasBoundaryCondition, Converter={StaticResource BoolToVis}}" />
+                                            <TextBox
+                                                x:Name="textbox_interfaceTrapDensity"
+                                                Grid.Column="5"
+                                                Margin="5,0,0,0"
+                                                TextAlignment="Right"
+                                                Text="{Binding interfaceTrapEnergy}"
+                                                Visibility="{Binding Path=hasBoundaryCondition, Converter={StaticResource BoolToVis}}" />
+                                        </Grid>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox
+                    Grid.Row="4"
+                    VerticalAlignment="Stretch"
+                    Header="Areas">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="0" Visibility="{Binding Path=isCell, Converter={StaticResource BoolToVis}}" Orientation="Horizontal">
+                            <TextBlock Text="index" Style="{StaticResource textblockTextStyle}" Margin="7,0,0,0"/>
+                            <TextBlock Text="front resistance [Ohm]" Style="{StaticResource textblockTextStyle}" Margin="73,0,0,0"/>
+                            <TextBlock Text="back resistance [Ohm]" Style="{StaticResource textblockTextStyle}" Margin="28,0,0,0"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="0" Visibility="{Binding Path=isSemiconductor, Converter={StaticResource BoolToVis}}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="index" Style="{StaticResource textblockTextStyle}" Margin="7,0,0,0"/>
+                                <TextBlock Text="type" Style="{StaticResource textblockTextStyle}" Margin="130,0,0,0"/>
+                                <TextBlock Text="SRV_e" Style="{StaticResource textblockTextStyle}" Margin="36,0,0,0"/>
+                                <TextBlock Text="SRV_h" Style="{StaticResource textblockTextStyle}" Margin="36,0,0,0"/>
+                                <TextBlock Text="barrier height" Style="{StaticResource textblockTextStyle}" Margin="19,0,0,0"/>
+                                <TextBlock Text="IF Et-Ei" Style="{StaticResource textblockTextStyle}" Margin="15,0,0,0"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="" Style="{StaticResource textblockTextStyle}" Margin="7,0,0,0"/>
+                                <TextBlock Text="" Style="{StaticResource textblockTextStyle}" Margin="10,0,0,0"/>
+                                <TextBlock Text="[m/s]" Style="{StaticResource textblockTextStyle}" Margin="209,0,0,0"/>
+                                <TextBlock Text="[m/s]" Style="{StaticResource textblockTextStyle}" Margin="41,0,0,0"/>
+                                <TextBlock Text="[eV]" Style="{StaticResource textblockTextStyle}" Margin="48,0,0,0"/>
+                                <TextBlock Text="[eV]" Style="{StaticResource textblockTextStyle}" Margin="50,0,0,0"/>
+                            </StackPanel>
+                        </StackPanel>
+                        <ListBox
+                            x:Name="listbox_externalContactsAreas"
+                            Grid.Row="1"
+                            Margin="0,0,10,0"
+                            HorizontalContentAlignment="Stretch"
+                            Background="{StaticResource brushBackgroundLocal}"
+                            SelectionMode="Extended">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Height="22">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="28" />
+                                            <ColumnDefinition Width="30" />
+
+                                            <ColumnDefinition Width="35" />
+                                            <ColumnDefinition Width="35" />
+
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock
+                                            x:Name="type"
+                                            Grid.Column="0"
+                                            Style="{StaticResource textblockTextStyle}"
+                                            Text="{Binding type}" />
+                                        <TextBlock
+                                            Grid.Column="1"
+                                            Style="{StaticResource textblockTextStyle}"
+                                            Text="{Binding index}" />
+                                        <Button
+                                            x:Name="moveRegionDown"
+                                            Grid.Column="2"
+                                            Margin="5,1,1,1"
+                                            Click="MoveRegionDown"
+                                            Content="&#xE70D;"
+                                            FontFamily="Segoe MDL2 Assets" />
+                                        <Button
+                                            x:Name="moveRegionUp"
+                                            Grid.Column="3"
+                                            Margin="1,1,5,1"
+                                            Click="MoveRegionUp"
+                                            Content="&#xE70E;"
+                                            FontFamily="Segoe MDL2 Assets" />
+
+                                        <Grid Grid.Column="4" Visibility="{Binding Path=isCell, Converter={StaticResource BoolToVis}}">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="35" />
+                                                <ColumnDefinition Width="80" />
+                                                <ColumnDefinition Width="0" />
+
+                                                <ColumnDefinition Width="35" />
+                                                <ColumnDefinition Width="80" />
+                                                <ColumnDefinition Width="0" />
+                                            </Grid.ColumnDefinitions>
+                                            <CheckBox
+                                                Grid.Column="0"
+                                                Margin="15,0,5,0"
+                                                IsChecked="{Binding isFrontContact}" />
+                                            <TextBox
+                                                Grid.Column="1"
+                                                Margin="5,0,5,0"
+                                                Text="{Binding frontContactResistance}"
+                                                TextAlignment="Right"
+                                                Visibility="{Binding Path=isFrontContact, Converter={StaticResource BoolToVis}}" />
+                                            <TextBlock
+                                                Grid.Column="2"
+                                                VerticalAlignment="Center"
+                                                Text="Ohm*m²"
+                                                TextAlignment="Left"
+                                                Visibility="{Binding Path=isFrontContact, Converter={StaticResource BoolToVis}}" />
+                                            <CheckBox
+                                                Grid.Column="3"
+                                                Margin="15,0,5,0"
+                                                IsChecked="{Binding isBackContact}" />
+                                            <TextBox
+                                                Grid.Column="4"
+                                                Margin="5,0,5,0"
+                                                Text="{Binding backContactResistance}"
+                                                TextAlignment="Right"
+                                                Visibility="{Binding Path=isBackContact, Converter={StaticResource BoolToVis}}" />
+                                            <TextBlock
+                                                Grid.Column="5"
+                                                VerticalAlignment="Center"
+                                                Text="Ohm*m²"
+                                                TextAlignment="Left"
+                                                Visibility="{Binding Path=isBackContact, Converter={StaticResource BoolToVis}}" />
+                                        </Grid>
+
+                                        <Grid Grid.Column="4" Visibility="{Binding Path=isSemiconductor, Converter={StaticResource BoolToVis}}">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="53" />
+                                                <ColumnDefinition Width="70" />
+                                                <ColumnDefinition Width="70" />
+                                                <ColumnDefinition Width="70" />
+                                                <ColumnDefinition Width="70" />
+                                            </Grid.ColumnDefinitions>
+                                            <CheckBox Grid.Column="0" IsChecked="{Binding hasBoundaryCondition}" />
+                                            <ComboBox
+                                                x:Name="combobox_voltage"
+                                                Grid.Column="1"
+                                                Margin="5,0,0,0"
+                                                SelectedIndex="{Binding Path=voltageBoundaryType}"
+                                                Visibility="{Binding Path=hasBoundaryCondition, Converter={StaticResource BoolToVis}}">
+                                                <ComboBoxItem>0V</ComboBoxItem>
+                                                <ComboBoxItem>Vop</ComboBoxItem>
+                                                <ComboBoxItem>IF</ComboBoxItem>
+                                            </ComboBox>
+                                            <TextBox
+                                                x:Name="textbox_surfaceRecElectrons"
+                                                Grid.Column="2"
+                                                Margin="5,0,0,0"
+                                                TextAlignment="Right"
+                                                Text="{Binding surfaceRecElectrons}"
+                                                Visibility="{Binding Path=hasBoundaryCondition, Converter={StaticResource BoolToVis}}" />
+                                            <TextBox
+                                                x:Name="textbox_surfaceRecHoles"
+                                                Grid.Column="3"
+                                                Margin="5,0,0,0"
+                                                TextAlignment="Right"
+                                                Text="{Binding surfaceRecHoles}"
+                                                Visibility="{Binding Path=hasBoundaryCondition, Converter={StaticResource BoolToVis}}" />
+                                            <TextBox
+                                                x:Name="textbox_barrierHeight"
+                                                Grid.Column="4"
+                                                Margin="5,0,0,0"
+                                                TextAlignment="Right"
+                                                Text="{Binding barrierHeight}"
+                                                Visibility="{Binding Path=hasBoundaryCondition, Converter={StaticResource BoolToVis}}" />
+                                            <TextBox
+                                                x:Name="textbox_interfaceTrapDensity"
+                                                Grid.Column="5"
+                                                Margin="5,0,0,0"
+                                                TextAlignment="Right"
+                                                Text="{Binding interfaceTrapEnergy}"
+                                                Visibility="{Binding Path=hasBoundaryCondition, Converter={StaticResource BoolToVis}}" />
+                                        </Grid>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+        </Grid>
+
+        <StackPanel
+            Grid.Row="2"
+            Grid.Column="0"
+            HorizontalAlignment="Right"
+            Orientation="Horizontal">
+            <ComboBox
+                x:Name="combobox_unit"
+                Width="120"
+                Margin="10"
+                ToolTip="Choose unit for the set lengths" />
+            <Button
+                x:Name="button_cancel"
+                Width="120"
+                Margin="10"
+                x:FieldModifier="public"
+                Content="Cancel"
+                FontSize="12"
+                ToolTip="Discards the designed geometry and closes the designer" />
+            <Button
+                x:Name="button_saveGeometry"
+                Width="120"
+                Margin="10"
+                x:FieldModifier="public"
+                Content="Save geometry"
+                FontSize="12"
+                ToolTip="Saves the designed geometry to the path in the top textbox" />
+        </StackPanel>
+
+    </Grid>
+</Window>

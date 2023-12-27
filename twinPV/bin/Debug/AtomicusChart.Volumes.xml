@@ -1,0 +1,1180 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AtomicusChart.Volumes</name>
+    </assembly>
+    <members>
+        <member name="T:AtomicusChart.Volumes.DataReaders.IResourceWriter3D">
+            <summary>
+            Represents interface that implements three-dimensional resource update methods.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.Volumes.DataReaders.IResourceWriter3D.UpdateResource(System.IntPtr,System.Int32,System.Int32)">
+            <summary>
+            Performs full update of the resource is associated with the writer.
+            </summary>
+            <param name="data">Source data.</param>
+            <param name="rowPitch">Data row pitch (in bytes).</param>
+            <param name="depthSlice">Data depth slice (in bytes).</param>
+        </member>
+        <member name="M:AtomicusChart.Volumes.DataReaders.IResourceWriter3D.UpdateResource(System.IntPtr,AtomicusChart.Volumes.DataReaders.DataSegment3D,System.Int32,System.Int32)">
+            <summary>
+            Performs partial update of the resource is associated with the writer.
+            </summary>
+            <param name="data">Source data.</param>
+            <param name="segment">Data segment (in pixels).</param>
+            <param name="rowPitch">Data row pitch (in bytes).</param>
+            <param name="depthSlice">Data depth slice (in bytes).</param>
+        </member>
+        <member name="T:AtomicusChart.Volumes.DataReaders.IDataWriter3D">
+            <summary>
+            Represents three-dimensiontal data writer.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.Volumes.DataReaders.IDataWriter3D.Write(AtomicusChart.Volumes.DataReaders.IResourceWriter3D)">
+            <summary>
+            Writes data to the specified <see cref="T:AtomicusChart.Volumes.DataReaders.IResourceWriter3D"/>.
+            </summary>
+            <param name="writer">Resource writer.</param>
+        </member>
+        <member name="T:AtomicusChart.Volumes.DataReaders.DataSegment3D">
+            <summary>
+            Contains three-dimensional segment bounds.
+            </summary>
+        </member>
+        <member name="F:AtomicusChart.Volumes.DataReaders.DataSegment3D.Left">
+            <summary>
+            Gets left corner.
+            </summary>
+        </member>
+        <member name="F:AtomicusChart.Volumes.DataReaders.DataSegment3D.Top">
+            <summary>
+            Gets top corner.
+            </summary>
+        </member>
+        <member name="F:AtomicusChart.Volumes.DataReaders.DataSegment3D.Right">
+            <summary>
+            Gets right corner.
+            </summary>
+        </member>
+        <member name="F:AtomicusChart.Volumes.DataReaders.DataSegment3D.Bottom">
+            <summary>
+            Gets bottom corner.
+            </summary>
+        </member>
+        <member name="F:AtomicusChart.Volumes.DataReaders.DataSegment3D.Front">
+            <summary>
+            Gets font corner.
+            </summary>
+        </member>
+        <member name="F:AtomicusChart.Volumes.DataReaders.DataSegment3D.Back">
+            <summary>
+            Gets back corner.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.Volumes.DataReaders.DataSegment3D.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Initializes fields of the <see cref="T:AtomicusChart.Volumes.DataReaders.DataSegment3D"/>.
+            </summary>
+            <param name="left">Left corner.</param>
+            <param name="top">Top corner.</param>
+            <param name="right">Right corner.</param>
+            <param name="bottom">Bottom corner.</param>
+            <param name="front">Front corner.</param>
+            <param name="back">Back corner.</param>
+        </member>
+        <member name="T:AtomicusChart.Volumes.DataReaders.DelegateWriter3D">
+            <summary>
+            Represents default implementation of <see cref="T:AtomicusChart.Volumes.DataReaders.IDataWriter3D"/>.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.Volumes.DataReaders.DelegateWriter3D.#ctor(System.Action{AtomicusChart.Volumes.DataReaders.IResourceWriter3D})">
+            <summary>
+            Initializes new instance of <see cref="T:AtomicusChart.Volumes.DataReaders.DelegateWriter3D"/>.
+            </summary>
+            <param name="action">Delegate for execution</param>
+        </member>
+        <member name="M:AtomicusChart.Volumes.DataReaders.DelegateWriter3D.Write(AtomicusChart.Volumes.DataReaders.IResourceWriter3D)">
+            <inheritdoc/>
+        </member>
+        <member name="T:AtomicusChart.Volumes.DataReaders.ResourceWriter3DExtensions">
+            <summary>
+            Contains helper methods for three-dimensional resource updating.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.Volumes.DataReaders.ResourceWriter3DExtensions.UpdateResource``1(AtomicusChart.Volumes.DataReaders.IResourceWriter3D,``0[],System.Int32,System.Int32)">
+            <summary>
+            Updates the specified resource.
+            </summary>
+            <typeparam name="T">Data type.</typeparam>
+            <param name="writer"><see cref="T:AtomicusChart.Volumes.DataReaders.IResourceWriter3D"/> instance for update.</param>
+            <param name="data">Data array.</param>
+            <param name="rowPitch">Row pitch (in bytes).</param>
+            <param name="depthSlice">Depth slice (in bytes).</param>
+        </member>
+        <member name="T:AtomicusChart.Volumes.DataReaders.FloatIntensityImage3DReader">
+            <summary>
+            Represents default implementation of <see cref="T:AtomicusChart.Volumes.DataReaders.IntensityImage3DReader"/> for <see cref="T:System.Single"/> data type.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.Volumes.DataReaders.FloatIntensityImage3DReader.#ctor(System.Single[],System.Int32,System.Int32,System.Nullable{AtomicusChart.Interface.DataReaders.DenormalizationRange})">
+            <summary>
+            Initializes new instance of <see cref="T:AtomicusChart.Volumes.DataReaders.FloatIntensityImage3DReader"/>.
+            </summary>
+            <param name="data">Data array.</param>
+            <param name="width">Data width.</param>
+            <param name="height">Data height.</param>
+            <param name="valueRange">Data value range.</param>
+        </member>
+        <member name="T:AtomicusChart.Volumes.DataReaders.ShortIntensityImage3DReader">
+            <summary>
+            Represents default implementation of <see cref="T:AtomicusChart.Volumes.DataReaders.IntensityImage3DReader"/> for <see cref="T:System.Int16"/> data type.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.Volumes.DataReaders.ShortIntensityImage3DReader.#ctor(System.Int16[],System.Int32,System.Int32,System.Nullable{AtomicusChart.Interface.DataReaders.DenormalizationRange})">
+            <summary>
+            Initializes new instance of <see cref="T:AtomicusChart.Volumes.DataReaders.ShortIntensityImage3DReader"/>.
+            </summary>
+            <param name="data">Data array.</param>
+            <param name="width">Data width.</param>
+            <param name="height">Data height.</param>
+            <param name="valueRange">Data value range.</param>
+        </member>
+        <member name="T:AtomicusChart.Volumes.DataReaders.ByteIntensityImage3DReader">
+            <summary>
+            Represents default implementation of <see cref="T:AtomicusChart.Volumes.DataReaders.IntensityImage3DReader"/> for <see cref="T:System.Byte"/> data type.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.Volumes.DataReaders.ByteIntensityImage3DReader.#ctor(System.Byte[],System.Int32,System.Int32,System.Nullable{AtomicusChart.Interface.DataReaders.DenormalizationRange})">
+            <summary>
+            Initializes new instance of <see cref="T:AtomicusChart.Volumes.DataReaders.ByteIntensityImage3DReader"/>.
+            </summary>
+            <param name="data">Data array.</param>
+            <param name="width">Data width.</param>
+            <param name="height">Data height.</param>
+            <param name="valueRange">Data value range.</param>
+        </member>
+        <member name="T:AtomicusChart.Volumes.DataReaders.ArrayIntensityImage3DReader`1">
+            <summary>
+            Represents default implementation of <see cref="T:AtomicusChart.Volumes.DataReaders.IntensityImage3DReader"/>.
+            </summary>
+            <typeparam name="T">Data type.</typeparam>
+        </member>
+        <member name="M:AtomicusChart.Volumes.DataReaders.ArrayIntensityImage3DReader`1.#ctor(`0[],System.Int32,System.Int32,AtomicusChart.Volumes.DataReaders.Intensity3DFormat,System.Nullable{AtomicusChart.Interface.DataReaders.DenormalizationRange})">
+            <summary>
+            Initializes new instance of <see cref="T:AtomicusChart.Volumes.DataReaders.ArrayIntensityImage3DReader`1"/>.
+            </summary>
+            <param name="data">Data array.</param>
+            <param name="width">Data width.</param>
+            <param name="height">Data height.</param>
+            <param name="denormalizationRange">Data value range.</param>
+            <param name="intensityFormat">Data intensity format.</param>
+        </member>
+        <member name="M:AtomicusChart.Volumes.DataReaders.ArrayIntensityImage3DReader`1.InitializeResource(AtomicusChart.Volumes.DataReaders.IResourceWriter3D)">
+            <inheritdoc/>
+        </member>
+        <member name="T:AtomicusChart.Volumes.DataReaders.IntensityImage3DReader">
+            <summary>
+            Represents base class for three-dimensional intensity image reader.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.Volumes.DataReaders.IntensityImage3DReader.Description">
+            <summary>
+            Gets the reader image description.
+            </summary>
+        </member>
+        <member name="E:AtomicusChart.Volumes.DataReaders.IntensityImage3DReader.DataChanged">
+            <inheritdoc/>
+        </member>
+        <member name="E:AtomicusChart.Volumes.DataReaders.IntensityImage3DReader.DenormalizationRangeChanged">
+            <inheritdoc/>
+        </member>
+        <member name="P:AtomicusChart.Volumes.DataReaders.IntensityImage3DReader.DenormalizationRange">
+            <inheritdoc/>
+        </member>
+        <member name="M:AtomicusChart.Volumes.DataReaders.IntensityImage3DReader.#ctor(AtomicusChart.Volumes.DataReaders.IntensityImage3DDescription)">
+            <summary>
+            Initializes new instance of <see cref="T:AtomicusChart.Volumes.DataReaders.IntensityImage3DReader"/>.
+            </summary>
+            <param name="description">Image description.</param>
+        </member>
+        <member name="M:AtomicusChart.Volumes.DataReaders.IntensityImage3DReader.OnDataChanged(AtomicusChart.Volumes.DataReaders.IDataWriter3D)">
+            <summary>
+            Call the method to notify about the reader data content changes.
+            </summary>
+            <param name="dataWriter">Data change writer.</param>
+        </member>
+        <member name="M:AtomicusChart.Volumes.DataReaders.IntensityImage3DReader.InitializeResource(AtomicusChart.Volumes.DataReaders.IResourceWriter3D)">
+            <summary>
+            Initializes the reader image resource.
+            </summary>
+            <param name="resourceWriter">Resource writer.</param>
+        </member>
+        <member name="T:AtomicusChart.Volumes.DataReaders.Intensity3DFormat">
+            <summary>
+            Contains available three-dimensional image intensity formats.
+            </summary>
+        </member>
+        <member name="F:AtomicusChart.Volumes.DataReaders.Intensity3DFormat.CompressedByte">
+            <summary>
+            The format represents compressed values that should be normalized in range [0; byte.MaxValue].
+            </summary>
+        </member>
+        <member name="F:AtomicusChart.Volumes.DataReaders.Intensity3DFormat.CompressedShort">
+            <summary>
+            The format represents compressed values that should be normalized in range [0; short.MaxValue].
+            </summary>
+        </member>
+        <member name="F:AtomicusChart.Volumes.DataReaders.Intensity3DFormat.Float">
+            <summary>
+            The format represents real values as float numbers.
+            </summary>
+        </member>
+        <member name="T:AtomicusChart.Volumes.DataReaders.IntensityImage3DDescription">
+            <summary>
+            Contains three-dimensional intensity image description.
+            </summary>
+        </member>
+        <member name="F:AtomicusChart.Volumes.DataReaders.IntensityImage3DDescription.Width">
+            <summary>
+            Gets image width.
+            </summary>
+        </member>
+        <member name="F:AtomicusChart.Volumes.DataReaders.IntensityImage3DDescription.Height">
+            <summary>
+            Gets image height.
+            </summary>
+        </member>
+        <member name="F:AtomicusChart.Volumes.DataReaders.IntensityImage3DDescription.Depth">
+            <summary>
+            Gets image depth.
+            </summary>
+        </member>
+        <member name="F:AtomicusChart.Volumes.DataReaders.IntensityImage3DDescription.Format">
+            <summary>
+            Gets image intensity format.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.Volumes.DataReaders.IntensityImage3DDescription.#ctor(System.Int32,System.Int32,System.Int32,AtomicusChart.Volumes.DataReaders.Intensity3DFormat)">
+            <summary>
+            Initializes new instance of <see cref="T:AtomicusChart.Volumes.DataReaders.IntensityImage3DDescription"/>.
+            </summary>
+            <param name="width">Image width.</param>
+            <param name="height">Image height.</param>
+            <param name="depth">Image depth.</param>
+            <param name="format">Image intensity format.</param>
+        </member>
+        <member name="M:AtomicusChart.Volumes.DataReaders.IntensityImage3DDescription.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:AtomicusChart.Volumes.Geometry.ClippedVolumeGeometry">
+            <summary>
+            Represents clipped volume geometry class. Currently is not supported.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.Volumes.Geometry.ClippedVolumeGeometry.Geometry">
+            <summary>
+            Gets or sets volume base geometry for clipping. This property implements INotifyPropertyChanged and INotifyPropertyChanging.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.Volumes.Geometry.ClippedVolumeGeometry.ClippingPlanes">
+            <summary>
+            Gets or sets clipping planes collection. 
+            Clipping is applied from first plane to last, so make sure to set most dinymically changing plane as last item for better performance.
+            This property implements INotifyPropertyChanged and INotifyPropertyChanging.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Geometry.ClippedVolumeGeometry.#ctor">
+            <summary>
+            Initializes new instance of <see cref="T:AtomicusChart.Volumes.Geometry.ClippedVolumeGeometry"/> class.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Geometry.ClippedVolumeGeometry.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Geometry.ClippedVolumeGeometry.GetDataForPlane(AtomicusChart.Interface.PresentationData.Widget.IReadOnlyPlaneSection)">
+            <summary>
+            Returns section data for the specified plane.
+            </summary>
+            <param name="plane">Plane object.</param>
+            <returns>Section geometry data. Null if no data.</returns>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Geometry.ClippedVolumeGeometry.GetMesh">
+            <inheritdoc/>
+        </member>
+        <member name="T:AtomicusChart.Volumes.Geometry.BoxVolumeGeometry">
+            <summary>
+            Represents base implementation of <see cref="T:AtomicusChart.Volumes.Geometry.VolumeGeometry"/> that used to display volume as box.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.Volumes.Geometry.BoxVolumeGeometry.Origin">
+            <summary>
+            Gets or sets the volume box origin.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.Volumes.Geometry.BoxVolumeGeometry.Size">
+            <summary>
+            Gets or sets the volume box size.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Geometry.BoxVolumeGeometry.GetMesh">
+            <inheritdoc/>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Geometry.BoxVolumeGeometry.GetSections(System.Collections.Generic.IEnumerable{AtomicusChart.Interface.Data.Plane})">
+            <inheritdoc/>
+        </member>
+        <member name="T:AtomicusChart.Volumes.Geometry.CustomVolumeGeometry">
+            <summary>
+            Represents implmentation of <see cref="T:AtomicusChart.Volumes.Geometry.VolumeGeometry"/> with custom mesh.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.Volumes.Geometry.CustomVolumeGeometry.Mesh">
+            <summary>
+            Gets or sets the geometry mesh.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Geometry.CustomVolumeGeometry.#ctor">
+            <summary>
+            Initializes new instance of <see cref="T:AtomicusChart.Volumes.Geometry.CustomVolumeGeometry"/>.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Geometry.CustomVolumeGeometry.#ctor(AtomicusChart.Volumes.Data.VolumeMesh)">
+            <summary>
+            Initializes new instance of <see cref="T:AtomicusChart.Volumes.Geometry.CustomVolumeGeometry"/>.
+            </summary>
+            <param name="mesh">Volume mesh.</param>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Geometry.CustomVolumeGeometry.GetMesh">
+            <inheritdoc/>
+        </member>
+        <member name="T:AtomicusChart.Volumes.Geometry.TriVectorVolumeGeometry">
+            <summary>
+            Represents implemetation of <see cref="T:AtomicusChart.Volumes.Geometry.VolumeGeometry"/> with tri-vector structure.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.Volumes.Geometry.TriVectorVolumeGeometry.Origin">
+            <summary>
+            Gets or sets the geometry origin.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.Volumes.Geometry.TriVectorVolumeGeometry.DirectionX">
+            <summary>
+            Gets or sets the geometry X direction vector.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.Volumes.Geometry.TriVectorVolumeGeometry.DirectionY">
+            <summary>
+            Gets or sets the geometry Y direction vector.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.Volumes.Geometry.TriVectorVolumeGeometry.DirectionZ">
+            <summary>
+            Gets or sets the geometry Z direction vector.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.Volumes.Geometry.TriVectorVolumeGeometry.Size">
+            <summary>
+            Gets or sets the geometry size.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Geometry.TriVectorVolumeGeometry.GetMesh">
+            <inheritdoc/>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Geometry.TriVectorVolumeGeometry.GetSections(System.Collections.Generic.IEnumerable{AtomicusChart.Interface.Data.Plane})">
+            <inheritdoc/>
+        </member>
+        <member name="T:AtomicusChart.Volumes.Geometry.VolumeGeometry">
+            <summary>
+            Represents base class of volume geometry.
+            </summary>
+        </member>
+        <member name="E:AtomicusChart.Volumes.Geometry.VolumeGeometry.MeshChanged">
+            <summary>
+            The event is called any time the volume geometry has mesh changes.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Geometry.VolumeGeometry.OnMeshChanged">
+            <summary>
+            Call this method to notify the geometry about mesh changes.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Geometry.VolumeGeometry.GetSections(System.Collections.Generic.IEnumerable{AtomicusChart.Interface.Data.Plane})">
+            <summary>
+            Computes sections for this geometry.
+            </summary>
+            <param name="planes">Section planes.</param>
+            <returns>List of result sections.</returns>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Geometry.VolumeGeometry.GetMesh">
+            <summary>
+            Generates <see cref="T:AtomicusChart.Volumes.Data.VolumeMesh"/> for the geometry.
+            </summary>
+            <returns>Result <see cref="T:AtomicusChart.Volumes.Data.VolumeMesh"/>.</returns>
+        </member>
+        <member name="F:AtomicusChart.Volumes.Geometry.VolumeMeshHelper.DefaultIndices">
+            <summary>
+            CW index grid.
+            </summary>
+        </member>
+        <member name="F:AtomicusChart.Volumes.Geometry.VolumeMeshHelper.DefaultIndicesCCW">
+            <summary>
+            CCW index grid.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Geometry.VolumeMeshHelper.GetIndices(AtomicusChart.Interface.Data.Vector3F[],AtomicusChart.Interface.Data.Vector3F[])">
+            <summary>
+            Returns volume mesh constructed from eight vertices.
+            Position left-bottom-near.
+            Position left-top-near.
+            Position right-top-near.
+            Position right-bottom-near.
+            Position left-bottom-far.
+            Position left-top-far.
+            Position right-top-far.
+            Position right-bottom-far.
+            </summary>
+            <param name="positions">Positions array.</param>
+            <param name="textureCoordinates">Texture coordinates array.</param>
+            <returns>Result mesh.</returns>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Geometry.VolumeMeshHelper.GetMesh(AtomicusChart.Interface.Data.Vector3F[],AtomicusChart.Interface.Data.Vector3F[])">
+            <summary>
+            Returns volume mesh constructed from eight vertices.
+            Position left-bottom-near.
+            Position left-top-near.
+            Position right-top-near.
+            Position right-bottom-near.
+            Position left-bottom-far.
+            Position left-top-far.
+            Position right-top-far.
+            Position right-bottom-far.
+            </summary>
+            <param name="positions">Positions array.</param>
+            <param name="textureCoordinates">Texture coordinates array.</param>
+            <returns>Result mesh.</returns>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Geometry.VolumeMeshHelper.ExtractComponents(AtomicusChart.Volumes.Data.RasterVertex3[])">
+            <summary>
+            Extracts components from the specified <see cref="T:AtomicusChart.Volumes.Data.RasterVertex3"/> array.
+            </summary>
+            <param name="vertices">Vertices for extraction.</param>
+            <returns>Extraction result.</returns>
+        </member>
+        <member name="T:AtomicusChart.Volumes.Processing.VolumeClippingBuilder">
+            <summary>
+            Contains helper methods for volumetric data geometry clipping.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Processing.VolumeClippingBuilder.GetClippedGeometry(AtomicusChart.Interface.Processing.Traits.IVertexReader{AtomicusChart.Volumes.Data.RasterVertex3},System.Int32[],AtomicusChart.Interface.Data.Plane)">
+            <summary>
+            Performs geometry clipping with the specified plane and returns it's result.
+            </summary>
+            <param name="vertexReader">Vertex reader instance.</param>
+            <param name="indices">Indices array.</param>
+            <param name="plane">Section plane.</param>
+            <returns>Section result.</returns>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Processing.VolumeClippingBuilder.GetClippedGeometry(AtomicusChart.Volumes.Data.RasterVertex3[],System.Int32[],AtomicusChart.Interface.Data.Plane)">
+            <summary>
+            Performs geometry clipping with the specified plane and returns it's result.
+            </summary>
+            <param name="vertices">Vertex array.</param>
+            <param name="indices">Indices array.</param>
+            <param name="plane">Section plane.</param>
+            <returns>Section result.</returns>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Processing.VolumeClippingBuilder.GetClippedGeometry(AtomicusChart.Interface.Data.Vector3F[],AtomicusChart.Interface.Data.Vector3F[],System.Int32[],AtomicusChart.Interface.Data.Plane)">
+            <summary>
+            Performs geometry clipping with the specified plane and returns it's result.
+            </summary>
+            <param name="positions">Positions array.</param>
+            <param name="textureCoordinates">Texture coordinates array.</param>
+            <param name="indices">Indices array.</param>
+            <param name="plane">Section plane.</param>
+            <returns>Section result.</returns>
+        </member>
+        <member name="T:AtomicusChart.Volumes.Processing.VolumeClippingExtension">
+            <summary>
+            Contains helper method for volume mesh clipping.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Processing.VolumeClippingExtension.Clip(AtomicusChart.Volumes.Data.VolumeMesh,AtomicusChart.Interface.Data.Plane)">
+            <summary>
+            Clips the specified volume mesh with the presented plane.
+            </summary>
+            <param name="mesh">Initial mesh.</param>
+            <param name="plane">Section plane.</param>
+            <returns>Clipping result.</returns>
+        </member>
+        <member name="T:AtomicusChart.Volumes.Processing.VolumeSectionBuilder">
+            <summary>
+            Contains methods for section compute.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Processing.VolumeSectionBuilder.GetSectionVertices(System.Collections.Generic.List{AtomicusChart.Interface.Processing.Sections.AbstractTriangleSection}[])">
+            <summary>
+            Converts the section into the vertices.
+            </summary>
+            <param name="sections">Sections collection.</param>
+            <returns>Converted vertices.</returns>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Processing.VolumeSectionBuilder.GetSections(AtomicusChart.Volumes.Data.RasterVertex3[],System.Int32[],System.Collections.Generic.IEnumerable{AtomicusChart.Interface.Data.Plane})">
+            <summary>
+            Computes sections for the specified geometry and planes.
+            </summary>
+            <param name="vertices">Vertices array.</param>
+            <param name="indices">Grid indices array.</param>
+            <param name="planes">Planes collection.</param>
+            <returns>Computation result.</returns>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Processing.VolumeSectionBuilder.GetSections(AtomicusChart.Volumes.Data.RasterVertex3[],System.Int32[],System.Collections.Generic.IEnumerable{AtomicusChart.Interface.Data.Plane},AtomicusChart.Interface.CameraView.Bounds)">
+            <summary>
+            Computes sections for the specified geometry and planes.
+            </summary>
+            <param name="vertices">Vertices array.</param>
+            <param name="indices">Grid indices array.</param>
+            <param name="planes">Planes collection.</param>
+            <param name="bounds">Geometry bounds.</param>
+            <returns>Computation result.</returns>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Processing.VolumeSectionBuilder.GetSections(AtomicusChart.Interface.Data.Vector3F[],AtomicusChart.Interface.Data.Vector3F[],System.Int32[],System.Collections.Generic.IEnumerable{AtomicusChart.Interface.Data.Plane})">
+            <summary>
+            Computes sections for the specified geometry and planes.
+            </summary>
+            <param name="positions">Vertices positions array.</param>
+            <param name="textureCoordinates">Vertices texture coordinates.</param>
+            <param name="indices">Grid indices array.</param>
+            <param name="planes">Planes collection.</param>
+            <returns>Computation result.</returns>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Processing.VolumeSectionBuilder.GetSections(AtomicusChart.Interface.Data.Vector3F[],AtomicusChart.Interface.Data.Vector3F[],System.Int32[],System.Collections.Generic.IEnumerable{AtomicusChart.Interface.Data.Plane},AtomicusChart.Interface.CameraView.Bounds)">
+            <summary>
+            Computes sections for the specified geometry and planes.
+            </summary>
+            <param name="positions">Vertices positions array.</param>
+            <param name="textureCoordinates">Vertices texture coordinates.</param>
+            <param name="indices">Grid indices array.</param>
+            <param name="planes">Planes collection.</param>
+            <param name="bounds">Geometry bounds.</param>
+            <returns>Computation result.</returns>
+        </member>
+        <member name="T:AtomicusChart.Volumes.Rendering.Presenters.VolumeRenderDataTrackerBase`1">
+            <summary>
+            Represents base class for volume render data trackers.
+            </summary>
+            <typeparam name="T">Volume data type.</typeparam>
+        </member>
+        <member name="F:AtomicusChart.Volumes.Rendering.Presenters.VolumeRenderDataTrackerBase`1.ImageSurrogateReaderTracker">
+            <summary>
+            Gets the data tracker image reader tracker.
+            </summary>
+        </member>
+        <member name="F:AtomicusChart.Volumes.Rendering.Presenters.VolumeRenderDataTrackerBase`1.GeometrySurrogateTracker">
+            <summary>
+            Gets the tracker geometry tracker.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Rendering.Presenters.VolumeRenderDataTrackerBase`1.#ctor(`0,AtomicusChart.Core.DataManagement.PresenterCreationArg,AtomicusChart.Core.DataManagement.ParentInfo,System.Collections.Generic.HashSet{System.String})">
+            <summary>
+            Initializes new instance of <see cref="T:AtomicusChart.Volumes.Rendering.Presenters.VolumeRenderDataTrackerBase`1"/>.
+            </summary>
+            <param name="renderData">Render data instance.</param>
+            <param name="presenterCreationArg">Creation arguments.</param>
+            <param name="parentInfo">Parent info.</param>
+            <param name="propsForRedraw">Redraw properties.</param>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Rendering.Presenters.VolumeRenderDataTrackerBase`1.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="T:AtomicusChart.Volumes.Rendering.Presenters.VolumeRenderDataRendererBase`1">
+            <summary>
+            Represents base class for volume renderers.
+            </summary>
+            <typeparam name="T">Volume data type.</typeparam>
+        </member>
+        <member name="F:AtomicusChart.Volumes.Rendering.Presenters.VolumeRenderDataRendererBase`1.ImageSurrogateReaderTracker">
+            <summary>
+            Gets the data tracker image reader tracker.
+            </summary>
+        </member>
+        <member name="F:AtomicusChart.Volumes.Rendering.Presenters.VolumeRenderDataRendererBase`1.GeometrySurrogateTracker">
+            <summary>
+            Gets the tracker geometry tracker.
+            </summary>
+        </member>
+        <member name="F:AtomicusChart.Volumes.Rendering.Presenters.VolumeRenderDataRendererBase`1.CommonShaderAdapter">
+            <summary>
+            Common shader adapter intsance.
+            </summary>
+        </member>
+        <member name="F:AtomicusChart.Volumes.Rendering.Presenters.VolumeRenderDataRendererBase`1.VolumeShaderAdapter">
+            <summary>
+            Volume shader adapter instance.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Rendering.Presenters.VolumeRenderDataRendererBase`1.#ctor(`0,System.Int32,AtomicusChart.Core.DataManagement.PresenterCreationArg,AtomicusChart.Volumes.Rendering.Misc.VolumeGeometrySurrogateTracker,AtomicusChart.Core.Presenters.Misc.ValueBaseSurrogateReaderTracker{`0,AtomicusChart.Volumes.Rendering.Surrogates.IntensityImage3DReaderSurrogate,AtomicusChart.Volumes.DataReaders.IDataWriter3D,AtomicusChart.Interface.DataReaders.IValueDataReader{AtomicusChart.Volumes.DataReaders.IDataWriter3D}})">
+            <summary>
+            Initializes new instance of <see cref="T:AtomicusChart.Volumes.Rendering.Presenters.VolumeRenderDataRendererBase`1"/>.
+            </summary>
+            <param name="renderData">Render data instance.</param>
+            <param name="dataIndex">Data index.</param>
+            <param name="presenterCreationArg">Creation arguments.</param>
+            <param name="geometrySurrogateTracker">Geometry tracker instance.</param>
+            <param name="imageSurrogateReaderTracker">Image reader tracker instance.</param>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Rendering.Presenters.VolumeRenderDataRendererBase`1.RenderPickmap(AtomicusChart.Core.RenderingCommon.DrawCallInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Rendering.Presenters.VolumeRenderDataRendererBase`1.RenderOpaque(AtomicusChart.Core.RenderingCommon.DrawCallInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Rendering.Presenters.VolumeRenderDataRendererBase`1.RenderTranslucent(AtomicusChart.Core.RenderingCommon.DrawCallInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Rendering.Presenters.VolumeRenderDataRendererBase`1.RenderVolumePickingContentInner(System.Int32,AtomicusChart.Core.RenderingCommon.DrawCallInfo)">
+            <summary>
+            Performs data-specific picking render routines.
+            </summary>
+            <param name="indexCount">Count of indices for draw-call.</param>
+            <param name="drawCallInfo">Draw-call info.</param>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Rendering.Presenters.VolumeRenderDataRendererBase`1.RenderVolumeContentInner(System.Int32,AtomicusChart.Core.RenderingCommon.DrawCallInfo)">
+            <summary>
+            Performs data-specific render routines.
+            </summary>
+            <param name="indexCount">Count of indices for draw-call.</param>
+            <param name="drawCallInfo">Draw-call info.</param>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Rendering.Presenters.VolumeRenderDataRendererBase`1.ConfigureVolumeParams(AtomicusChart.Volumes.Shaders.VolumeParams@)">
+            <summary>
+            Configures volume render parameters.
+            </summary>
+            <param name="volumeParams">Volume parameters container reference.</param>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Rendering.Presenters.VolumeRenderDataRendererBase`1.ConfigurePreRender">
+            <summary>
+            This methods is called during pre-render event.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Rendering.Presenters.VolumeRenderDataRendererBase`1.GetGeometryDataContainer(AtomicusChart.Core.RenderingCommon.DrawCallInfo)">
+            <summary>
+            The methods returns geometry used for render call.
+            </summary>
+            <param name="drawCallInfo">Current draw-call info.</param>
+            <returns>Geometry data container used for rendering.</returns>
+        </member>
+        <member name="T:AtomicusChart.Volumes.Rendering.Presenters.VolumeRayCastingTrackerBase`1">
+            <summary>
+            Represents base type for volume ray-casting tracker types.
+            </summary>
+            <typeparam name="T">Data type.</typeparam>
+        </member>
+        <member name="F:AtomicusChart.Volumes.Rendering.Presenters.VolumeRayCastingTrackerBase`1.TextureContainer">
+            <summary>
+            Gets the tracker texture container.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Rendering.Presenters.VolumeRayCastingTrackerBase`1.#ctor(`0,AtomicusChart.Core.DataManagement.PresenterCreationArg,AtomicusChart.Core.DataManagement.ParentInfo,System.Collections.Generic.HashSet{System.String})">
+            <summary>
+            Initializes new instance of <see cref="T:AtomicusChart.Volumes.Rendering.Presenters.VolumeRayCastingTrackerBase`1"/>.
+            </summary>
+            <param name="renderData">Render data instance.</param>
+            <param name="presenterCreationArg">Creation arguments.</param>
+            <param name="parentInfo">Parent info.</param>
+            <param name="propsForRedraw">Redraw properties.</param>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Rendering.Presenters.VolumeRayCastingTrackerBase`1.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="T:AtomicusChart.Volumes.Rendering.Presenters.VolumeRayCastingRendererBase`1">
+            <summary>
+            Represents base class for ray-casting renderers.
+            </summary>
+            <typeparam name="T">Data type.</typeparam>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Rendering.Presenters.VolumeRayCastingRendererBase`1.#ctor(`0,System.Int32,AtomicusChart.Core.DataManagement.PresenterCreationArg,AtomicusChart.Volumes.Rendering.Misc.VolumeGeometrySurrogateTracker,AtomicusChart.Core.Presenters.Misc.ValueBaseSurrogateReaderTracker{`0,AtomicusChart.Volumes.Rendering.Surrogates.IntensityImage3DReaderSurrogate,AtomicusChart.Volumes.DataReaders.IDataWriter3D,AtomicusChart.Interface.DataReaders.IValueDataReader{AtomicusChart.Volumes.DataReaders.IDataWriter3D}},AtomicusChart.Volumes.Rendering.Misc.VolumeRayCastingTextureContainer)">
+            <summary>
+            Initializes new instance of <see cref="T:AtomicusChart.Volumes.Rendering.Presenters.VolumeRayCastingRendererBase`1"/>.
+            </summary>
+            <param name="renderData">Render data instance.</param>
+            <param name="dataIndex">Data index.</param>
+            <param name="presenterCreationArg">Creation arguments.</param>
+            <param name="geometrySurrogateTracker">Geometry tracker instance.</param>
+            <param name="imageSurrogateReaderTracker">Image tracjer instance.</param>
+            <param name="textureContainer">Texture container.</param>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Rendering.Presenters.VolumeRayCastingRendererBase`1.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Rendering.Presenters.VolumeRayCastingRendererBase`1.RenderTranslucent(AtomicusChart.Core.RenderingCommon.DrawCallInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Rendering.Presenters.VolumeRayCastingRendererBase`1.GetGeometryDataContainer(AtomicusChart.Core.RenderingCommon.DrawCallInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Rendering.Presenters.VolumeRayCastingRendererBase`1.ConfigureVolumeParams(AtomicusChart.Volumes.Shaders.VolumeParams@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Rendering.Presenters.VolumeRayCastingRendererBase`1.RenderVolumePickingContentInner(System.Int32,AtomicusChart.Core.RenderingCommon.DrawCallInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Rendering.Presenters.VolumeRayCastingRendererBase`1.RenderVolumeContentInner(System.Int32,AtomicusChart.Core.RenderingCommon.DrawCallInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Rendering.Presenters.VolumeRayCastingRendererBase`1.ConfigureVolumeInner(AtomicusChart.Core.RenderingCommon.DrawCallInfo)">
+            <summary>
+            This method is used to configure volume-specific parameters for default render call.
+            </summary>
+            <param name="drawCallInfo">Draw-call info.</param>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Rendering.Presenters.VolumeRayCastingRendererBase`1.ConfigureVolumePickingInner(AtomicusChart.Core.RenderingCommon.DrawCallInfo)">
+            <summary>
+            This method is used to configure volume-specific parameters for picking render call.
+            </summary>
+            <param name="drawCallInfo">Draw-call info.</param>
+        </member>
+        <member name="P:AtomicusChart.Volumes.Rendering.Presenters.VolumeRayCastingRendererBase`1.HighlightThreshold">
+            <summary>
+            Gets highlight threshold parameter value.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.Volumes.Rendering.Presenters.VolumeRayCastingRendererBase`1.HitTestThreshold">
+            <summary>
+            Gets hit-test threshold parameter value.
+            </summary>
+        </member>
+        <member name="T:AtomicusChart.Volumes.Rendering.Presenters.ClippingHelper">
+            <summary>
+            Helps to clip volumes.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Rendering.Presenters.ClippingHelper.#ctor(AtomicusChart.Volumes.PresentationData.VolumeRenderData,AtomicusChart.Core.DataManagement.PresenterCreationArg)">
+            <summary>
+            Ctor.
+            </summary>
+            <param name="renderData"></param>
+            <param name="presenterCreationArg">Arg.</param>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Rendering.Presenters.ClippingHelper.GetMeshDataContainer(AtomicusChart.Core.RenderingCommon.DrawCallInfo)">
+            <summary>
+            Get mesh data container.
+            </summary>
+            <param name="drawCallInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Rendering.Presenters.ClippingHelper.Dispose">
+            <summary>
+            Free resources.
+            </summary>
+        </member>
+        <member name="T:AtomicusChart.Volumes.Rendering.Presenters.ClipInfo">
+            <summary>
+            INfo about volume clipping.
+            </summary>
+        </member>
+        <member name="F:AtomicusChart.Volumes.Rendering.Presenters.ClipInfo.MinRatio">
+            <summary>
+            Min ratio.
+            </summary>
+        </member>
+        <member name="F:AtomicusChart.Volumes.Rendering.Presenters.ClipInfo.MaxRatio">
+            <summary>
+            Max ratio.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.Volumes.Rendering.Presenters.ClipInfo.FromPostionToLookatRation">
+            <summary>
+            Relative lotaion of clipping plane.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Rendering.Surrogates.VolumeGeometrySurrogate.GetPositionVbb(SharpDX.Direct3D11.VertexBufferBinding@)">
+            <inheritdoc />
+        </member>
+        <member name="M:AtomicusChart.Volumes.Rendering.Misc.TransferFunction1DSurrogateTracker.EngageInner">
+            <inheritdoc/>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Rendering.Misc.TransferFunction1DSurrogateTracker.ResetInner(AtomicusChart.Interface.Data.TransferFunction1D,AtomicusChart.Volumes.Rendering.Surrogates.TransferFunction1DSurrogate)">
+            <inheritdoc/>
+        </member>
+        <member name="T:AtomicusChart.Volumes.Rendering.Misc.VolumeGeometrySurrogateTracker">
+            <summary>
+            Represents volume geometry surrogate tracker class.
+            </summary>
+        </member>
+        <member name="F:AtomicusChart.Volumes.Rendering.Misc.VolumeGeometrySurrogateTracker.BoundsTracker">
+            <summary>
+            Gets bounds tracker.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Rendering.Misc.VolumeGeometrySurrogateTracker.#ctor(AtomicusChart.Volumes.PresentationData.VolumeRenderData,AtomicusChart.Core.DataManagement.PresenterCreationArg,AtomicusChart.Core.DataManagement.ParentInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="P:AtomicusChart.Volumes.Rendering.Misc.VolumeGeometrySurrogateTracker.IsValidForRendering">
+            <summary>
+            Gets is the tracker is valid for rendering.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Rendering.Misc.VolumeGeometrySurrogateTracker.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Rendering.Misc.VolumeGeometrySurrogateTracker.EngageInner">
+            <inheritdoc/>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Rendering.Misc.VolumeGeometrySurrogateTracker.ResetInner(AtomicusChart.Volumes.Geometry.VolumeGeometry,AtomicusChart.Volumes.Rendering.Surrogates.VolumeGeometrySurrogate)">
+            <inheritdoc/>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Rendering.Misc.VolumeGeometrySurrogateTracker.ReleaseInner(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="T:AtomicusChart.Volumes.Data.RasterVertex3">
+            <summary>
+            Raster vertex with 3D texture coordinates.
+            </summary>
+        </member>
+        <member name="F:AtomicusChart.Volumes.Data.RasterVertex3.Position">
+            <summary> 
+            Position.
+            </summary>
+        </member>
+        <member name="F:AtomicusChart.Volumes.Data.RasterVertex3.TextureCoordinates">
+            <summary>
+            Texture coordinates.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Data.RasterVertex3.#ctor(AtomicusChart.Interface.Data.Vector3F,AtomicusChart.Interface.Data.Vector3F)">
+            <summary>
+            Initializes new instance of raster vertex.
+            </summary>
+            <param name="position">Position.</param>
+            <param name="textureCoordinates">Texture coordinates.</param>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Data.RasterVertex3.op_Equality(AtomicusChart.Volumes.Data.RasterVertex3,AtomicusChart.Volumes.Data.RasterVertex3)">
+            <summary>
+            Equality operator.
+            </summary>
+            <param name="left">Argument 1.</param>
+            <param name="right">Argument 2.</param>
+            <returns>True if equals, otherwise false.</returns>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Data.RasterVertex3.op_Inequality(AtomicusChart.Volumes.Data.RasterVertex3,AtomicusChart.Volumes.Data.RasterVertex3)">
+            <summary>
+            Inequality operator.
+            </summary>
+            <param name="left">Argument 1.</param>
+            <param name="right">Argument 2.</param>
+            <returns>True if unequal, otherwise false.</returns>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Data.RasterVertex3.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object" /> is equal to the current <see cref="T:System.Object" />.
+            </summary>
+            <returns>
+            True if the specified <see cref="T:System.Object" /> is equal to the current <see cref="T:System.Object" />; otherwise, false.
+            </returns>
+            <param name="other">
+            The object to compare with the current object. 
+            </param>
+            <filterpriority>2.</filterpriority>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Data.RasterVertex3.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type. 
+            </summary>
+            <returns>
+            A hash code for the current <see cref="T:System.Object" />.
+            </returns>
+            <filterpriority>2.</filterpriority>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Data.RasterVertex3.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:AtomicusChart.Volumes.Data.RasterVertex3Extension">
+            <summary>
+            Contains extension methods for raster vertex.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Data.RasterVertex3Extension.ExtractComponents(System.Collections.Generic.IList{AtomicusChart.Volumes.Data.RasterVertex3},AtomicusChart.Interface.Data.Vector3F[],AtomicusChart.Interface.Data.Vector3F[])">
+            <summary>
+            Extracts components from the specified raster vertex list.
+            </summary>
+            <param name="vertices">Input list.</param>
+            <param name="positions">Output positions.</param>
+            <param name="textureCoordinates">Output texture coordinates.</param>
+        </member>
+        <member name="T:AtomicusChart.Volumes.Data.VolumeMesh">
+            <summary>
+            Represents volume mesh used as base of volume geometry.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Data.VolumeMesh.#ctor(AtomicusChart.Interface.Data.Vector3F[],AtomicusChart.Interface.Data.Vector3F[],System.Int32[])">
+            <summary>
+            Initializes new instance of <see cref="T:AtomicusChart.Volumes.Data.VolumeMesh"/>.
+            </summary>
+            <param name="positions">Mesh positions.</param>
+            <param name="textureCoordinates">Mesh texture coordinates.</param>
+            <param name="indices">Mesh indices.</param>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Data.VolumeMesh.#ctor(AtomicusChart.Interface.Data.Vector3F[],AtomicusChart.Interface.Data.Vector3F[],System.Int32[],AtomicusChart.Interface.CameraView.Bounds)">
+            <summary>
+            Initializes new instance of <see cref="T:AtomicusChart.Volumes.Data.VolumeMesh"/>.
+            </summary>
+            <param name="positions">Mesh positions.</param>
+            <param name="textureCoordinates">Mesh texture coordinates.</param>
+            <param name="indices">Mesh indices.</param>
+            <param name="geometryBounds">Mesh geometry bounds.</param>
+        </member>
+        <member name="M:AtomicusChart.Volumes.Data.VolumeMesh.GetSections(System.Collections.Generic.IEnumerable{AtomicusChart.Interface.Data.Plane})">
+            <summary>
+            Computes sections of the mesh.
+            </summary>
+            <param name="planes">Planes for section compute.</param>
+            <returns>Result of section compute.</returns>
+        </member>
+        <member name="T:AtomicusChart.Volumes.PresentationData.VolumeIPRayCasting">
+            <summary>
+            Represents render data for volume-ray-casting intensity-projection visualization.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.Volumes.PresentationData.VolumeIPRayCasting.ColorMapContainer">
+            <summary>
+            Gets or sets the data color map.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.Volumes.PresentationData.VolumeIPRayCasting.ProjectionType">
+            <summary>
+            Gets or sets the ray-casting intensity projection type.
+            </summary>
+        </member>
+        <member name="T:AtomicusChart.Volumes.PresentationData.VolumeIPType">
+            <summary>
+            Contains available volume intensity projection types.
+            </summary>
+        </member>
+        <member name="F:AtomicusChart.Volumes.PresentationData.VolumeIPType.Min">
+            <summary>
+            Min intensity.
+            </summary>
+        </member>
+        <member name="F:AtomicusChart.Volumes.PresentationData.VolumeIPType.Max">
+            <summary>
+            Max intensity.
+            </summary>
+        </member>
+        <member name="F:AtomicusChart.Volumes.PresentationData.VolumeIPType.Average">
+            <summary>
+            Average intensity.
+            </summary>
+        </member>
+        <member name="T:AtomicusChart.Volumes.PresentationData.VolumeIsoRayCasting">
+            <summary>
+            Represents render data for volume-ray-casting for iso-surface visualization.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.Volumes.PresentationData.VolumeIsoRayCasting.Material">
+            <summary>
+            Gets or sets the surface render material.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.Volumes.PresentationData.VolumeIsoRayCasting.Color">
+            <summary>
+            Gets or sets the surface color.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.Volumes.PresentationData.VolumeIsoRayCasting.IsoValue">
+            <summary>
+            Gets or sets the surface isolation value.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.Volumes.PresentationData.VolumeIsoRayCasting.IntersectionType">
+            <summary>
+            Gets or sets the surface intersection type.
+            </summary>
+        </member>
+        <member name="T:AtomicusChart.Volumes.PresentationData.IsoIntersectionType">
+            <summary>
+            Contains available isoluation surface intersection types.
+            </summary>
+        </member>
+        <member name="F:AtomicusChart.Volumes.PresentationData.IsoIntersectionType.MinToMax">
+            <summary>
+            Min to max direction.
+            </summary>
+        </member>
+        <member name="F:AtomicusChart.Volumes.PresentationData.IsoIntersectionType.MaxToMin">
+            <summary>
+            Max to min direction.
+            </summary>
+        </member>
+        <member name="T:AtomicusChart.Volumes.PresentationData.VolumeRayCasting">
+            <summary>
+            Represents render data used for default volume-ray-casting technique visualization.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.Volumes.PresentationData.VolumeRayCasting.ColorMapContainer">
+            <summary>
+            Gets or sets the data color map.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.Volumes.PresentationData.VolumeRayCasting.TransferFunction1D">
+            <summary>
+            Gets or sets the ray-casting one-dimensional transfer function.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.Volumes.PresentationData.VolumeRayCasting.ValueScale">
+            <summary>
+            Gets or sets the ray-casting value scaling coefficient.
+            </summary>
+        </member>
+        <member name="T:AtomicusChart.Volumes.PresentationData.VolumeRayCastingBase">
+            <summary>
+            Represents base class for volume-ray-casting render data.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.Volumes.PresentationData.VolumeRayCastingBase.SamplingStepCount">
+            <summary>
+            Gets or sets the ray-casting sampling step count. This parameter linearly affects render quality and performance.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.Volumes.PresentationData.VolumeRayCastingBase.IsDepthTestEnabled">
+            <summary>
+            Gets or sets the ray-casting depth-test-enabled flag.
+            </summary>
+        </member>
+        <member name="T:AtomicusChart.Volumes.PresentationData.VolumeRayCastingPickableBase">
+            <summary>
+            Represents base class for pickable volume-ray-casting render datas.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.Volumes.PresentationData.VolumeRayCastingPickableBase.HighlightThreshold">
+            <summary>
+            Gets or sets the ray-casting highlight opacity threeshold value.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.Volumes.PresentationData.VolumeRayCastingPickableBase.HitTestThreshold">
+            <summary>
+            Gets or sets the ray-casting hit-test opacity threshold value.
+            </summary>
+        </member>
+        <member name="T:AtomicusChart.Volumes.PresentationData.VolumeRenderData">
+            <summary>
+            Represents base class for volume render datas.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.Volumes.PresentationData.VolumeRenderData.Geometry">
+            <summary>
+            Gets or sets the volume geometry.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.Volumes.PresentationData.VolumeRenderData.Reader">
+            <summary>
+            Gets or sets the volume data reader.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.Volumes.PresentationData.VolumeRenderData.InterpolationType">
+            <summary>
+            Gets or sets the volume interpolation type.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.Volumes.PresentationData.VolumeRenderData.HighlightColor">
+            <summary>
+            Gets or sets the volume highlight color.
+            </summary>
+        </member>
+        <member name="T:AtomicusChart.Volumes.PresentationData.VolumeInterpolationType">
+            <summary>
+            Represents possible volume ray-casting interpolation types enumerator. 
+            </summary>
+        </member>
+        <member name="F:AtomicusChart.Volumes.PresentationData.VolumeInterpolationType.None">
+            <summary>
+            Performs no interpolation during volume intensities sampling.
+            </summary>
+        </member>
+        <member name="F:AtomicusChart.Volumes.PresentationData.VolumeInterpolationType.Linear">
+            <summary>
+            Performs linear interpolation during volume intensities sampling. 
+            Most common case.
+            </summary>
+        </member>
+        <member name="F:AtomicusChart.Volumes.PresentationData.VolumeInterpolationType.Cubic">
+            <summary>
+            Performs cubic interpolation during volume intensities sampling.
+            Produces the most smooth result, but requires way more calculating power.
+            </summary>
+        </member>
+        <member name="T:AtomicusChart.Volumes.PresentationData.VolumeSection">
+            <summary>
+            Represents volume section render data class.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.Volumes.PresentationData.VolumeSection.ColorMapContainer">
+            <summary>
+            Gets or sets the data color map.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.Volumes.PresentationData.VolumeSection.Opacity">
+            <summary>
+            Gets or sets the section opacity factor.
+            </summary>
+        </member>
+        <member name="T:AtomicusChart.Volumes.PresentationData.VolumeShadedRayCasting">
+            <summary>
+            Represents extension of <see cref="T:AtomicusChart.Volumes.PresentationData.VolumeRayCasting"/> with shading.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.Volumes.PresentationData.VolumeShadedRayCasting.Material">
+            <summary>
+            Gets or sets the ray-casting render material used for shading.
+            </summary>
+        </member>
+        <member name="T:AtomicusChart.Volumes.PresentationData.Widgets.VolumeVisualPlaneSection">
+            <summary>
+            Represents implementation of <see cref="T:AtomicusChart.Interface.PresentationData.Widget.VisualPlaneNormalSection"/> siutable for volume sections.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.Volumes.PresentationData.Widgets.VolumeVisualPlaneSection.ParentGeometry">
+            <summary>
+            Gets or sets the section parent volume geometry.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.Volumes.PresentationData.Widgets.VolumeVisualPlaneSection.SectionGeometry">
+            <summary>
+            Gets geometry used for volume section.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.Volumes.PresentationData.Widgets.VolumeVisualPlaneSection.Finalize">
+            <summary>
+            Finalizer.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.Volumes.PresentationData.Widgets.VolumeVisualPlaneSection.OnSectionChanged">
+            <inheritdoc/>
+        </member>
+        <member name="T:AtomicusChart.Volumes.Properties.PreviewResources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.Volumes.Properties.PreviewResources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.Volumes.Properties.PreviewResources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.Volumes.Properties.PreviewResources.surface">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="T:AtomicusChart.Volumes.Shaders.VolumeShaders">
+            <summary>
+            Contains chart volume module shader registration logic.
+            </summary>
+        </member>
+    </members>
+</doc>

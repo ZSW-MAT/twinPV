@@ -1,0 +1,314 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <Target Name="WorkaroundMSBuild" BeforeTargets="CompileLicxFiles">
+    <PropertyGroup>
+      <LCMSBuildArchitecture>x86</LCMSBuildArchitecture>
+    </PropertyGroup>
+  </Target>
+  <Target Name="UndoWorkaroundMSBuild" AfterTargets="CompileLicxFiles">
+    <PropertyGroup>
+      <LCMSBuildArchitecture>x64</LCMSBuildArchitecture>
+    </PropertyGroup>
+  </Target>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{69C4233A-93AA-42C0-A596-C5FECDDDB7DB}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>twinPV</RootNamespace>
+    <AssemblyName>twinPV</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ZSW_logo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AtomicusChart.ClientHelper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=35d5e4481e4ea2fd, processorArchitecture=MSIL" />
+    <Reference Include="AtomicusChart.Core, Version=1.1.4.5802, Culture=neutral, PublicKeyToken=35d5e4481e4ea2fd, processorArchitecture=MSIL" />
+    <Reference Include="AtomicusChart.Interface, Version=1.1.4.5802, Culture=neutral, PublicKeyToken=35d5e4481e4ea2fd, processorArchitecture=MSIL" />
+    <Reference Include="AtomicusChart.ValueData, Version=1.1.4.5802, Culture=neutral, PublicKeyToken=35d5e4481e4ea2fd, processorArchitecture=MSIL" />
+    <Reference Include="AtomicusChart.Volumes, Version=1.1.4.5802, Culture=neutral, PublicKeyToken=35d5e4481e4ea2fd, processorArchitecture=MSIL" />
+    <Reference Include="AtomicusChart.WpfControl, Version=1.1.4.5802, Culture=neutral, PublicKeyToken=35d5e4481e4ea2fd, processorArchitecture=MSIL" />
+    <Reference Include="Extreme.Numerics, Version=8.1.3.0, Culture=neutral, PublicKeyToken=9e513770f58567b2, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extreme.Numerics.8.1.3\lib\net462\Extreme.Numerics.dll</HintPath>
+    </Reference>
+    <Reference Include="MoreLinq, Version=3.3.2.0, Culture=neutral, PublicKeyToken=384d532d7e88985d, processorArchitecture=MSIL">
+      <HintPath>..\packages\morelinq.3.3.2\lib\net451\MoreLinq.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Designer.xaml.cs">
+      <DependentUpon>Designer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DesignerCellRegion.xaml.cs">
+      <DependentUpon>DesignerCellRegion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DesignerChangePointCoordinates.xaml.cs">
+      <DependentUpon>DesignerChangePointCoordinates.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DesignerSemiconductor1D.xaml.cs">
+      <DependentUpon>DesignerSemiconductor1D.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DesignerSemiconductorRegion.xaml.cs">
+      <DependentUpon>DesignerSemiconductorRegion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Imprint.xaml.cs">
+      <DependentUpon>Imprint.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageCell.xaml.cs">
+      <DependentUpon>PageCell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageCellModels.xaml.cs">
+      <DependentUpon>PageCellModels.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageHome.xaml.cs">
+      <DependentUpon>PageHome.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageMaterials.xaml.cs">
+      <DependentUpon>PageMaterials.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageOptics.xaml.cs">
+      <DependentUpon>PageOptics.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageSemiconductor.xaml.cs">
+      <DependentUpon>PageSemiconductor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Plotter.cs" />
+    <Compile Include="TopologicalOptimization.cs" />
+    <Compile Include="Window_Batch_Cell.xaml.cs">
+      <DependentUpon>Window_Batch_Cell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Window_Batch_Semiconductor.xaml.cs">
+      <DependentUpon>Window_Batch_Semiconductor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Window_SelectRegionForPlotting.xaml.cs">
+      <DependentUpon>Window_SelectRegionForPlotting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Window_Semiconductor_Grading.xaml.cs">
+      <DependentUpon>Window_Semiconductor_Grading.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Designer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DesignerCellRegion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DesignerChangePointCoordinates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DesignerSemiconductor1D.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DesignerSemiconductorRegion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Imprint.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="PageCell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageCellModels.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageHome.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageMaterials.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageOptics.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageSemiconductor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window_Batch_Cell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window_Batch_Semiconductor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window_SelectRegionForPlotting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window_Semiconductor_Grading.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\3DModel.png" />
+    <Resource Include="Icons\Button\button_cell_designer.png" />
+    <Resource Include="Icons\Button\button_cell_designer_hover.png" />
+    <Resource Include="Icons\Button\button_device_designer.png" />
+    <Resource Include="Icons\Button\button_device_designer_hover.png" />
+    <Resource Include="Icons\Button\button_semiconductor_IV.png" />
+    <Resource Include="Icons\Button\button_semiconductor_IV_hover.png" />
+    <Resource Include="Icons\Button\iconCell.png" />
+    <Resource Include="Icons\Button\iconCellHover.png" />
+    <Resource Include="Icons\Button\iconHome.png" />
+    <Resource Include="Icons\Button\iconHomeHover.png" />
+    <Resource Include="Icons\Button\iconMaterial.png" />
+    <Resource Include="Icons\Button\iconMaterialHover.png" />
+    <Resource Include="Icons\Button\iconRaytracing.png" />
+    <Resource Include="Icons\Button\iconRaytracingHover.png" />
+    <Resource Include="Icons\Button\impressum.png" />
+    <Resource Include="Icons\Button\impressum_hover.png" />
+    <Resource Include="Icons\Button\menu_band_button.png" />
+    <Resource Include="Icons\iconFolder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BasicLib\BasicLib.csproj">
+      <Project>{7baa0b17-5118-4a58-a3c7-db5692c22ce5}</Project>
+      <Name>BasicLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cell\Cell.csproj">
+      <Project>{163213db-588f-4a50-bed9-bc6d5d5f4327}</Project>
+      <Name>Cell</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Database\Database.csproj">
+      <Project>{0c522c0c-e420-4b52-80b8-b7db12a45f4b}</Project>
+      <Name>Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Geometry\Geometry.csproj">
+      <Project>{d4f707f7-1776-4c0e-98a0-b0d244d07b76}</Project>
+      <Name>Geometry</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Semiconductor\Semiconductor.csproj">
+      <Project>{bb88e7b2-bd6d-42de-b70b-74390e21dc66}</Project>
+      <Name>Semiconductor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TransferMatrix\TransferMatrix.csproj">
+      <Project>{c3816756-931b-467d-8130-d0f00ebe2147}</Project>
+      <Name>TransferMatrix</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ZSW_logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Atomicus.png" />
+    <Resource Include="Icons\BMWi.png" />
+    <Resource Include="Icons\ZSW_building.png" />
+    <Resource Include="Icons\ZSW_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Button\button_cell_designer1D.png" />
+    <Resource Include="Icons\Button\button_cell_designer_hover1D.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Button\button_mail.png" />
+    <Resource Include="Icons\Button\button_mail_hover.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

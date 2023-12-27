@@ -1,0 +1,304 @@
+﻿<Window
+    x:Class="twinPV.Imprint"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:twinPV"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="pageImprint"
+    Title="twinPV imprint"
+    Width="1400"
+    Height="830"
+    ResizeMode="NoResize"
+    mc:Ignorable="d"
+    WindowStartupLocation="CenterScreen">
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Top">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="220" />
+        </Grid.ColumnDefinitions>
+        <Image
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Width="{Binding ElementName=pageImprint, Path=ActualWidth}"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Source="Icons/ZSW_building.png" />
+        <TextBlock
+            Grid.Row="1"
+            Margin="20,20,0,5"
+            HorizontalAlignment="Left"
+            Style="{StaticResource textblockTitleStyle}"
+            Text="Imprint" />
+        <Rectangle
+            Grid.Row="2"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Height="2"
+            Margin="10,0,10,0"
+            HorizontalAlignment="Stretch"
+            Fill="{StaticResource brushAccent1}" />
+        <Grid Grid.Row="3" Margin="20,20,0,20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="15" />
+                <RowDefinition Height="15" />
+                <RowDefinition Height="15" />
+                <RowDefinition Height="15" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300" />
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="200" />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="0,0,0,5"
+                FontSize="13"
+                FontWeight="Bold"
+                Style="{StaticResource textblockTextStyle}"
+                Text="platform development" />
+            <Image
+                Grid.Row="1"
+                Grid.Column="0"
+                Height="40"
+                Margin="0,0,0,5"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Source="Icons/ZSW_logo.png" />
+            <TextBlock
+                Grid.Row="2"
+                Grid.Column="0"
+                FontSize="13"
+                FontWeight="DemiBold"
+                Text="Center for Solar Energy and Hydrogen Research" />
+            <TextBlock
+                Grid.Row="3"
+                Grid.Column="0"
+                FontSize="13"
+                FontWeight="DemiBold"
+                Text="Baden-Württemberg (ZSW)" />
+            <TextBlock
+                Grid.Row="4"
+                Grid.Column="0"
+                Text="Meitnerstr. 1" />
+            <TextBlock
+                Grid.Row="5"
+                Grid.Column="0"
+                Text="70563 Stuttgart" />
+            <TextBlock
+                Grid.Row="6"
+                Grid.Column="0"
+                Text="Germany" />
+            <TextBlock Grid.Row="7" Grid.Column="0">
+                <Hyperlink NavigateUri="https://www.zsw-bw.de/en.html" RequestNavigate="Hyperlink_RequestNavigate">
+                    www.zsw-bw.de
+                </Hyperlink>
+            </TextBlock>
+
+            <StackPanel
+                Grid.Row="3"
+                Grid.Column="1"
+                Orientation="Horizontal">
+                <TextBlock
+                    VerticalAlignment="Center"
+                    FontWeight="DemiBold"
+                    Text="Dr. Andreas Bauer" />
+                <Button
+                    Margin="5,0,0,0"
+                    Click="MailToLead"
+                    Style="{StaticResource btnImprintMail}"/>
+            </StackPanel>
+
+            <TextBlock
+                Grid.Row="4"
+                Grid.Column="1"
+                Text="project lead" />
+
+            <StackPanel
+                Grid.Row="3"
+                Grid.Column="2"
+                Orientation="Horizontal">
+                <TextBlock
+                    VerticalAlignment="Center"
+                    FontWeight="DemiBold"
+                    Text="Tim Helder" />
+                <Button
+                    Margin="5,0,0,0"
+                    Click="MailToSC"
+                    Style="{StaticResource btnImprintMail}" />
+            </StackPanel>
+
+            <TextBlock
+                Grid.Row="4"
+                Grid.Column="2"
+                Text="semiconductor physics, optics," />
+            <TextBlock
+                Grid.Row="5"
+                Grid.Column="2"
+                ><Run Text="and "/><Run Text="loss analysis"/></TextBlock>
+
+            <StackPanel
+                Grid.Row="3"
+                Grid.Column="3"
+                Orientation="Horizontal">
+                <TextBlock
+                    VerticalAlignment="Center"
+                    FontWeight="DemiBold"
+                    Text="Mario Zinßer" />
+                <Button
+                    Margin="5,0,0,0"
+                    Click="MailToDevice"
+                    Style="{StaticResource btnImprintMail}" />
+            </StackPanel>
+            <TextBlock
+                Grid.Row="4"
+                Grid.Column="3"
+                Text="meshing, device physics, optics," />
+            <TextBlock
+                Grid.Row="5"
+                Grid.Column="3"
+                Text="loss analysis, yield," />
+            <TextBlock
+                Grid.Row="6"
+                Grid.Column="3"
+                Text="and topological optimization" />
+
+            <StackPanel
+                Grid.Row="3"
+                Grid.Column="4"
+                Orientation="Horizontal">
+                <TextBlock
+                    VerticalAlignment="Center"
+                    FontWeight="DemiBold"
+                    Text="Benedikt Braun" />
+            </StackPanel>
+            <TextBlock
+                Grid.Row="4"
+                Grid.Column="4"
+                Text="topological optimization" />
+        </Grid>
+
+        <Grid Grid.Row="4" Margin="20,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="15" />
+                <RowDefinition Height="15" />
+                <RowDefinition Height="15" />
+                <RowDefinition Height="15" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300" />
+                <ColumnDefinition Width="250" />
+                <ColumnDefinition Width="250" />
+                <ColumnDefinition Width="250" />
+                <ColumnDefinition Width="350" />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="0,0,0,5"
+                FontSize="14"
+                FontWeight="Bold"
+                Style="{StaticResource textblockTextStyle}"
+                Text="licenced charting library" />
+            <Image
+                Grid.Row="1"
+                Grid.Column="0"
+                Height="40"
+                Margin="0,0,0,5"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Source="Icons/Atomicus.png" />
+            <TextBlock
+                Grid.Row="2"
+                Grid.Column="0"
+                FontSize="13"
+                FontWeight="DemiBold"
+                Text="ATOMICUS GmbH" />
+            <TextBlock
+                Grid.Row="3"
+                Grid.Column="0"
+                Text="An der RaumFabrik 33c" />
+            <TextBlock
+                Grid.Row="4"
+                Grid.Column="0"
+                Text="76227 Karlsruhe" />
+            <TextBlock
+                Grid.Row="5"
+                Grid.Column="0"
+                Text="Germany" />
+            <TextBlock Grid.Row="6" Grid.Column="0">
+                <Hyperlink NavigateUri="https://atomicuschart.com" RequestNavigate="Hyperlink_RequestNavigate">
+                    www.atomicuschart.com
+                </Hyperlink>
+            </TextBlock>
+        </Grid>
+
+        <Grid
+            Grid.Row="3"
+            Grid.RowSpan="2"
+            Grid.Column="1"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Image
+                Grid.Row="0"
+                Width="200"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Source="Icons/BMWi.png" />
+            <TextBlock Grid.Row="1" Margin="27,0,0,20">
+                <Hyperlink NavigateUri="https://www.bmwk.de/Navigation/EN/Home/home.html" RequestNavigate="Hyperlink_RequestNavigate">
+                    www.bmwk.de
+                </Hyperlink>
+            </TextBlock>
+            <TextBlock
+                Grid.Row="2"
+                Margin="27,0,0,0"
+                Text="in the project 'CIGSTheoMax'" />
+            <TextBlock
+                Grid.Row="3"
+                Margin="27,0,0,0"
+                Text="under contract no° 0324353A." />
+        </Grid>
+        <StackPanel
+            Grid.Row="5"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Margin="0,15,0,0">
+            <Rectangle
+                Height="2"
+                Margin="10,0,10,0"
+                HorizontalAlignment="Stretch"
+                Fill="{StaticResource brushAccent1}" />
+            <TextBlock
+                Margin="0,10,0,0"
+                HorizontalAlignment="Center"
+                Style="{StaticResource textblockTextStyle}"
+                Text="Copyright © ZSW (2021), Version V0.1_2022-03-31" />
+        </StackPanel>
+    </Grid>
+</Window>

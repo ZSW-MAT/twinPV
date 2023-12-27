@@ -1,0 +1,445 @@
+﻿<Window x:Class="twinPV.DesignerSemiconductor1D"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
+      xmlns:local="clr-namespace:twinPV"
+      mc:Ignorable="d" 
+        SizeToContent="WidthAndHeight"
+    ResizeMode="NoResize"
+      Height="600" 
+        Width="1300"
+        MaxHeight="1000"
+    Background="{StaticResource brushBackgroundLocal}"
+
+    Title="Semiconductor 1D Designer">
+
+
+    <Window.Resources>
+        <GridLength x:Key="widthCol0">160</GridLength>
+        <GridLength x:Key="widthCol1">10</GridLength>
+        <GridLength x:Key="widthCol2">120</GridLength>
+        <GridLength x:Key="widthCol3">10</GridLength>
+        <GridLength x:Key="widthCol4">70</GridLength>
+        <GridLength x:Key="widthCol5">20</GridLength>
+        <GridLength x:Key="widthCol6">10</GridLength>
+        <GridLength x:Key="widthCol7">70</GridLength>
+        <GridLength x:Key="widthCol8">20</GridLength>
+        <GridLength x:Key="widthCol9">10</GridLength>
+        <GridLength x:Key="widthCol10">50</GridLength>
+        <GridLength x:Key="widthCol11">10</GridLength>
+
+        <GridLength x:Key="widthCol12">50</GridLength>
+        <GridLength x:Key="widthCol13">10</GridLength>
+        <GridLength x:Key="widthCol14">70</GridLength>
+        <GridLength x:Key="widthCol15">10</GridLength>
+        
+        <GridLength x:Key="widthCol16">70</GridLength>
+        <GridLength x:Key="widthCol17">10</GridLength>
+        <GridLength x:Key="widthCol18">70</GridLength>
+        <GridLength x:Key="widthCol19">30</GridLength>
+        <GridLength x:Key="widthCol20">10</GridLength>
+        <GridLength x:Key="widthCol21">70</GridLength>
+        <GridLength x:Key="widthCol22">30</GridLength>
+        <GridLength x:Key="widthCol23">10</GridLength>
+        <GridLength x:Key="widthCol24">70</GridLength>
+        <GridLength x:Key="widthCol25">30</GridLength>
+        <GridLength x:Key="widthCol26">10</GridLength>
+        <GridLength x:Key="widthCol27">70</GridLength>
+        <GridLength x:Key="widthCol28">30</GridLength>
+
+
+        <GridLength x:Key="RowDistance">20</GridLength>
+    </Window.Resources>
+
+
+    <ScrollViewer
+            PreviewMouseWheel="ListViewScrollViewer_PreviewMouseWheel"
+            ScrollViewer.VerticalScrollBarVisibility="Auto">
+        <Grid Margin="10"
+          >
+        <Grid.RowDefinitions>
+            <!-- 00 -->
+            <RowDefinition Height="{StaticResource RowDistance}"/>
+            <!-- 01 -->
+            <RowDefinition Height="Auto"/>
+            <!-- 02 -->
+            <RowDefinition Height="{StaticResource RowDistance}"/>
+            <!-- 03 -->
+            <RowDefinition Height="Auto"/>
+            <!-- 04 -->
+            <RowDefinition Height="Auto"/>
+            <!-- 05 -->
+            <RowDefinition Height="Auto"/>
+            <!-- 06 -->
+            <RowDefinition Height="Auto"/>
+            <!-- 07 -->
+            <RowDefinition Height="Auto"/>
+            <!-- 08 -->
+            <RowDefinition Height="Auto"/>
+            <!-- 09 -->
+            <RowDefinition Height="Auto"/>
+            <!-- 10 -->
+            <RowDefinition Height="Auto"/>
+            <!-- 11 -->
+            <RowDefinition Height="Auto"/>
+            <!-- 12 -->
+            <RowDefinition Height="Auto"/>
+            <!-- 13 -->
+            <RowDefinition Height="Auto"/>
+            <!-- 14 -->
+            <RowDefinition Height="Auto"/>
+            <!-- 15 -->
+            <RowDefinition Height="Auto"/>
+            <!-- 16 -->
+            <RowDefinition Height="Auto"/>
+            <!-- 17 -->
+            <RowDefinition Height="Auto"/>
+            <!-- 18 -->
+            <RowDefinition Height="Auto"/>
+            <!-- 19 -->
+            <RowDefinition Height="{StaticResource RowDistance}"/>
+            <!-- 20 -->
+            <RowDefinition Height="Auto"/>
+            <!-- 21 -->
+            <RowDefinition Height="{StaticResource RowDistance}"/>
+            <!-- 22 -->
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!--0: Row Space -->
+
+        <!--1: Header -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{StaticResource widthCol0}" />
+                <ColumnDefinition Width="{StaticResource widthCol1}" />
+                <ColumnDefinition Width="{StaticResource widthCol2}" />
+                <ColumnDefinition Width="{StaticResource widthCol3}" />
+                <ColumnDefinition Width="{StaticResource widthCol4}" />
+                <ColumnDefinition Width="{StaticResource widthCol5}" />
+                <ColumnDefinition Width="{StaticResource widthCol6}" />
+                <ColumnDefinition Width="{StaticResource widthCol7}" />
+                <ColumnDefinition Width="{StaticResource widthCol8}" />
+                <ColumnDefinition Width="{StaticResource widthCol9}" />
+                <ColumnDefinition Width="{StaticResource widthCol10}" />
+                <ColumnDefinition Width="{StaticResource widthCol11}" />
+                <ColumnDefinition Width="{StaticResource widthCol12}" />
+                <ColumnDefinition Width="{StaticResource widthCol13}" />
+                <ColumnDefinition Width="{StaticResource widthCol14}" />
+                <ColumnDefinition Width="{StaticResource widthCol15}" />
+                <ColumnDefinition Width="{StaticResource widthCol16}" />
+                <ColumnDefinition Width="{StaticResource widthCol17}" />
+                <ColumnDefinition Width="{StaticResource widthCol18}" />
+                <ColumnDefinition Width="{StaticResource widthCol19}" />
+                <ColumnDefinition Width="{StaticResource widthCol20}" />
+                <ColumnDefinition Width="{StaticResource widthCol21}" />
+                <ColumnDefinition Width="{StaticResource widthCol22}" />
+                <ColumnDefinition Width="{StaticResource widthCol23}" />
+                <ColumnDefinition Width="{StaticResource widthCol24}" />
+                <ColumnDefinition Width="{StaticResource widthCol25}" />
+                <ColumnDefinition Width="{StaticResource widthCol26}" />
+                <ColumnDefinition Width="{StaticResource widthCol27}" />
+                <ColumnDefinition Width="{StaticResource widthCol28}" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" HorizontalAlignment="Center" FontFamily="Segoe MDL2 Assets" FontSize="25" Text="&#xE706;" />
+            <TextBlock Grid.Column="2" HorizontalAlignment="Center" Text="material" />
+            <TextBlock Grid.Column="4" HorizontalAlignment="Center" Text="thickness" />
+            <TextBlock Grid.Column="7" HorizontalAlignment="Center" Text="roughness on top" TextWrapping="Wrap"/>
+
+            <TextBlock Grid.Column="12" HorizontalAlignment="Center" Text="Eg is graded" TextWrapping="Wrap"/>
+            <TextBlock Grid.Column="14" HorizontalAlignment="Center" Text="Define Grading" TextWrapping="Wrap"/>
+
+            <TextBlock Grid.Column="16" HorizontalAlignment="Center" Text="boundary type"  TextWrapping="Wrap" ToolTip="Select which kind of boundary type should be applied on this interface: ground = 0V (on n side for forward bias) , applied voltage (on p side for forward bias), interface condition or no condition"/>
+            <TextBlock Grid.Column="10" HorizontalAlignment="Center" Text="active layer" TextWrapping="Wrap" ToolTip="Select one layer as absorber layer of this device. If no layer is selected, the last one is set as absorber layer by default."/>
+            <TextBlock Grid.Column="18" HorizontalAlignment="Center" Text="SRV electrons" TextWrapping="Wrap"/>
+            <TextBlock Grid.Column="21" HorizontalAlignment="Center" Text="SRV holes" TextWrapping="Wrap"/>
+            <TextBlock Grid.Column="24" HorizontalAlignment="Center" Text="Contact Barrier" TextWrapping="Wrap"/>
+            <TextBlock Grid.Column="27" HorizontalAlignment="Center" Text="Interface Trap Energy" TextWrapping="Wrap"/>
+        </Grid>
+
+        <!--2: Row Space -->
+
+        <!--3: material before -->
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{StaticResource widthCol0}" />
+                <ColumnDefinition Width="{StaticResource widthCol1}" />
+                <ColumnDefinition Width="{StaticResource widthCol2}" />
+                <ColumnDefinition Width="{StaticResource widthCol3}" />
+                <ColumnDefinition Width="{StaticResource widthCol4}" />
+                <ColumnDefinition Width="{StaticResource widthCol5}" />
+                <ColumnDefinition Width="{StaticResource widthCol6}" />
+                <ColumnDefinition Width="{StaticResource widthCol7}" />
+                <ColumnDefinition Width="{StaticResource widthCol8}" />
+                <ColumnDefinition Width="{StaticResource widthCol9}" />
+                <ColumnDefinition Width="{StaticResource widthCol10}" />
+                <ColumnDefinition Width="{StaticResource widthCol11}" />
+                <ColumnDefinition Width="{StaticResource widthCol12}" />
+                <ColumnDefinition Width="{StaticResource widthCol13}" />
+                <ColumnDefinition Width="{StaticResource widthCol14}" />
+                <ColumnDefinition Width="{StaticResource widthCol15}" />
+                <ColumnDefinition Width="{StaticResource widthCol16}" />
+                <ColumnDefinition Width="{StaticResource widthCol17}" />
+                <ColumnDefinition Width="{StaticResource widthCol18}" />
+                <ColumnDefinition Width="{StaticResource widthCol19}" />
+                <ColumnDefinition Width="{StaticResource widthCol20}" />
+                <ColumnDefinition Width="{StaticResource widthCol21}" />
+                <ColumnDefinition Width="{StaticResource widthCol22}" />
+                <ColumnDefinition Width="{StaticResource widthCol23}" />
+                <ColumnDefinition Width="{StaticResource widthCol24}" />
+                <ColumnDefinition Width="{StaticResource widthCol25}" />
+                <ColumnDefinition Width="{StaticResource widthCol26}" />
+                <ColumnDefinition Width="{StaticResource widthCol27}" />
+                <ColumnDefinition Width="{StaticResource widthCol28}" />
+            </Grid.ColumnDefinitions>
+            <Rectangle Grid.Column="0" Fill="White" Stroke="#000000" />
+            <TextBlock Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="material before stack"  />
+            <ComboBox x:Name="combobox_materialBefore" DropDownOpened="LoadSemiconductorMaterialList" Grid.Column="2"/>
+            <TextBox x:Name="textbox_materialBeforeTickness" Grid.Column="4" Background="#FF000000" TextAlignment="Right" IsEnabled="False" Text="0" />
+            <TextBlock Grid.Row="1" Grid.Column="5" Margin="0,1,0,0" VerticalAlignment="Center" Text=" nm" />
+            <TextBox x:Name="textbox_materialBeforeRoughness" Grid.Column="7" Background="#FF000000" TextAlignment="Right" IsEnabled="False" Text="0" />
+            <TextBlock Grid.Row="1" Grid.Column="8" Margin="0,1,0,0" VerticalAlignment="Center" Text=" nm" />
+            <CheckBox x:Name="checkbox_isGraded_before" Grid.Column="12" HorizontalAlignment="Center"  IsEnabled="false"/>
+            <Button x:Name="button_grading_before" Width="70" Grid.Column="14" Margin="0,0,0,0" Click="DefineGrading" Content="Define" ToolTip="Define the band gap grading of this layer" IsEnabled="False" />
+            <ComboBox x:Name="combobox_BoundaryType_before" Grid.Column="16" DropDownOpened="LoadBoundaryTypeList" />
+            <CheckBox x:Name="checkbox_isAbsorber_before" Grid.Column="10" HorizontalAlignment="Center"  IsEnabled="false"/>
+            <TextBox x:Name="textbox_beforeSRVelectron" Grid.Column="18" Background="#FF000000" TextAlignment="Right" Text="1e7"  />
+            <TextBlock Grid.Column="19" Margin="0,1,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Text=" cm/s" />
+            <TextBox x:Name="textbox_beforeSRVhole" Grid.Column="21" Background="#FF000000" TextAlignment="Right" Text="1e7" />
+            <TextBlock Grid.Column="22" Margin="0,1,0,0" VerticalAlignment="Center" Text=" cm/s" />
+            <TextBox x:Name="textbox_beforebarrier" Grid.Column="24" Background="#FF000000" TextAlignment="Right" Text="0"  />
+            <TextBlock Grid.Column="25" Margin="0,1,0,0" VerticalAlignment="Center" Text=" eV" />
+            <TextBox x:Name="textbox_beforeIF" Grid.Column="27" Background="#FF000000" TextAlignment="Right" IsEnabled="False" Text="0" />
+            <TextBlock Grid.Column="28" Margin="0,1,0,0" VerticalAlignment="Center" Text="eV" />
+
+
+        </Grid>
+
+        <!--4: Row Space -->
+        <TextBlock Grid.Row="4" Text="Extra incoherent layers:" Margin="10"></TextBlock>
+
+        <!--5: incoherent layers -->
+        <Grid Grid.Row="5" x:Name="grid_incoherentLayersBefore">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{StaticResource widthCol0}" />
+                <ColumnDefinition Width="{StaticResource widthCol1}" />
+                <ColumnDefinition Width="{StaticResource widthCol2}" />
+                <ColumnDefinition Width="{StaticResource widthCol3}" />
+                <ColumnDefinition Width="{StaticResource widthCol4}" />
+                <ColumnDefinition Width="{StaticResource widthCol5}" />
+                <ColumnDefinition Width="{StaticResource widthCol6}" />
+                <ColumnDefinition Width="{StaticResource widthCol7}" />
+                <ColumnDefinition Width="{StaticResource widthCol8}" />
+            </Grid.ColumnDefinitions>
+        </Grid>
+        <Button Grid.Row="6" Click="AddIncoherentLayerBefore" HorizontalAlignment="Left" Style="{StaticResource btnRaw}" Background="Transparent" BorderThickness="0" Height="17" Width="17" Margin="72,-10,0,-10" ToolTip="Add an incoherent layer without optical inteferences (e.g. encapsulant foil) before the actual layerstack">
+            <Grid>
+                <TextBlock Grid.Column="0" Foreground="{StaticResource brushLayerstackIncoherent}" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Segoe MDL2 Assets" FontSize="14.8" Text="&#xE91F;" />
+                <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Segoe MDL2 Assets" FontSize="9" FontWeight="Bold" Text="&#xE710;" />
+                <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Segoe MDL2 Assets" FontSize="15" Text="&#xEA3A;" />
+            </Grid>
+        </Button>
+
+        <!--7: Row Space -->
+        <TextBlock Grid.Row="7" Text="Extra coherent layers:" Margin="10"></TextBlock>
+
+        <!--8: coherent layers before-->
+        <Grid Grid.Row="8" x:Name="grid_coherentLayersBefore">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{StaticResource widthCol0}" />
+                <ColumnDefinition Width="{StaticResource widthCol1}" />
+                <ColumnDefinition Width="{StaticResource widthCol2}" />
+                <ColumnDefinition Width="{StaticResource widthCol3}" />
+                <ColumnDefinition Width="{StaticResource widthCol4}" />
+                <ColumnDefinition Width="{StaticResource widthCol5}" />
+                <ColumnDefinition Width="{StaticResource widthCol6}" />
+                <ColumnDefinition Width="{StaticResource widthCol7}" />
+                <ColumnDefinition Width="{StaticResource widthCol8}" />
+            </Grid.ColumnDefinitions>
+        </Grid>
+        <Button Grid.Row="9" Click="AddCoherentLayerBefore" HorizontalAlignment="Left" Style="{StaticResource btnRaw}" Background="Transparent" BorderThickness="0" Height="17" Width="17" Margin="72,-10,0,-10" ToolTip="Add a coherent layer with optical inteferences (e.g. ARC layers) befor the actual layerstack (only considered in optical calculations)">
+            <Grid>
+                <TextBlock Grid.Column="0" Foreground="{StaticResource brushLayerstackCoherentSemiconductor}" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Segoe MDL2 Assets" FontSize="14.8" Text="&#xE91F;" />
+                <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Segoe MDL2 Assets" FontSize="9" FontWeight="Bold" Text="&#xE710;" />
+                <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Segoe MDL2 Assets" FontSize="15" Text="&#xEA3A;" />
+            </Grid>
+        </Button>
+
+        <!--10: Row Space -->
+        <TextBlock Grid.Row="10" Text="Electrical layerstack:" Margin="10" FontWeight="Bold"></TextBlock>
+
+        <!--11: Grid for additional semiconductor layers -->
+        <Grid Grid.Row="11" x:Name="grid_semiconductorLayers">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{StaticResource widthCol0}" />
+                <ColumnDefinition Width="{StaticResource widthCol1}" />
+                <ColumnDefinition Width="{StaticResource widthCol2}" />
+                <ColumnDefinition Width="{StaticResource widthCol3}" />
+                <ColumnDefinition Width="{StaticResource widthCol4}" />
+                <ColumnDefinition Width="{StaticResource widthCol5}" />
+                <ColumnDefinition Width="{StaticResource widthCol6}" />
+                <ColumnDefinition Width="{StaticResource widthCol7}" />
+                <ColumnDefinition Width="{StaticResource widthCol8}" />
+                
+                <ColumnDefinition Width="{StaticResource widthCol9}" />
+                <ColumnDefinition Width="{StaticResource widthCol10}" />
+                <ColumnDefinition Width="{StaticResource widthCol11}" />
+                <ColumnDefinition Width="{StaticResource widthCol12}" />
+                <ColumnDefinition Width="{StaticResource widthCol13}" />
+                <ColumnDefinition Width="{StaticResource widthCol14}" />
+                <ColumnDefinition Width="{StaticResource widthCol15}" />
+                <ColumnDefinition Width="{StaticResource widthCol16}" />
+                <ColumnDefinition Width="{StaticResource widthCol17}" />
+                <ColumnDefinition Width="{StaticResource widthCol18}" />
+                <ColumnDefinition Width="{StaticResource widthCol19}" />
+                <ColumnDefinition Width="{StaticResource widthCol20}" />
+                <ColumnDefinition Width="{StaticResource widthCol21}" />
+                <ColumnDefinition Width="{StaticResource widthCol22}" />
+                <ColumnDefinition Width="{StaticResource widthCol23}" />
+                <ColumnDefinition Width="{StaticResource widthCol24}" />
+
+                <ColumnDefinition Width="{StaticResource widthCol25}" />
+                <ColumnDefinition Width="{StaticResource widthCol26}" />
+                <ColumnDefinition Width="{StaticResource widthCol27}" />
+                <ColumnDefinition Width="{StaticResource widthCol28}" />
+            </Grid.ColumnDefinitions>
+        </Grid>
+
+
+        <!--12: Add button -->
+        <Button Grid.Row="12" Click="AddSemiconductorLayer" HorizontalAlignment="Left" Style="{StaticResource btnRaw}" Background="Transparent" BorderThickness="0" Height="17" Width="17" Margin="72,-10,0,-10" ToolTip="Add a semiconductor layer">
+            <Grid>
+                <TextBlock Grid.Column="0" Foreground="{StaticResource brushLayerstackCoherent}" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Segoe MDL2 Assets" FontSize="14.8" Text="&#xE91F;" />
+                <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Segoe MDL2 Assets" FontSize="9" FontWeight="Bold" Text="&#xE710;" />
+                <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Segoe MDL2 Assets" FontSize="15" Text="&#xEA3A;" />
+            </Grid>
+        </Button>
+
+        <!--13: Row Space -->
+        <TextBlock Grid.Row="13" Text="Extra coherent layers:" Margin="10"></TextBlock>
+
+        <!--14: coherent layers behind -->
+        <Grid Grid.Row="14" x:Name="grid_coherentLayersBehind">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{StaticResource widthCol0}" />
+                <ColumnDefinition Width="{StaticResource widthCol1}" />
+                <ColumnDefinition Width="{StaticResource widthCol2}" />
+                <ColumnDefinition Width="{StaticResource widthCol3}" />
+                <ColumnDefinition Width="{StaticResource widthCol4}" />
+                <ColumnDefinition Width="{StaticResource widthCol5}" />
+                <ColumnDefinition Width="{StaticResource widthCol6}" />
+                <ColumnDefinition Width="{StaticResource widthCol7}" />
+                <ColumnDefinition Width="{StaticResource widthCol8}" />
+            </Grid.ColumnDefinitions>
+        </Grid>
+        <Button Grid.Row="15" Click="AddCoherentLayerBehind" HorizontalAlignment="Left" Style="{StaticResource btnRaw}" Background="Transparent" BorderThickness="0" Height="17" Width="17" Margin="72,-10,0,-10" ToolTip="Add a coherent layer with optical inteferences behind the actual layerstack (only optical consideration)">
+            <Grid>
+                <TextBlock Grid.Column="0" Foreground="{StaticResource brushLayerstackCoherentSemiconductor}" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Segoe MDL2 Assets" FontSize="14.8" Text="&#xE91F;" />
+                <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Segoe MDL2 Assets" FontSize="9" FontWeight="Bold" Text="&#xE710;" />
+                <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Segoe MDL2 Assets" FontSize="15" Text="&#xEA3A;" />
+            </Grid>
+        </Button>
+
+        <!--16: Row Space -->
+        <TextBlock Grid.Row="16" Text="Extra incoherent layers:" Margin="10"></TextBlock>
+
+        <!--17: coherent layers behind back grid -->
+        <Grid Grid.Row="17" x:Name="grid_incoherentLayersBehind">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{StaticResource widthCol0}" />
+                <ColumnDefinition Width="{StaticResource widthCol1}" />
+                <ColumnDefinition Width="{StaticResource widthCol2}" />
+                <ColumnDefinition Width="{StaticResource widthCol3}" />
+                <ColumnDefinition Width="{StaticResource widthCol4}" />
+                <ColumnDefinition Width="{StaticResource widthCol5}" />
+                <ColumnDefinition Width="{StaticResource widthCol6}" />
+                <ColumnDefinition Width="{StaticResource widthCol7}" />
+                <ColumnDefinition Width="{StaticResource widthCol8}" />
+            </Grid.ColumnDefinitions>
+        </Grid>
+        <Button Grid.Row="18" Click="AddIncoherentLayerBehind" HorizontalAlignment="Left" Style="{StaticResource btnRaw}" Background="Transparent" BorderThickness="0" Height="17" Width="17" Margin="72,-10,0,-10" ToolTip="Add an incoherent layer without optical inteferences behind the actual layerstack">
+            <Grid>
+                <TextBlock Grid.Column="0" Foreground="{StaticResource brushLayerstackIncoherent}" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Segoe MDL2 Assets" FontSize="14.8" Text="&#xE91F;" />
+                <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Segoe MDL2 Assets" FontSize="9" FontWeight="Bold" Text="&#xE710;" />
+                <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Segoe MDL2 Assets" FontSize="15" Text="&#xEA3A;" />
+            </Grid>
+        </Button>
+
+        <!--19: Row Space -->
+        
+        <!--20: material behind -->
+        <Grid Grid.Row="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{StaticResource widthCol0}" />
+                <ColumnDefinition Width="{StaticResource widthCol1}" />
+                <ColumnDefinition Width="{StaticResource widthCol2}" />
+                <ColumnDefinition Width="{StaticResource widthCol3}" />
+                <ColumnDefinition Width="{StaticResource widthCol4}" />
+                <ColumnDefinition Width="{StaticResource widthCol5}" />
+                <ColumnDefinition Width="{StaticResource widthCol6}" />
+                <ColumnDefinition Width="{StaticResource widthCol7}" />
+                <ColumnDefinition Width="{StaticResource widthCol8}" />
+                <ColumnDefinition Width="{StaticResource widthCol9}" />
+                <ColumnDefinition Width="{StaticResource widthCol10}" />
+                <ColumnDefinition Width="{StaticResource widthCol11}" />
+                <ColumnDefinition Width="{StaticResource widthCol12}" />
+                <ColumnDefinition Width="{StaticResource widthCol13}" />
+                <ColumnDefinition Width="{StaticResource widthCol14}" />
+                <ColumnDefinition Width="{StaticResource widthCol15}" />
+                <ColumnDefinition Width="{StaticResource widthCol16}" />
+                <ColumnDefinition Width="{StaticResource widthCol17}" />
+                <ColumnDefinition Width="{StaticResource widthCol18}" />
+                <ColumnDefinition Width="{StaticResource widthCol19}" />
+                <ColumnDefinition Width="{StaticResource widthCol20}" />
+                <ColumnDefinition Width="{StaticResource widthCol21}" />
+                <ColumnDefinition Width="{StaticResource widthCol22}" />
+                <ColumnDefinition Width="{StaticResource widthCol23}" />
+                <ColumnDefinition Width="{StaticResource widthCol24}" />
+                <ColumnDefinition Width="{StaticResource widthCol25}" />
+                <ColumnDefinition Width="{StaticResource widthCol26}" />
+                <ColumnDefinition Width="{StaticResource widthCol27}" />
+                <ColumnDefinition Width="{StaticResource widthCol28}" />
+            </Grid.ColumnDefinitions>
+            <Rectangle Grid.Column="0" Fill="White" Stroke="#000000" />
+            <TextBlock Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="material behind stack" />
+            <ComboBox x:Name="combobox_materialBehind" DropDownOpened="LoadSemiconductorMaterialList" Grid.Column="2" />
+            <TextBox x:Name="textbox_materialBehindTickness" Grid.Column="4" Background="#FF000000" TextAlignment="Right" IsEnabled="False" Text="0" />
+            <TextBlock Grid.Row="1" Grid.Column="5" Margin="0,1,0,0" VerticalAlignment="Center" Text=" nm" />
+            <TextBox x:Name="textbox_materialBehindRoughness" IsEnabled="False" Grid.Column="7" Background="#FF000000" TextAlignment="Right" Text="0"/>
+            <TextBlock Grid.Row="1" Grid.Column="8" Margin="0,1,0,0" VerticalAlignment="Center" Text=" nm" />
+
+            <CheckBox x:Name="checkbox_isGraded_behind" Grid.Column="12" HorizontalAlignment="Center"  IsEnabled="false"/>
+            <Button x:Name="button_grading_behind" Width="70" Grid.Column="14" Margin="0,0,0,0" Click="DefineGrading" Content="Define" ToolTip="Define the band gap grading of this layer" IsEnabled="False" />
+
+            <ComboBox x:Name="combobox_BoundaryType_behind"  Grid.Column="16" DropDownOpened="LoadBoundaryTypeList"/>
+            <CheckBox x:Name="checkbox_isAbsorber_behind" Grid.Column="10" HorizontalAlignment="Center"  IsEnabled="false"/>
+            <TextBox x:Name="textbox_behindSRVelectron" Grid.Column="18" Background="#FF000000" TextAlignment="Right" Text="1e7" />
+            <TextBlock Margin="0,1,0,0" VerticalAlignment="Center"  Grid.Column="19" HorizontalAlignment="Left" Text=" cm/s" />
+            <TextBox x:Name="textbox_behindSRVhole" Grid.Column="21" Background="#FF000000" TextAlignment="Right" Text="1e7" />
+            <TextBlock Grid.Column="22" Margin="0,1,0,0" VerticalAlignment="Center" Text=" cm/s" />
+            <TextBox x:Name="textbox_behindbarrier" Grid.Column="24" Background="#FF000000" TextAlignment="Right" Text="0"  />
+            <TextBlock Grid.Column="25" Margin="0,1,0,0" VerticalAlignment="Center" Text=" eV" />
+            <TextBox x:Name="textbox_behindIF" Grid.Column="27" Background="#FF000000" TextAlignment="Right" IsEnabled="False" Text="0"/>
+            <TextBlock Grid.Column="28" Margin="0,1,0,0" VerticalAlignment="Center" Text="eV" />
+
+        </Grid>
+
+        <!-- 21: Row Space -->
+
+        <!-- 22: Buttons -->
+        <StackPanel Grid.Row="22" HorizontalAlignment="Left"  Orientation="Horizontal">
+            <TextBlock  x:Name="textblock_Load1DGeometry" Style="{StaticResource textblockFileStyle}"  Text="Load 1D geometry:" Margin=" 5" />
+            <Button   Width="{StaticResource elementHeight}"  BorderThickness="0"  Click="GetGeometryFile">
+                <Image Height="18" Source="Icons/iconFolder.png" />
+            </Button>
+            <TextBlock  x:Name="textblock_geometryFile"   Style="{StaticResource textblockFileStyle}"  Text="geometryFile.1dg" ToolTip="{Binding Path=Text, RelativeSource={RelativeSource Mode=Self}}" />
+        </StackPanel>
+        <StackPanel Grid.Row="22" HorizontalAlignment="Right" Orientation="Horizontal">
+            <Button x:Name="button_cancel" Width="140" Margin="10,0,0,0" Click="CloseSemiconductor1DDesigner" Content="Cancel" ToolTip="Discards the preferences of the geometry and closes this window" />
+            <Button x:Name="button_saveGeometry" Width="140" Click="Save1dGeometry" Margin="10,0,0,0" Content="Save geometry" ToolTip="Saves the preferences of the geometry" />
+        </StackPanel>
+    </Grid>
+    </ScrollViewer>
+</Window>

@@ -1,0 +1,66 @@
+// relative permittivity []
+relative permittivity:
+30
+
+// density of single ionized electron-donator-atoms (negative doping) [1/cm^3]
+donor density N_D:
+1e16
+
+// density of single ionized electron-aceptor-atoms (positive doping) [1/cm^3]
+acceptor density N_A:
+1e0
+
+// band gap energy [eV] (must be positive)
+band gap:
+1.6
+
+// chemical potential or electron affinity [eV] (must be negative)
+chemical potential:
+-3.9
+
+// effective conduction band density of states [1/cm^3] at 300K
+Nc:
+2.2e18
+
+// effective valence band density of states [1/cm^3] at 300K
+Nv:
+1.8e19
+
+// electron mobility in [cm^2/(V*s)]
+mu_n:
+100
+
+// hole mobility in [cm^2/(V*s)]
+mu_p:
+25
+
+// electron auger coefficient in [cm^6/s]
+Cn:
+0
+
+// hole auger coefficient in [cm^6/s]
+Cp:
+0
+
+// radiative recombination coefficient in [cm^3/s]
+radiative coefficient:
+1e-10
+
+// thermal velocity of electrons in the bulk in [cm/s]
+electron thermal velocity:
+1e7
+
+// thermal velocity of holes in the bulk in [cm/s]
+hole thermal velocity:
+1e7
+
+// list of defects (for SRH recombination) in the material
+// columns must be tab-separated
+// 1: type of defect (0 = neutral, 1 = donor, -1 = acceptor)
+// 2: reference band (0 = Ev, 1 = Ei, 2 = Ec)
+// 3: energetic position of the defct in SRH model with respect to reference band in [eV]
+// 4: density of defects in SRH model in [cm^-3]
+// 5: electron capture cross section in SRH model in [cm^2]
+// 6: hole capture cross section in SRH model in [cm^2]
+defect list:
+0	1	0	1e14	1e-13	1e-13

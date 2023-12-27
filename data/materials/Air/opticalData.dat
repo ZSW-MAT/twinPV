@@ -1,0 +1,11 @@
+// thickness-independent fraction of light power (for rudimentary optics) between 0 and 1
+simple transmission coefficient:
+1
+
+// wavelength-independent absorption coefficient 'a' according to I(z)=I0*exp(-a*z) in [1/m]
+lambert beer absorption coefficient:
+0
+
+// three-column refractive data for TMM calculations with wavelength [nm], n, k (must be tab-separated)
+refractive data:
+500	1	0

@@ -1,0 +1,97 @@
+﻿<Window x:Class="twinPV.Window_Batch_Semiconductor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:twinPV"
+        mc:Ignorable="d"
+        Title="Window_Batch_Semiconductor" Height="450" Width="800">
+    <Window.Resources>
+        <GridLength x:Key="widthCol0">20</GridLength>
+        <GridLength x:Key="widthCol1">160</GridLength>
+        <GridLength x:Key="widthCol2">50</GridLength>
+        <GridLength x:Key="widthCol3">200</GridLength>
+        <GridLength x:Key="widthCol4">30</GridLength>
+        <GridLength x:Key="widthCol5">80</GridLength>
+        <GridLength x:Key="widthCol6">80</GridLength>
+        <GridLength x:Key="widthCol7">80</GridLength>
+        <GridLength x:Key="widthCol8">50</GridLength>
+
+        <GridLength x:Key="RowDistance">2</GridLength>
+    </Window.Resources>
+
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="0,0,0,5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{StaticResource widthCol0}" />
+                <ColumnDefinition Width="{StaticResource widthCol1}" />
+                <ColumnDefinition Width="{StaticResource widthCol2}" />
+                <ColumnDefinition Width="{StaticResource widthCol3}" />
+                <ColumnDefinition Width="{StaticResource widthCol4}" />
+                <ColumnDefinition Width="{StaticResource widthCol5}" />
+                <ColumnDefinition Width="{StaticResource widthCol6}" />
+                <ColumnDefinition Width="{StaticResource widthCol7}" />
+                <ColumnDefinition Width="{StaticResource widthCol8}" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Text="batch parameter"
+                       ToolTip="Selct the parameter you want to sweep over.&#x0a;1.:cells and modules have different parameters&#x0a;2.: do not choose more than three parameters&#x0a;3.: choose first the parameters that need to create a new mesh)" />
+            <TextBlock Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Text="region" ToolTip="Choose a region if needed"/>
+            <TextBlock Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Text="detailed selection" ToolTip="Choose a specific selection if needed"/>
+            <TextBlock Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Text="new&#x0a;mesh" ToolTip="Indicates whether this parameter needs to create a new mesh (takes time -> put mesh-creating parameters on top of the list)"/>
+            <TextBlock Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center" Text="from" ToolTip="First value of this parameter"/>
+            <TextBlock Grid.Column="6" HorizontalAlignment="Center" VerticalAlignment="Center" Text="to" ToolTip="Last value of this parameter" />
+            <TextBlock Grid.Column="7" HorizontalAlignment="Center" VerticalAlignment="Center" Text="amount" ToolTip="Amout of values of this parameter (including first and last value)"/>
+            <TextBlock Grid.Column="8" HorizontalAlignment="Center" VerticalAlignment="Center" Text="scale" ToolTip="Choose, if the points should be distributed linearly or logarithmically"/>
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="0,0,0,10" x:Name="grid_batchParams">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{StaticResource widthCol0}" />
+                <ColumnDefinition Width="{StaticResource widthCol1}" />
+                <ColumnDefinition Width="{StaticResource widthCol2}" />
+                <ColumnDefinition Width="{StaticResource widthCol3}" />
+                <ColumnDefinition Width="{StaticResource widthCol4}" />
+                <ColumnDefinition Width="{StaticResource widthCol5}" />
+                <ColumnDefinition Width="{StaticResource widthCol6}" />
+                <ColumnDefinition Width="{StaticResource widthCol7}" />
+                <ColumnDefinition Width="{StaticResource widthCol8}" />
+            </Grid.ColumnDefinitions>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{StaticResource widthCol0}" />
+                <ColumnDefinition Width="{StaticResource widthCol1}" />
+                <ColumnDefinition Width="{StaticResource widthCol2}" />
+                <ColumnDefinition Width="{StaticResource widthCol3}" />
+                <ColumnDefinition Width="{StaticResource widthCol4}" />
+                <ColumnDefinition Width="{StaticResource widthCol5}" />
+                <ColumnDefinition Width="{StaticResource widthCol6}" />
+                <ColumnDefinition Width="{StaticResource widthCol7}" />
+                <ColumnDefinition Width="{StaticResource widthCol8}" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="1" Click="addBatchParameter" HorizontalAlignment="Center" Style="{StaticResource btnRaw}" Background="Transparent" BorderThickness="0" Height="17" Width="17" ToolTip="Add a new batch parameter">
+                <Grid>
+                    <TextBlock Grid.Column="1" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Segoe MDL2 Assets" FontSize="14.8" Text="&#xE91F;" />
+                    <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Segoe MDL2 Assets" FontSize="9" FontWeight="Bold" Text="&#xE710;" />
+                    <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Segoe MDL2 Assets" FontSize="15" Text="&#xEA3A;" />
+                </Grid>
+            </Button>
+        </Grid>
+
+        <StackPanel Grid.Row="3" HorizontalAlignment="Right" Orientation="Horizontal">
+            <CheckBox x:Name="checkbox_IVcurves" Content="Output IV file for every&#x0a;parameter combination" Margin="10"/>
+            <Button Click="Click_cancel" Width="120" Margin="10" Content="Cancel" />
+            <Button Click="Click_save" Width="120" Margin="10" Content="Start batch" />
+        </StackPanel>
+
+    </Grid>
+</Window>

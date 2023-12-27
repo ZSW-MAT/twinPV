@@ -1,0 +1,36 @@
+﻿<Window
+    x:Class="twinPV.Window_SelectRegionForPlotting"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:twinPV"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Select Region"
+    Width="200"
+    Height="160"
+    ResizeMode="NoResize"
+    SizeToContent="WidthAndHeight"
+    mc:Ignorable="d"
+    WindowStartupLocation="CenterScreen">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Margin="0,0,0,10" Text="Select the region, you want&#x0a;to use for the optical model." />
+        <ComboBox
+            x:Name="combobox_regionSelector"
+            Grid.Row="1"
+            Grid.Column="0"
+            Height="{StaticResource elementHeight}"
+            Margin="0,0,0,10" />
+        <Button
+            x:Name="button_Confirm"
+            Grid.Row="2"
+            Grid.Column="0"
+            Margin="0,0,0,10"
+            Click="ClickSelect"
+            Content="Select" />
+    </Grid>
+</Window>

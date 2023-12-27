@@ -1,0 +1,120 @@
+////////////////////////////////////////
+//                                    //
+//  length unit                       //
+//                                    //
+////////////////////////////////////////
+// Set unit
+length_scale:
+nm
+
+
+
+////////////////////////////////////////
+//                                    //
+//  points                            //
+//                                    //
+////////////////////////////////////////
+// List of all points that describe all areas
+// columns: index, x, y
+points:
+0	0
+1	274
+2	369
+3	419
+4	2249
+
+
+
+////////////////////////////////////////
+//                                    //
+//  segments                          //
+//                                    //
+////////////////////////////////////////
+// List of all segments formed by points above
+// columns: index, point index, point index
+segments:
+0	0	1
+1	1	2
+2	2	3
+3	3	4
+
+
+
+////////////////////////////////////////
+//                                    //
+//  materials                         //
+//                                    //
+////////////////////////////////////////
+// Material attributed to an area by its index
+
+// columns: material ID
+material_before:
+990000000
+
+// columns: area index, material index, isAbsorber, roughness on top of this layer in nm
+materials:
+0	50100000	0	0
+1	50000000	0	0
+2	30000000	0	0
+3	20005000	1	0
+
+// columns: material ID, roughness on top of this layer in nm
+material_behind:
+60000000	0
+
+
+
+////////////////////////////////////////
+//                                    //
+//  Additional optical layers         //
+//                                    //
+////////////////////////////////////////
+// Materials only for optical calculations, no electrical/electronical calculations. NOT attributed to an area
+
+// columns: index, material index,thickness
+incoh_before:
+
+
+
+
+// columns: index, material index, thickness, roughness on top of this layer in nm
+coherent_before:
+0	80000000	100	0
+
+
+
+
+// columns: index, material index, thickness, roughness on top of this layer in nm
+coherent_behind:
+
+
+
+
+// columns: index, material index,thickness
+incoh_behind:
+
+
+
+
+////////////////////////////////////////
+//                                    //
+//  gradings                          //
+//                                    //
+////////////////////////////////////////
+// grading attributed to an area by its index
+// columns: area index, x position of first Point, yposition of first point, ... , 5th x position, 5th y position
+gradings:
+
+
+
+
+////////////////////////////////////////
+//                                    //
+//  boundary conditions               //
+//                                    //
+////////////////////////////////////////
+// columns (tab seperated): geometry type (point, segment,...), index of the geometry element, boundary group (0 = 0V, 1 = Vop, 2 = interface defects), electron SRV in cm/s, hole SRV in cm/s,
+// contactBarrier in eV (only at contacts indicated by boundary group 0 or 1), interfaceTrapEnergy in ev above intrinsic level (indicated by boundary group 2)
+boundary_conditions:
+point 0	0	10000000	0	0	0
+point 4	1	0	10000000	0	0

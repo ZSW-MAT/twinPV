@@ -1,0 +1,88 @@
+///////////////////////////////////////
+//                                   //
+//  length unit                      //
+//                                   //
+///////////////////////////////////////
+length_scale:
+mm // possible units: m, cm, mm, mu, nm
+
+
+
+///////////////////////////////////////
+//                                   //
+//  points                           //
+//                                   //
+///////////////////////////////////////
+// List of all points that describe all areas
+// columns: index, x, y
+points:
+0	0	0
+1	6.4	0
+2	6.4	7.95
+3	0	7.95
+4	3.2	0.5
+
+
+
+///////////////////////////////////////
+//                                   //
+//  segments                         //
+//                                   //
+///////////////////////////////////////
+// List of all segments formed by points above
+// columns: index, point index, point index
+segments:
+0	1	0
+1	1	2
+2	2	3
+3	3	0
+
+
+
+///////////////////////////////////////
+//                                   //
+//  areas                            //
+//                                   //
+///////////////////////////////////////
+// List of all areas formed by segments above
+// columns: index, s1, s2, ..., sn (clockwise or counterclockwise)
+areas:
+0	0	1	2	3
+
+
+
+///////////////////////////////////////
+//                                   //
+//  materials                        //
+//                                   //
+///////////////////////////////////////
+// Material attributed to an area by its index
+// columns: 0=area index, 1=front contact, 2=thickness front contact, 3=front grid, 4=thickness front grid, 5=back contact, 6=thickness back contact, 7=back grid, 8=thickness back grid, 9=pn junction, 10=shading factor, 11=counts as active area?, 120[optional] spectial module region
+materials:
+0	050107000	250e-9	990000000	2500e-9	060000000	500e-9	990000000	1e-6	100010	0.0	1
+
+
+
+///////////////////////////////////////
+//                                   //
+//  optical layerstack               //
+//                                   //
+///////////////////////////////////////
+// Additional optical layers except for TCOs, grids, and absorber layers
+// columns: 0=area index, 1=roughness front grid, 2=roughness front contact, 3=roughness absorber, 4=roughness back contact, 5=roughness back grid, 6=material before, 7=material behind, 8=TEXTINDICATOR, IDs for incoherent absorption, TEXTINDICATOR, IDs for layers above front grid, TEXTINDICATOR, IDs for layers between front TCO and absorber, TEXTINDICATOR, IDs for layers between absorber and back TCO, TEXTINDICATOR, IDs for layers below back grid
+opticalModels:
+0	0e-9	0e-9	0e-9	0e-9	0e-9	990000000	990100000	0e-9	incoherentOnTop	aboveFrontGrid	aboveAbsorber	50000000	90e-9	0e-9	30000000	50e-9	0e-9	belowAbsorber	belowBackGrid
+
+
+
+///////////////////////////////////////
+//                                   //
+//  boundary conditions              //
+//                                   //
+///////////////////////////////////////
+// columns:	geometry type and index,
+// 		boundary group (1 = front contact, 2 = back contact),
+//		[optional: contact resistance in Ohm (for points) / contact resistance density in Ohm*meter (for segments) / contact resistance density in Ohm*meter^2 (for areas)]
+boundary_conditions:
+point 4	1	0
+point 4	2	0

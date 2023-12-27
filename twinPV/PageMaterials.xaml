@@ -1,0 +1,587 @@
+﻿<Page
+    x:Class="twinPV.PageMaterials"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:twinPV"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:WpfControl="clr-namespace:AtomicusChart.WpfControl;assembly=AtomicusChart.WpfControl"
+    Title="PageMaterials"
+    d:DesignHeight="1500"
+    d:DesignWidth="1200"
+    mc:Ignorable="d">
+
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400" />
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <GroupBox Grid.Column="0" VerticalAlignment="Stretch" Header="List of Materials">
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="65" />
+            </Grid.RowDefinitions>
+
+            <!--<TextBlock x:Name="MaterialListHeader" Grid.Row ="0" Margin=" 0" FontSize="18"  Background="White" Text="Material list" />-->
+            <StackPanel
+                Grid.Row="0"
+                Margin="0,20,0,0"
+                HorizontalAlignment="Stretch"
+                Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource textblockTextStyle}" Margin="7,0,0,0" Width="70" VerticalAlignment="Center">ID</TextBlock>
+                    <TextBlock Style="{StaticResource textblockTextStyle}" Width="198" VerticalAlignment="Center">Name</TextBlock>
+                    <TextBlock Style="{StaticResource textblockTextStyle}" Width="30" VerticalAlignment="Center">SC</TextBlock>
+                    <TextBlock Style="{StaticResource textblockTextStyle}" Width="30" VerticalAlignment="Center">Cell</TextBlock>
+                    <TextBlock Style="{StaticResource textblockTextStyle}" Width="30" VerticalAlignment="Center">Optic</TextBlock>
+            </StackPanel>
+            <ListBox
+                x:Name="ListBox_MaterialList"
+                Grid.Row="1"
+                Grid.Column="0"
+                ScrollViewer.CanContentScroll="True"
+                SelectionChanged="ChangeSelectedMaterialID">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="70" />
+                                <ColumnDefinition Width="200" />
+                                <ColumnDefinition Width="30" />
+                                <ColumnDefinition Width="30" />
+                                <ColumnDefinition Width="30" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                                x:Name="TextBlock_MaterialID"
+                                Grid.Column="0"
+                                Text="{Binding ID}"
+                                Style="{StaticResource textblockTextStyle}"/>
+                            <TextBlock
+                                x:Name="TextBlock_MaterialName"
+                                Grid.Column="1"
+                                Text="{Binding name}"
+                                Style="{StaticResource textblockTextStyle}"/>
+
+                            <CheckBox x:Name="CheckBox_isSC" Grid.Column="2" IsEnabled="False">
+                                <CheckBox.Style>
+                                    <Style BasedOn="{StaticResource {x:Type CheckBox}}" TargetType="{x:Type CheckBox}">
+                                        <Setter Property="IsChecked" Value="True" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding propertiesSemiconductor}" Value="{x:Null}">
+                                                <Setter Property="IsChecked" Value="False" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </CheckBox.Style>
+                            </CheckBox>
+
+                            <CheckBox x:Name="CheckBox_isCell" Grid.Column="3" IsEnabled="False">
+                                <CheckBox.Style>
+                                    <Style BasedOn="{StaticResource {x:Type CheckBox}}" TargetType="{x:Type CheckBox}">
+                                        <Setter Property="IsChecked" Value="True" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding propertiesContact}" Value="{x:Null}">
+                                                <Setter Property="IsChecked" Value="False" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </CheckBox.Style>
+                            </CheckBox>
+
+                            <CheckBox x:Name="CheckBox_isOptics" Grid.Column="4" IsEnabled="False">
+                                <CheckBox.Style>
+                                    <Style BasedOn="{StaticResource {x:Type CheckBox}}" TargetType="{x:Type CheckBox}">
+                                        <Setter Property="IsChecked" Value="True" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding propertiesOptics}" Value="{x:Null}">
+                                                <Setter Property="IsChecked" Value="False" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </CheckBox.Style>
+                            </CheckBox>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button
+                    x:Name="button_Filter"
+                    Grid.Column="0"
+                    Margin="2"
+                    x:FieldModifier="public"
+                    Content="&#xE71C;"
+                    FontFamily="Segoe MDL2 Assets"
+                    FontSize="30"
+                    ToolTip="Filter material list"
+                    Click="FilterMaterialList"/>
+                <Button
+                    x:Name="button_Reload"
+                    Grid.Column="1"
+                    Margin="2"
+                    x:FieldModifier="public"
+                    Click="ReloadMaterialPage_Button"
+                    Content="&#xE72C;"
+                    FontFamily="Segoe MDL2 Assets"
+                    FontSize="30"
+                    ToolTip="Reload the material list" />
+                <Button
+                    x:Name="button_AddMaterial"
+                    Grid.Column="2"
+                    Margin="2"
+                    x:FieldModifier="public"
+                    Click="AddNewMaterial"
+                    Content="&#xE710;"
+                    FontFamily="Segoe MDL2 Assets"
+                    FontSize="30"
+                    ToolTip="Add a new material" />
+
+            </Grid>
+
+        </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Column="2" VerticalAlignment="Stretch" Header="Selected Material">
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <TextBlock
+                    x:Name="DisplayedMaterialName"
+                    Grid.Row="0"
+                    Margin="5,0,0,0"
+                    FontSize="18" />
+                <TabControl
+                    x:Name="TabControl_MaterialProperties"
+                    Grid.Row="1"
+                    Margin="5,0,0,0"
+                    FontSize="12"
+                    FontWeight="Normal">
+                    <TabItem Name="Tab_Semiconductor" Header="Semiconductor">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="10" />
+                                <ColumnDefinition Width="200" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="10" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <TextBlock
+                                x:Name="TextBlock_epsR"
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                Text="Permittivity" />
+                            <TextBox
+                                x:Name="TextBox_epsR"
+                                Grid.Row="0"
+                                Grid.Column="2" />
+
+                            <TextBlock
+                                x:Name="TextBlock_NDplus"
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                Text="Donor (+) Density in 1/cm³" />
+                            <TextBox
+                                x:Name="TextBox_NDplus"
+                                Grid.Row="1"
+                                Grid.Column="2"
+                                Text="{Binding selectedMaterial.NDplus}" />
+
+                            <TextBlock
+                                x:Name="TextBlock_NAminus"
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                Text="Acceptor (-) Density in 1/cm³" />
+                            <TextBox
+                                x:Name="TextBox_NAminus"
+                                Grid.Row="2"
+                                Grid.Column="2"
+                                Text="{Binding selectedMaterial.NAminus}" />
+
+                            <TextBlock
+                                x:Name="TextBlock_chemicalPotential"
+                                Grid.Row="3"
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                Text="Chemical Potential in eV"
+                                ToolTip="should be defined negative" />
+                            <TextBox
+                                x:Name="TextBox_chemicalPotential"
+                                Grid.Row="3"
+                                Grid.Column="2"
+                                Text="{Binding selectedMaterial.chemicalPotential}" />
+
+                            <TextBlock
+                                x:Name="TextBlock_Egap"
+                                Grid.Row="4"
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                Text="Band Gap in eV"
+                                ToolTip="Should be defined positive as a difference value between conduction and valance band" />
+                            <TextBox
+                                x:Name="TextBox_Egap"
+                                Grid.Row="4"
+                                Grid.Column="2"
+                                Text="{Binding selectedMaterial.Egap}" />
+
+                            <TextBlock
+                                x:Name="TextBlock_Nc"
+                                Grid.Row="5"
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                Text="Density of States Conduction Band in 1/cm³" />
+                            <TextBox
+                                x:Name="TextBox_Nc"
+                                Grid.Row="5"
+                                Grid.Column="2"
+                                Text="{Binding selectedMaterial.Nc}" />
+
+                            <TextBlock
+                                x:Name="TextBlock_Nv"
+                                Grid.Row="6"
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                Text="Density of States Valance Band in 1/cm³" />
+                            <TextBox
+                                x:Name="TextBox_Nv"
+                                Grid.Row="6"
+                                Grid.Column="2"
+                                Text="{Binding selectedMaterial.Nv}" />
+
+                            <TextBlock
+                                x:Name="TextBlock_mu_n"
+                                Grid.Row="7"
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                Text="Mobility Electrons in cm²/Vs" />
+                            <TextBox
+                                x:Name="TextBox_mu_n"
+                                Grid.Row="7"
+                                Grid.Column="2"
+                                Text="{Binding selectedMaterial.mu_n}" />
+
+                            <TextBlock
+                                x:Name="TextBlock_mu_p"
+                                Grid.Row="8"
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                Text="Mobility Holes in cm²/Vs" />
+                            <TextBox
+                                x:Name="TextBox_mu_p"
+                                Grid.Row="8"
+                                Grid.Column="2"
+                                Text="{Binding selectedMaterial.mu_p}" />
+
+                            <TextBlock
+                                x:Name="TextBlock_Cn"
+                                Grid.Row="9"
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                Text="Auger Coefficient Electrons in cm^6/s " />
+                            <TextBox
+                                x:Name="TextBox_Cn"
+                                Grid.Row="9"
+                                Grid.Column="2"
+                                Text="{Binding selectedMaterial.Cn}" />
+
+                            <TextBlock
+                                x:Name="TextBlock_Cp"
+                                Grid.Row="10"
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                Text="Auger Coefficient Holes in cm^6/s " />
+                            <TextBox
+                                x:Name="TextBox_Cp"
+                                Grid.Row="10"
+                                Grid.Column="2"
+                                Text="{Binding selectedMaterial.Cp}" />
+
+                            <TextBlock
+                                x:Name="TextBlock_rSpontaneous"
+                                Grid.Row="11"
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                Text="Radiative Recombination Coefficient in cm³/s " />
+                            <TextBox
+                                x:Name="TextBox_rSpontaneous"
+                                Grid.Row="11"
+                                Grid.Column="2"
+                                Text="{Binding selectedMaterial.rSpontaneous}" />
+
+                            <TextBlock
+                                x:Name="TextBlock_electronThermalVelocity"
+                                Grid.Row="12"
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                Text="Thermal Velocity Electrons in cm/s" />
+                            <TextBox
+                                x:Name="TextBox_electronThermalVelocity"
+                                Grid.Row="12"
+                                Grid.Column="2"
+                                Text="{Binding selectedMaterial.electronThermalVelocity}" />
+
+                            <TextBlock
+                                x:Name="TextBlock_holeThermalVelocity"
+                                Grid.Row="13"
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                Text="Thermal Velocity Holes in cm/s" />
+                            <TextBox
+                                x:Name="TextBox_holeThermalVelocity"
+                                Grid.Row="13"
+                                Grid.Column="2"
+                                Text="{Binding selectedMaterial.holeThermalVelocity}" />
+
+                            <WpfControl:ChartControl Grid.Row="0" Grid.Column="3" Grid.RowSpan="14" x:Name="chart_DefectsInMaterial" x:FieldModifier="public"  />
+
+
+                            <TextBlock
+                                x:Name="Header_Defects"
+                                Grid.Row="15"
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                Text="Defect properties:" />
+
+                            <Grid Grid.Row="16" Grid.Column="2" Grid.ColumnSpan="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid x:Name="ListViewHeaders">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                
+                                    <TextBlock
+                                        x:Name="TextBlock_DefectType"
+                                        Grid.Column="0"
+                                        HorizontalAlignment="Center"
+                                        Text="Type" />
+                                    <TextBlock
+                                        x:Name="TextBlock_DefectReferenceBand"
+                                        Grid.Column="1"
+                                        HorizontalAlignment="Center"
+                                        Text="Ref. Band" />
+                                    <TextBlock
+                                        x:Name="TextBlock_DefectEnergy"
+                                        Grid.Column="2"
+                                        HorizontalAlignment="Center"
+                                        Text="Energy in eV"
+                                        ToolTip="Energy difference to reference band" />
+                                    <TextBlock
+                                        x:Name="TextBlock_DefectDensity"
+                                        Grid.Column="3"
+                                        HorizontalAlignment="Center"
+                                        Text="Density in 1/cm³" />
+                                    <TextBlock
+                                        x:Name="TextBlock_DefectElectronrossSection"
+                                        Grid.Column="4"
+                                        HorizontalAlignment="Center"
+                                        Text="Sigma e- in cm²"
+                                        ToolTip="Capture Cross Section for Electrons" />
+                                    <TextBlock
+                                        x:Name="TextBlock_DefectHoleCrossSection"
+                                        Grid.Column="5"
+                                        HorizontalAlignment="Center"
+                                        Text="Sigma h+ in cm²"
+                                        ToolTip="Capture Cross Section for Holes" />
+                                </Grid>
+                                <ListView
+                                    x:Name="ListBox_Defects"
+                                    Grid.Row="1"
+                                    Background="{StaticResource brushBackgroundLocal}">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid Width="{Binding ElementName=ListBox_Defects, Path=ActualWidth}">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                </Grid.ColumnDefinitions>
+                                                <TextBox
+                                                    x:Name="TextBox_DefectType"
+                                                    Grid.Column="0"
+                                                    Text="{Binding typeOfDefectString}" />
+                                                <TextBox
+                                                    x:Name="TextBox_DefectReferenceBand"
+                                                    Grid.Column="1"
+                                                    Text="{Binding referenceBandString}" />
+                                                <TextBox
+                                                    x:Name="TextBox_DefectEnergy"
+                                                    Grid.Column="2"
+                                                    Text="{Binding energeticPositionGUI}" />
+                                                <TextBox
+                                                    x:Name="TextBox_DefectDensity"
+                                                    Grid.Column="3"
+                                                    Text="{Binding defectDensityGUI}" />
+                                                <TextBox
+                                                    x:Name="TextBox_DefectElectronrossSection"
+                                                    Grid.Column="4"
+                                                    Text="{Binding electronCaptureCrosssectionGUI}" />
+                                                <TextBox
+                                                    x:Name="TextBox_DefectHoleCrossSection"
+                                                    Grid.Column="5"
+                                                    Text="{Binding holeCaptureCrosssectionGUI}" />
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </Grid>
+
+
+                        </Grid>
+                    </TabItem>
+
+                    <TabItem Name="Tab_Cell" Header="Resistivity">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="10" />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <TextBlock
+                                x:Name="TextBlock_specificResistivityInBulk"
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                Text="Specific Resistivity in bulk in Ohm*m" />
+                            <TextBox
+                                x:Name="TextBox_specificResistivityInBulk"
+                                Grid.Row="0"
+                                Grid.Column="3"
+                                Text="{Binding selectedMaterial.specificResistivity.rhoInBulk}" />
+                            <TextBlock
+                                x:Name="TextBlock_specificResistivityInInfinitesimalThinLayer"
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                Text="Specific Resistivity in infinitesimal thin layer in Ohm*m" />
+                            <TextBox
+                                x:Name="TextBox_specificResistivityInInfinitesimalThinLayer"
+                                Grid.Row="1"
+                                Grid.Column="3"
+                                Text="{Binding selectedMaterial.specificResistivity.rhoInInfinitesimalThinLayer}" />
+                            <TextBlock
+                                x:Name="TextBlock_specificResistivityDecayCoefficient"
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                Text="Decay coefficient 1/m" />
+                            <TextBox
+                                x:Name="TextBox_specificResistivityDecayCoefficient"
+                                Grid.Row="2"
+                                Grid.Column="3"
+                                Text="{Binding selectedMaterial.specificResistivity.decayCoefficient}" />
+                        </Grid>
+                    </TabItem>
+
+                    <TabItem
+                        Name="Tab_Optics"
+                        Header="Optics"
+                        IsEnabled="{Binding SelectedItem.isOpticMaterial, ElementName=ListBox_MaterialList}">
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="10" />
+                                <ColumnDefinition Width="200" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="300" />
+                            </Grid.RowDefinitions>
+                            <TextBlock
+                                x:Name="TextBlock_lightTransmissionCoefficient"
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                Text="Light transmission coefficient" />
+                            <TextBox
+                                x:Name="TextBox_lightTransmissionCoefficient"
+                                Grid.Row="0"
+                                Grid.Column="2"
+                                Text="{Binding selectedMaterial.lightTransmissionCoefficient}" />
+                            <TextBlock
+                                x:Name="TextBlock_lambertBeerExtinctionCoefficient"
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                Text="Extinction coefficient in Lambert Beer in 1/m" />
+                            <TextBox
+                                x:Name="TextBox_lambertBeerExtinctionCoefficient"
+                                Grid.Row="1"
+                                Grid.Column="2"
+                                Text="{Binding selectedMaterial.lambertBeer.extinctionCoefficient}" />
+                            <TextBlock
+                                x:Name="TextBlock_filepath"
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                Text="Filepath n,k Data over Wavelength" />
+                            <TextBox
+                                x:Name="TextBox_filepath"
+                                Grid.Row="2"
+                                Grid.Column="2"
+                                Text="{Binding selectedMaterial.filepath}" />
+
+                            <WpfControl:ChartControl Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" x:Name="chart_nkData" x:FieldModifier="public"  />
+                        </Grid>
+                    </TabItem>
+
+                </TabControl>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Page>

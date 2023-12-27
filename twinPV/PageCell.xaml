@@ -1,0 +1,411 @@
+﻿<Page
+    x:Class="twinPV.PageCell"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ColorLegend="clr-namespace:AtomicusChart.WpfControl.ColorLegend;assembly=AtomicusChart.WpfControl"
+    xmlns:Legend="clr-namespace:AtomicusChart.WpfControl.Legend;assembly=AtomicusChart.WpfControl"
+    xmlns:WpfControl="clr-namespace:AtomicusChart.WpfControl;assembly=AtomicusChart.WpfControl"
+    xmlns:codeg="clr-namespace:System;assembly=mscorlib"
+    xmlns:colorlegend="clr-namespace:AtomicusChart.WpfControl.ColorLegend;assembly=AtomicusChart.WpfControl"
+    xmlns:local="clr-namespace:twinPV"
+    xmlns:models="clr-namespace:BasicLib;assembly=BasicLib"
+    Title="PageCell">
+
+        <Page.Resources>
+        <ObjectDataProvider
+            x:Key="simulatonSelector"
+            MethodName="GetValues"
+            ObjectType="{x:Type codeg:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="models:SimulationSelector" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider
+            x:Key="opticMode"
+            MethodName="GetValues"
+            ObjectType="{x:Type codeg:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="models:OpticMode" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Page.Resources>
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="300" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock x:Name="textblock_title" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Style="{StaticResource textblockTitleStyle}" Text="Cell Simulation" />
+
+        <!--
+            ██╗
+            ╚██╗ left column
+            ██╔╝
+            ╚═╝
+            -->
+        <Grid Grid.Column="0" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <GroupBox Grid.Row="0" Header="Mesh">
+                <StackPanel>
+                    <TabControl x:Name="tabcontrol_meshing">
+                        <TabItem Header="Generate Mesh" ToolTip="A new mesh is generated">
+                            <Grid IsSharedSizeScope="True">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" SharedSizeGroup="sameHeight" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Style="{StaticResource textblockTextStyle}" Grid.Row="0" Grid.Column="0" Height="28" Text="amount of points" ToolTip="Rough amount of points (The algorithm will probably need a few more to mesh the contours and hence, depends on the complexity of the structure)"/>
+                                <TextBox x:Name="textbox_desiredAmountOfPoints" Grid.Row="0" Grid.Column="1" Text="1000" ToolTip="Rough amount of points (The algorithm will probably need a few more to mesh the contours and hence, depends on the complexity of the structure)"/>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Load Mesh" IsEnabled="False" ToolTip="An existing mesh will be used">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Style="{StaticResource textblockTextStyle}" Grid.Row="0" Height="28" Grid.Column="0" Text="mesh file"/>
+                                <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal">
+                                    <Button Width="{StaticResource elementHeight}" BorderThickness="0" Click="GetMeshFile">
+                                        <Image Source="Icons/iconFolder.png" Height="18"/>
+                                    </Button>
+                                    <TextBlock x:Name="textblock_LoadMesh" Margin="5,0,0,0" Style="{StaticResource textblockFileStyle}" Text="meshFile.json"/>
+                                </StackPanel>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                    <Grid IsSharedSizeScope="True">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" SharedSizeGroup="sameHeight" />
+                            <!--<RowDefinition Height="Auto" SharedSizeGroup="sameHeight" />
+                            <RowDefinition Height="Auto" SharedSizeGroup="sameHeight" />-->
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Style="{StaticResource textblockTextStyle}" Grid.Row="0" Grid.Column="0" Text="geometry file" ToolTip="2dg file describing the geometry of the cell/module"/>
+                        <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal">
+                            <Button Width="{StaticResource elementHeight}" BorderThickness="0" Margin="2,0,0,0" Click="GetGeometryFile" ToolTip="Select a new geometry file">
+                                <Image Source="Icons/iconFolder.png" Height="18"/>
+                            </Button>
+                            <TextBlock x:Name="textblock_geometryFile" Margin="5,0,0,0" Style="{StaticResource textblockFileStyle}" Text="geometryFile.2dg" ToolTip="{Binding Path=Text, RelativeSource={RelativeSource Mode=Self}}"/>
+                            <!-- ToolTip="{Binding Path=Text, ElementName=textOfThisTextblock}" -->
+                        </StackPanel>
+                        <CheckBox Visibility="Collapsed" x:Name="checkbox_adaptMesh" Grid.Row="1" Grid.Column="0" Content="adaptive mesh" ToolTip="Adapt the mesh after solving the equations"/>
+                        <TextBox Visibility="Collapsed" x:Name="textbox_maximumPhiDifference" Grid.Row="1" Grid.Column="1" Text="0.05" ToolTip="Maximum allowed potential difference in Volts between to neighbors for adaptive meshing"/>
+                        <Button Visibility="Collapsed" x:Name="button_SaveMesh" Click="SaveMesh" Grid.Row="2" Grid.Column="0" Content="save current mesh" ToolTip="Save the current mesh to reuse it later"/>
+                    </Grid>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Grid.Row="2" Header="Preferences">
+                <StackPanel>
+                    <Grid IsSharedSizeScope="True">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" SharedSizeGroup="sameHeight" />
+                            <RowDefinition Height="Auto" SharedSizeGroup="sameHeight" />
+                            <RowDefinition Height="Auto" SharedSizeGroup="sameHeight" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock VerticalAlignment="Center" Style="{StaticResource textblockTextStyle}" Grid.Row="0" Grid.Column="0" Text="simulated potentials" ToolTip="Select which potentials are simulated (others are set to 0V or operating voltage, respectively)"/>
+                        <ComboBox x:Name="combobox_simulationSelector" Grid.Row="0" Grid.Column="1" ItemsSource="{Binding Source={StaticResource simulatonSelector}}" SelectedIndex="0"/>
+                        <TextBlock VerticalAlignment="Center" Style="{StaticResource textblockTextStyle}" Grid.Row="1" Grid.Column="0" Text="optic mode" ToolTip="Select how the optics is included in the simulation"/>
+                        <ComboBox x:Name="combobox_opticMode" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Source={StaticResource opticMode}}" SelectedIndex="0" />
+                        <TextBlock VerticalAlignment="Center" Style="{StaticResource textblockTextStyle}" Grid.Row="2" Grid.Column="0" Text="illumination intensity" ToolTip="Select the used illumination in amount of suns ('1' means 1000W/m^2 at AM1.5G)"/>
+                        <TextBox x:Name="textbox_illuminationIntensity" Grid.Row="2" Grid.Column="1" Text="1" TextAlignment="Left" ToolTip="AM1.5G spectrum will be scaled with this factor"/>
+                    </Grid>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Grid.Row="4" Header="Voltages">
+                <StackPanel>
+                    <Grid IsSharedSizeScope="True">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" SharedSizeGroup="sameHeight" />
+                            <RowDefinition Height="Auto" SharedSizeGroup="sameHeight" />
+                            <RowDefinition Height="Auto" SharedSizeGroup="sameHeight" />
+                            <RowDefinition Height="Auto" SharedSizeGroup="sameHeight" />
+                            <!--<RowDefinition Height="Auto" SharedSizeGroup="sameHeight" />-->
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <RadioButton x:Name="radiobutton_singleVoltage" Content="single voltage" Grid.Row="0" Grid.Column="0" IsChecked="True" ToolTip="Only right voltage is simulated (in Volts)"/>
+                        <RadioButton x:Name="radiobutton_searchMPP" Content="search MPP" Grid.Row="1" Grid.Column="0" IsChecked="False" ToolTip="Only MPP is simulated (takes multiple iterations)"/>
+                        <RadioButton x:Name="radiobutton_AutoIVCurve" Content="IV curve" Grid.Row="2" Grid.Column="0" IsChecked="False" ToolTip="Whole IV curve is simulated (until current is 2 times the negative jsc)"/>
+                        <RadioButton x:Name="radiobutton_AutoIVCurveAndMPP" Content="IV curve + search MPP" Grid.Row="3" Grid.Column="0" IsChecked="False" ToolTip="Whole IV curve and afterwards the MPP are simulated"/>
+                        <RadioButton x:Name="radiobutton_multipleVoltages" Visibility="Collapsed" Content="from file" Grid.Row="7" Grid.Column="0" IsChecked="False" ToolTip="Voltages from the right file are simulated"/>
+                        <TextBox x:Name="textbox_operatingVoltage" Grid.Row="0" Grid.Column="1" Text="0.6" ToolTip="Voltage for a single voltage simulation"/>
+                        <StackPanel Visibility="Collapsed" Grid.Column="1" Grid.Row="7" Orientation="Horizontal">
+                            <Button Width="{StaticResource elementHeight}" Click="GetVoltagesFile" >
+                                <Image Source="Icons/iconFolder.png" Height="18"/>
+                            </Button>
+                            <TextBlock x:Name="textbox_voltages" Margin="5,0,0,0" Style="{StaticResource textblockFileStyle}" Text="voltages.dat" ToolTip="{Binding Path=Text, RelativeSource={RelativeSource Mode=Self}}"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Grid.Row="6" Header="Simulation" >
+                <StackPanel>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="button_CalculateAndPlotSingle" Click="CalculateSingle" Content="single shot" Grid.Row="0" Grid.Column="0" ToolTip="Performes a single simulation"/>
+                        <Button x:Name="button_CalculateAndPlotMultiple" Click="CalculateBatch" Content="batch" Grid.Row="0" Grid.Column="1" ToolTip="Performes a batch with variable parameters"/>
+                        <Button x:Name="button_CalculateOverDay" Visibility="Collapsed" Click="CalculateDayYield" Content="day yield" Grid.Row="1" Grid.Column="0" ToolTip="Calculates the yield during a whole day"/>
+                        <Button x:Name="button_CalculateOverYear" Visibility="Visible" Click="CalculateYearYield" Content="year yield" Grid.Row="1" Grid.Column="0" ToolTip="Calculates the yield during a whole year&#x0a;Irradiation data from: re.jrc.ec.europa.eu/pvg_tools"/>
+                        <Button x:Name="button_ReverseFitpnJunction" Visibility="Collapsed" Click="CalculateReverseEngineeringFitting" Content="REF" Grid.Row="2" Grid.Column="0" ToolTip="Performes a reverse engineering fit to experimental data"/>
+                        <Button x:Name="button_OptimizeGrid" Visibility="Collapsed" Click="CalculateOptimize" Content="optimize" Grid.Row="2" Grid.Column="1" ToolTip="Optimizes the grid design"/>
+                        <Button x:Name="button_CalculateBatchSemicondutor" Visibility="Collapsed" Click="CalculateBatchSemiconductor" Content="batch SC" Grid.Row="3" Grid.Column="0" ToolTip="Performes a batch simulation with semiconductor IV curves as input"/>
+                        <Button x:Name="button_Cancel" Click="CancelSimulation" Content="cancel" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" ToolTip="Stops the current simulation" IsEnabled="False"/>
+
+                        <Separator x:Name="separator_estimatedFinish" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="1,10,1,10" Visibility="Collapsed" />
+                        <TextBlock Text="" x:Name="textblock_estimatedFinish" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="1,0,1,0" Visibility="Collapsed" Style="{StaticResource textblockTextStyle}"/>
+                        <ProgressBar x:Name="progressBar_simulationProgress" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="1,0,1,2" Visibility="Collapsed" />
+                    </Grid>
+                </StackPanel>
+            </GroupBox>
+
+        </Grid>
+
+        <!--
+            ██╗
+            ╚██╗ middle column
+            ██╔╝
+            ╚═╝
+            -->
+        <Grid Grid.Column="2" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="5" />
+                <RowDefinition Height="250" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="300" />
+            </Grid.ColumnDefinitions>
+
+            <TabControl x:Name="tabcontrol_plotting" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                <TabItem Header="potentials">
+                    <WpfControl:ChartControl x:Name="chart_Cell" />
+                </TabItem>
+                <TabItem Header="currents">
+                    <WpfControl:ChartControl x:Name="chart_Currents" />
+                </TabItem>
+                <TabItem Header="mesh">
+                    <WpfControl:ChartControl x:Name="chart_Mesh" />
+                </TabItem>
+                <TabItem Header="loss analysis">
+                    <Grid x:Name="grid_losses">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="250" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <DataGrid
+                            x:Name="dataGrid_lossAnalysis"
+                            Grid.Row="0"
+                            Margin="10"
+                            AlternatingRowBackground="#FFFFFF"
+                            AlternationCount="3"
+                            AutoGenerateColumns="True"
+                            CanUserAddRows="false"
+                            ColumnWidth="Auto"
+                            HeadersVisibility="Column"
+                            IsReadOnly="True"
+                            VerticalScrollBarVisibility="Auto">
+                            <DataGrid.Resources>
+                                <Style TargetType="DataGridRow">
+                                    <EventSetter Event="MouseEnter" Handler="TableRow_MouseEnter" />
+                                    <EventSetter Event="MouseLeave" Handler="TableRow_MouseLeave" />
+                                </Style>
+                            </DataGrid.Resources>
+                        </DataGrid>
+
+                        <WpfControl:ChartControl
+                            x:Name="chart_losses"
+                            Grid.Row="1"
+                            Margin="7" />
+                    </Grid>
+                </TabItem>
+            </TabControl>
+
+            <WpfControl:ChartControl x:Name="chart_IVplot" Grid.Row="2" Grid.Column="0" Visibility="Hidden" />
+            <Legend:LegendControl Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" x:Name="legend_IVcurves" Width="300" Grid.ColumnSpan="2" />
+
+        </Grid>
+
+        <!--
+            ██╗
+            ╚██╗ right column
+            ██╔╝
+            ╚═╝
+            -->
+        <Grid Grid.Column="4" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <GroupBox Grid.Row="0" Header="Results" x:Name="groupbox_results">
+                <StackPanel>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="# of points" Grid.Row="0" Grid.Column="0" Style="{StaticResource textblockTextStyle}"/>
+                        <TextBlock Text="" x:Name="textblock_amountPoints" Grid.Row="0" Grid.Column="1" Style="{StaticResource textblockTextStyle}"/>
+                        <TextBlock Text="voltage" Grid.Row="1" Grid.Column="0" Style="{StaticResource textblockTextStyle}"/>
+                        <TextBlock Text="" x:Name="textblock_voltage" Grid.Row="1" Grid.Column="1" Style="{StaticResource textblockTextStyle}"/>
+                        <TextBlock Text="current" Grid.Row="2" Grid.Column="0" Style="{StaticResource textblockTextStyle}"/>
+                        <TextBlock Text="" x:Name="textblock_current" Grid.Row="2" Grid.Column="1" Style="{StaticResource textblockTextStyle}"/>
+                        <TextBlock Text="power" Grid.Row="3" Grid.Column="0" Style="{StaticResource textblockTextStyle}"/>
+                        <TextBlock Text="" x:Name="textblock_power" Grid.Row="3" Grid.Column="1" Style="{StaticResource textblockTextStyle}"/>
+                        <TextBlock Text="area" Grid.Row="4" Grid.Column="0" Style="{StaticResource textblockTextStyle}"/>
+                        <TextBlock Text="" x:Name="textblock_area" Grid.Row="4" Grid.Column="1" Style="{StaticResource textblockTextStyle}"/>
+                        <TextBlock Text="efficiency" Grid.Row="5" Grid.Column="0" Style="{StaticResource textblockTextStyle}"/>
+                        <TextBlock Text="" x:Name="textblock_efficiency" Grid.Row="5" Grid.Column="1" Style="{StaticResource textblockTextStyle}"/>
+                    </Grid>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Grid.Row="4" Header="Plotting" x:Name="groupbox_plotting">
+                <StackPanel Orientation="Vertical">
+                    <CheckBox Content="plot front side" x:Name="checkbox_plotFront" IsChecked="True" Click="Plot" ToolTip="Plots the front potential and front currents of the cell/module"/>
+                    <CheckBox Content="plot back side" x:Name="checkbox_plotBack" IsChecked="True" Click="Plot" ToolTip="Plots the back potential and back currents of the cell/module"/>
+                    <CheckBox Content="plot model of cell" x:Name="checkbox_plotCellModel" IsChecked="True" Click="Plot" ToolTip="Plots a simple model of the cell/module with the front and back grids"/>
+                    <Grid Height="200">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <colorlegend:ColorLegendStandaloneEditor Grid.Column="0" x:Name="legendFront" />
+                        <colorlegend:ColorLegendStandaloneEditor Grid.Column="1" x:Name="legendBack" />
+                    </Grid>
+                    <CheckBox Content="plot surfaces as wireframe" x:Name="checkbox_plotAsWireframe" Click="Plot" ToolTip="Plots all surfaces as wireframes"/>
+                    <Button Content="switch to 2D" x:Name="button_switch2D3D" Click="Switch2D3D" ToolTip="Switches the view between 2D and 3D"/>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Grid.Row="2" Header="IV curve" x:Name="groupbox_IVcurve">
+                <StackPanel>
+                    <Button Content="fit IV curve" x:Name="button_FitCharacteristic" Click="FitSimulatedCharacteristic" ToolTip="Fits the IV curve of the cell/module on the left"/>
+
+                    <Grid Visibility="Collapsed" x:Name="grid_FitData">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="semiconductor" Grid.Row="0" Grid.Column="1" Style="{StaticResource textblockTextStyle}"/>
+                        <TextBlock Text="cell" Grid.Row="0" Grid.Column="2" Style="{StaticResource textblockTextStyle}"/>
+
+                        <TextBlock Text="Iph" Grid.Row="1" Grid.Column="0" Style="{StaticResource textblockTextStyle}"/>
+                        <TextBlock x:Name="textblock_Iph_semiconductor" Text="15.26mA" Grid.Row="1" Grid.Column="1" Style="{StaticResource textblockTextStyle}"/>
+                        <TextBlock x:Name="textblock_Iph_cell" Text="15.26mA" Grid.Row="1" Grid.Column="2" Style="{StaticResource textblockTextStyle}"/>
+
+                        <TextBlock Text="I0" Grid.Row="2" Grid.Column="0" Style="{StaticResource textblockTextStyle}"/>
+                        <TextBlock x:Name="textblock_I0_semiconductor" Text="95.15nA" Grid.Row="2" Grid.Column="1" Style="{StaticResource textblockTextStyle}"/>
+                        <TextBlock x:Name="textblock_I0_cell" Text="95.15nA" Grid.Row="2" Grid.Column="2" Style="{StaticResource textblockTextStyle}"/>
+
+                        <TextBlock Text="n" Grid.Row="3" Grid.Column="0" Style="{StaticResource textblockTextStyle}"/>
+                        <TextBlock x:Name="textblock_n_semiconductor" Text="1.654" Grid.Row="3" Grid.Column="1" Style="{StaticResource textblockTextStyle}"/>
+                        <TextBlock x:Name="textblock_n_cell" Text="1.654" Grid.Row="3" Grid.Column="2" Style="{StaticResource textblockTextStyle}"/>
+
+                        <TextBlock Text="Rs" Grid.Row="4" Grid.Column="0" Style="{StaticResource textblockTextStyle}"/>
+                        <TextBlock x:Name="textblock_Rs_semiconductor" Text="254.6mOhm" Grid.Row="4" Grid.Column="1" Style="{StaticResource textblockTextStyle}"/>
+                        <TextBlock x:Name="textblock_Rs_cell" Text="254.6mOhm" Grid.Row="4" Grid.Column="2" Style="{StaticResource textblockTextStyle}"/>
+
+                        <TextBlock Text="Rsh" Grid.Row="5" Grid.Column="0" Style="{StaticResource textblockTextStyle}"/>
+                        <TextBlock x:Name="textblock_Rsh_semiconductor" Text="20.59MOhm" Grid.Row="5" Grid.Column="1" Style="{StaticResource textblockTextStyle}"/>
+                        <TextBlock x:Name="textblock_Rsh_cell" Text="20.59MOhm" Grid.Row="5" Grid.Column="2" Style="{StaticResource textblockTextStyle}"/>
+
+                        <TextBlock Text="Voc" Grid.Row="6" Grid.Column="0" Style="{StaticResource textblockTextStyle}"/>
+                        <TextBlock x:Name="textblock_Voc_semiconductor" Text="0.75V" Grid.Row="6" Grid.Column="1" Style="{StaticResource textblockTextStyle}"/>
+                        <TextBlock x:Name="textblock_Voc_cell" Text="0.75V" Grid.Row="6" Grid.Column="2" Style="{StaticResource textblockTextStyle}"/>
+
+                        <TextBlock Text="Isc" Grid.Row="7" Grid.Column="0" Style="{StaticResource textblockTextStyle}"/>
+                        <TextBlock x:Name="textblock_Isc_semiconductor" Text="15.27mA" Grid.Row="7" Grid.Column="1" Style="{StaticResource textblockTextStyle}"/>
+                        <TextBlock x:Name="textblock_Isc_cell" Text="15.27mA" Grid.Row="7" Grid.Column="2" Style="{StaticResource textblockTextStyle}"/>
+
+                        <TextBlock Text="FF" Grid.Row="8" Grid.Column="0" Style="{StaticResource textblockTextStyle}"/>
+                        <TextBlock x:Name="textblock_FF_semiconductor" Text="81.26%" Grid.Row="8" Grid.Column="1" Style="{StaticResource textblockTextStyle}"/>
+                        <TextBlock x:Name="textblock_FF_cell" Text="81.26%" Grid.Row="8" Grid.Column="2" Style="{StaticResource textblockTextStyle}"/>
+
+                        <TextBlock Text="power" Grid.Row="9" Grid.Column="0" Style="{StaticResource textblockTextStyle}"/>
+                        <TextBlock x:Name="textblock_power_semiconductor" Text="9.53mW" Grid.Row="9" Grid.Column="1" Style="{StaticResource textblockTextStyle}"/>
+                        <TextBlock x:Name="textblock_power_cell" Text="9.53mW" Grid.Row="9" Grid.Column="2" Style="{StaticResource textblockTextStyle}"/>
+
+                        <TextBlock Text="PCE" Grid.Row="10" Grid.Column="0" Style="{StaticResource textblockTextStyle}"/>
+                        <TextBlock x:Name="textblock_PCE_semiconductor" Text="19.54%" Grid.Row="10" Grid.Column="1" Style="{StaticResource textblockTextStyle}"/>
+                        <TextBlock x:Name="textblock_PCE_cell" Text="19.54%" Grid.Row="10" Grid.Column="2" Style="{StaticResource textblockTextStyle}"/>
+                    </Grid>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+    </Grid>
+</Page>

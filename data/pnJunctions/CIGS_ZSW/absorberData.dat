@@ -1,0 +1,11 @@
+// the material ID of the absorber material (needs to be present in material folder!)
+material ID linked to absorber material:
+020003020
+
+// thickness of the absorber, necessary for the optical calculation
+thickness of absorber:
+2.2e-6
+
+// bandgap  of the absorber, necessary for the optical calculation
+bandgap of absorber:
+1.127

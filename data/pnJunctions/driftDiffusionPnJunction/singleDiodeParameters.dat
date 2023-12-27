@@ -1,0 +1,23 @@
+// temperature of this pn junction in [K]
+temperature:
+298
+
+// photo current density of this pn junctsion in [A/m^2]
+photo current density:
+184.466980684448
+
+// reverse saturation current density of this pn junctsion in [A/m^2]
+reverse saturation current density:
+4.31212249747082E-07
+
+// diode ideality factor of this pn junctsion in [-]
+diode ideality factor:
+12.7173755685556
+
+// area-normalized series resistance of this pn junction in [Ohm*m^2]
+area-normalized series resistance:
+0.0235870458232681
+
+// area-normalized shunt resistance of this pn junction in [Ohm*m^2]
+area-normalized shunt resistance:
+3030625.99607895

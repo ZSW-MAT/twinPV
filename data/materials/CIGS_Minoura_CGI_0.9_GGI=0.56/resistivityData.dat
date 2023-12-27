@@ -1,0 +1,15 @@
+// specific electrical resistivity rho of a material is an exponential function of the thickness 'z'
+// rho(z) = rho_Bulk + (rho_Thin - rho_Bulk) * exp(-decay * z)
+// for a constant resistivity, enter the same value for 'bulk' and 'thin layer' (decay coefficient doesn't matter in this case)
+
+// specific electrical resistivity in [Ohm*m] within the bulk of this material
+resistivity bulk:
+1e5
+
+// specific electrical resistivity in [Ohm*m] for an imaginary infinitesimal thin layer of this material
+resistivity infinitesimal thin layer:
+1e5
+
+// determines how fast the resistivity goes from 'infinitesimal resisitivity' to 'bulk resistivity' [1/m]
+decay coefficient:
+0

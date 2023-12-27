@@ -1,0 +1,114 @@
+﻿<Window x:Class="twinPV.DesignerSemiconductorRegion"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:twinPV"
+        mc:Ignorable="d"
+        Title="Semiconductor Region"
+        ResizeMode="NoResize"
+    Height="250"
+    Width="495"
+    Background="{StaticResource brushBackgroundLocal}">
+
+
+    <!--SizeToContent="WidthAndHeight"-->
+
+    <Grid Margin="5">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="170" />
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="130" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock
+        Margin="5"
+        Grid.Row="0"
+        Grid.Column="0"
+        Grid.ColumnSpan="4"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        FontSize="{StaticResource fontsizeHeaderSmall}"
+        Text="Assign a semiconductor material to selected region" />
+
+        <Rectangle
+        Grid.Row="1"
+        Grid.Column="0"
+        Height="70"
+        Fill="#FF92cbd2"
+        Stroke="#000000" />
+        <TextBlock
+        Grid.Row="1"
+        Grid.Column="0"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        Text="Semiconductor material" />
+        <ComboBox
+        x:Name="combobox_SemiconductorMaterial"
+        Grid.Row="1"
+        Grid.Column="1"
+        Margin="5,0,0,0"
+        VerticalAlignment="Center"
+        ToolTip="Material of the semiconductor region" />
+
+        <TextBlock
+        Grid.Row="2"
+        Grid.Column="0"
+        HorizontalAlignment="Right"
+        VerticalAlignment="Center"
+        Text="Region is absorber: "
+            Margin="5"/>
+        <CheckBox x:Name="checkbox_isAbsorber" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+        <TextBlock
+        Grid.Row="3"
+        Grid.Column="0"
+        HorizontalAlignment="Right"
+        VerticalAlignment="Center"
+        Text="Roughness on top: "
+            Margin="5"/>
+        <TextBox x:Name="textbox_roughness" Grid.Row="3"  Grid.Column="1" Text="0" IsEnabled="False"/>
+        <TextBlock Text="nm" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="2"/>
+
+
+        <StackPanel
+        Grid.Row="4"
+        Grid.Column="0"
+        Grid.ColumnSpan="4"
+        HorizontalAlignment="Right"
+        Orientation="Horizontal">
+            <Button
+          x:Name="button_deleteRegion"
+          Width="120"
+          Margin="10"
+          Click="DeleteRegion"
+          Content="Delete region"
+          Foreground="Red"
+          ToolTip="Deletes this region" />
+            <Button
+          x:Name="button_saveRegion"
+          Width="120"
+          Margin="10"
+          Click="SaveRegion"
+          Content="Save region"
+          ToolTip="Saves the preferences of the region" />
+            <Button
+          x:Name="button_cancel"
+          Width="120"
+          Margin="10"
+          Click="CloseRegionDesigner"
+          Content="Cancel"
+          ToolTip="Discards the preferences of the region and closes this window" />
+        </StackPanel>
+
+    </Grid>
+</Window>

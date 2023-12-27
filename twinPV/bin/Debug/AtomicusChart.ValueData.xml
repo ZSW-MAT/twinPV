@@ -1,0 +1,785 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AtomicusChart.ValueData</name>
+    </assembly>
+    <members>
+        <member name="T:AtomicusChart.ValueData.DataReaders.FloatIntensityImage2DReader">
+            <summary>
+            Represents default implementation of <see cref="T:AtomicusChart.ValueData.DataReaders.IntensityImage2DReader"/> with one-dimensional <see cref="T:System.Single"/> array.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.FloatIntensityImage2DReader.#ctor(System.Single[],System.Int32,System.Nullable{AtomicusChart.Interface.DataReaders.DenormalizationRange})">
+            <summary>
+            Initializes new instance of <see cref="T:AtomicusChart.ValueData.DataReaders.FloatIntensityImage2DReader"/>.
+            </summary>
+            <param name="data">Data array.</param>
+            <param name="width">Image width.</param>
+            <param name="denormalizationRange">Data value denormalization range.</param>
+        </member>
+        <member name="T:AtomicusChart.ValueData.DataReaders.Float2IntensityImage2DReader">
+            <summary>
+            Represents default implementation of <see cref="T:AtomicusChart.ValueData.DataReaders.IntensityImage2DReader"/> with two-dimensional <see cref="T:System.Single"/> array.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.Float2IntensityImage2DReader.#ctor(System.Single[0:,0:],System.Nullable{AtomicusChart.Interface.DataReaders.DenormalizationRange})">
+            <summary>
+            Initializes new instance of <see cref="T:AtomicusChart.ValueData.DataReaders.Float2IntensityImage2DReader"/>.
+            </summary>
+            <param name="data">Data array.</param>
+            <param name="denormalizationRange">Data value denormalization range.</param>
+        </member>
+        <member name="T:AtomicusChart.ValueData.DataReaders.ByteIntensityImage2DReader">
+            <summary>
+            Represents default implementation of <see cref="T:AtomicusChart.ValueData.DataReaders.IntensityImage2DReader"/> with one-dimensional <see cref="T:System.Byte"/> array.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.ByteIntensityImage2DReader.#ctor(System.Byte[],System.Int32,System.Nullable{AtomicusChart.Interface.DataReaders.DenormalizationRange})">
+            <summary>
+            Initializes new instance of <see cref="T:AtomicusChart.ValueData.DataReaders.ByteIntensityImage2DReader"/>.
+            </summary>
+            <param name="data">Data array.</param>
+            <param name="width">Image width.</param>
+            <param name="denormalizationRange">Data value denormalization range.</param>
+        </member>
+        <member name="T:AtomicusChart.ValueData.DataReaders.Byte2IntensityImage2DReader">
+            <summary>
+            Represents default implementation of <see cref="T:AtomicusChart.ValueData.DataReaders.IntensityImage2DReader"/> with two-dimensional <see cref="T:System.Byte"/> array.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.Byte2IntensityImage2DReader.#ctor(System.Byte[0:,0:],System.Nullable{AtomicusChart.Interface.DataReaders.DenormalizationRange})">
+            <summary>
+            Initializes new instance of <see cref="T:AtomicusChart.ValueData.DataReaders.Byte2IntensityImage2DReader"/>.
+            </summary>
+            <param name="data">Data array.</param>
+            <param name="denormalizationRange">Data value denormalization range.</param>
+        </member>
+        <member name="T:AtomicusChart.ValueData.DataReaders.ShortIntensityImage2DReader">
+            <summary>
+            Represents default implementation of <see cref="T:AtomicusChart.ValueData.DataReaders.IntensityImage2DReader"/> with one-dimensional <see cref="T:System.Int16"/> array.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.ShortIntensityImage2DReader.#ctor(System.Int16[],System.Int32,System.Nullable{AtomicusChart.Interface.DataReaders.DenormalizationRange})">
+            <summary>
+            Initializes new instance of <see cref="T:AtomicusChart.ValueData.DataReaders.ShortIntensityImage2DReader"/>.
+            </summary>
+            <param name="data">Data array.</param>
+            <param name="width">Image width.</param>
+            <param name="denormalizationRange">Data value denormalization range.</param>
+        </member>
+        <member name="T:AtomicusChart.ValueData.DataReaders.Short2IntensityImage2DReader">
+            <summary>
+            Represents default implementation of <see cref="T:AtomicusChart.ValueData.DataReaders.IntensityImage2DReader"/> with one-dimensional <see cref="T:System.Int16"/> array.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.Short2IntensityImage2DReader.#ctor(System.Int16[0:,0:],System.Nullable{AtomicusChart.Interface.DataReaders.DenormalizationRange})">
+            <summary>
+            Initializes new instance of <see cref="T:AtomicusChart.ValueData.DataReaders.Short2IntensityImage2DReader"/>.
+            </summary>
+            <param name="data">Data array.</param>
+            <param name="denormalizationRange">Data value denormalization range.</param>
+        </member>
+        <member name="T:AtomicusChart.ValueData.DataReaders.ArrayIntensityImage2DReader`1">
+            <summary>
+            Represents default implementation of <see cref="T:AtomicusChart.ValueData.DataReaders.IntensityImage2DReader"/> for the specified unmanaged type.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.ArrayIntensityImage2DReader`1.#ctor(`0[],System.Int32,AtomicusChart.ValueData.DataReaders.Intensity2DFormat,System.Nullable{AtomicusChart.Interface.DataReaders.DenormalizationRange})">
+            <summary>
+            Initializes new instance of <see cref="T:AtomicusChart.ValueData.DataReaders.ArrayIntensityImage2DReader`1"/>.
+            </summary>
+            <param name="data">Data array.</param>
+            <param name="width">Image width.</param>
+            <param name="intensityFormat">Image format.</param>
+            <param name="denormalizationRange">Data value denormalization range.</param>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.ArrayIntensityImage2DReader`1.InitializeResource(AtomicusChart.Interface.DataReaders.IResourceWriter2D)">
+            <inheritdoc/>
+        </member>
+        <member name="T:AtomicusChart.ValueData.DataReaders.Array2IntensityImage2DReader`1">
+            <summary>
+            Represents default implementation of <see cref="T:AtomicusChart.ValueData.DataReaders.IntensityImage2DReader"/> for the specified unmanaged type.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.Array2IntensityImage2DReader`1.#ctor(`0[0:,0:],AtomicusChart.ValueData.DataReaders.Intensity2DFormat,System.Nullable{AtomicusChart.Interface.DataReaders.DenormalizationRange})">
+            <summary>
+            Initializes new instance of <see cref="T:AtomicusChart.ValueData.DataReaders.Array2IntensityImage2DReader`1"/>.
+            </summary>
+            <param name="data">Data array.</param>
+            <param name="intensityFormat">Image format.</param>
+            <param name="denormalizationRange">Data value denormalization range.</param>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.Array2IntensityImage2DReader`1.InitializeResource(AtomicusChart.Interface.DataReaders.IResourceWriter2D)">
+            <inheritdoc/>
+        </member>
+        <member name="T:AtomicusChart.ValueData.DataReaders.DefaultPositionValueMaskDataReader">
+            <summary>
+            Represents default implementation of <see cref="T:AtomicusChart.ValueData.DataReaders.PositionValueMaskDataReader"/>.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.DefaultPositionValueMaskDataReader.#ctor(AtomicusChart.Interface.Data.Vector3F[],System.Single[])">
+            <summary>
+            Initializes new instance of <see cref="T:AtomicusChart.Interface.DataReaders.DefaultPositionMaskDataReader"/>.
+            </summary>
+            <param name="positions">Positions array.</param>
+            <param name="values">Values array.</param>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.DefaultPositionValueMaskDataReader.#ctor(AtomicusChart.Interface.Data.Vector3F[],System.Single[],AtomicusChart.Interface.VertexMask[])">
+            <summary>
+            Initializes new instance of <see cref="T:AtomicusChart.Interface.DataReaders.DefaultPositionMaskDataReader"/>.
+            </summary>
+            <param name="positions">Positions array.</param>
+            <param name="values">Values array.</param>
+            <param name="vertexMasks">Vertex masks array.</param>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.DefaultPositionValueMaskDataReader.InitializeResources(AtomicusChart.Interface.DataReaders.IResourceWriter1D,AtomicusChart.Interface.DataReaders.IResourceWriter1D,AtomicusChart.Interface.DataReaders.IResourceWriter1D)">
+            <inheritdoc/>
+        </member>
+        <member name="T:AtomicusChart.ValueData.DataReaders.DefaultValueSurfaceDataReader">
+            <summary>
+            Represents default implementation of <see cref="T:AtomicusChart.ValueData.DataReaders.ValueSurfaceDataReader"/> with fully specified external data arrays.
+            </summary>
+        </member>
+        <member name="E:AtomicusChart.ValueData.DataReaders.DefaultValueSurfaceDataReader.ContoursChanged">
+            <inheritdoc/>
+        </member>
+        <member name="P:AtomicusChart.ValueData.DataReaders.DefaultValueSurfaceDataReader.ValueRange">
+            <summary>
+            Gets the reader value range.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.DefaultValueSurfaceDataReader.#ctor(AtomicusChart.Interface.Data.Vector3F[],AtomicusChart.Interface.Data.Vector3F[],System.Single[],System.Int32[],System.Int32[],AtomicusChart.Interface.VertexMask[],System.Nullable{AtomicusChart.Interface.Data.OneAxisBounds})">
+            <summary>
+            Initializes new instance of <see cref="T:AtomicusChart.ValueData.DataReaders.DefaultValueSurfaceDataReader"/>.
+            </summary>
+            <param name="positions">Positions array.</param>
+            <param name="normals">Normals array.</param>
+            <param name="values">Values array.</param>
+            <param name="indices">Indices array.</param>
+            <param name="wireframeIndices">Wireframe indices array.</param>
+            <param name="vertexMasks">Vertex masks array (optional parameter).</param>
+            <param name="valueRange">Data value range.</param>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.DefaultValueSurfaceDataReader.InitializeResources(AtomicusChart.Interface.DataReaders.IResourceWriter1D,AtomicusChart.Interface.DataReaders.IResourceWriter1D,AtomicusChart.Interface.DataReaders.IResourceWriter1D,AtomicusChart.Interface.DataReaders.IResourceWriter1D,AtomicusChart.Interface.DataReaders.IResourceWriter1D,AtomicusChart.Interface.DataReaders.IResourceWriter1D)">
+            <inheritdoc/>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.DefaultValueSurfaceDataReader.GetSections(System.Collections.Generic.IEnumerable{System.Single})">
+            <inheritdoc/>
+        </member>
+        <member name="T:AtomicusChart.ValueData.DataReaders.DynamicPositionValueMaskDataReader">
+            <summary>
+            Represents most common implementation of <see cref="T:AtomicusChart.ValueData.DataReaders.PositionValueMaskDataReader"/> siutable for dynamic data updates.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.DynamicPositionValueMaskDataReader.#ctor(System.Int32)">
+            <summary>
+            Initializes new instance of <see cref="T:AtomicusChart.ValueData.DataReaders.DynamicPositionValueMaskDataReader"/> with the specified capacity.
+            </summary>
+            <param name="vertexCount">Vertex count.</param>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.DynamicPositionValueMaskDataReader.InitializeResources(AtomicusChart.Interface.DataReaders.IResourceWriter1D,AtomicusChart.Interface.DataReaders.IResourceWriter1D,AtomicusChart.Interface.DataReaders.IResourceWriter1D)">
+            <inheritdoc/>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.DynamicPositionValueMaskDataReader.UpdatePositions(AtomicusChart.Interface.Data.Vector3F[])">
+            <summary>
+            Updates positions of the reader.
+            </summary>
+            <param name="newPositions">New positions array.</param>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.DynamicPositionValueMaskDataReader.UpdatePositions(AtomicusChart.Interface.Data.Vector3F[],System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Updates positions of the reader.
+            </summary>
+            <param name="newPositions">Source positions array.</param>
+            <param name="sourceIndex">Source index.</param>
+            <param name="destinationIndex">Destination index.</param>
+            <param name="count">Vertex count.</param>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.DynamicPositionValueMaskDataReader.UpdatePositions(AtomicusChart.Interface.Data.Vector3F,System.Int32)">
+            <summary>
+            Updates a single position in the reader.
+            </summary>
+            <param name="position">New position.</param>
+            <param name="index">Index for update.</param>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.DynamicPositionValueMaskDataReader.UpdateValues(System.Single[])">
+            <summary>
+            Updates positions of the reader.
+            </summary>
+            <param name="newValues">New positions array.</param>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.DynamicPositionValueMaskDataReader.UpdateValues(System.Single[],System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Updates values of the reader.
+            </summary>
+            <param name="newValues">Source values array.</param>
+            <param name="sourceIndex">Source index.</param>
+            <param name="destinationIndex">Destination index.</param>
+            <param name="count">Vertex count.</param>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.DynamicPositionValueMaskDataReader.UpdateValues(System.Single,System.Int32)">
+            <summary>
+            Updates a single value in the reader.
+            </summary>
+            <param name="value">New value.</param>
+            <param name="index">Index for update.</param>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.DynamicPositionValueMaskDataReader.UpdateMasks(AtomicusChart.Interface.VertexMask[])">
+            <summary>
+            Updates masks of the reader.
+            </summary>
+            <param name="newMasks">New masks array.</param>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.DynamicPositionValueMaskDataReader.UpdateMasks(AtomicusChart.Interface.VertexMask[],System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Updates masks of the reader.
+            </summary>
+            <param name="newMasks">Source masks array.</param>
+            <param name="sourceIndex">Source index.</param>
+            <param name="destinationIndex">Destination index.</param>
+            <param name="count">Vertex count.</param>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.DynamicPositionValueMaskDataReader.UpdateMasks(AtomicusChart.Interface.VertexMask,System.Int32)">
+            <summary>
+            Updates a single mask in the reader.
+            </summary>
+            <param name="mask">New mask.</param>
+            <param name="index">Index for update.</param>
+        </member>
+        <member name="T:AtomicusChart.ValueData.DataReaders.IntensityImage2DReader">
+            <summary>
+            Represents base class for two-dimensional intensity image reader.
+            </summary>
+        </member>
+        <member name="E:AtomicusChart.ValueData.DataReaders.IntensityImage2DReader.DenormalizationRangeChanged">
+            <inheritdoc/>
+        </member>
+        <member name="P:AtomicusChart.ValueData.DataReaders.IntensityImage2DReader.DenormalizationRange">
+            <inheritdoc/>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.IntensityImage2DReader.#ctor(System.Int32,System.Int32,AtomicusChart.ValueData.DataReaders.Intensity2DFormat)">
+            <summary>
+            Initializes new instance of <see cref="T:AtomicusChart.ValueData.DataReaders.IntensityImage2DReader"/>.
+            </summary>
+            <param name="width">Image width.</param>
+            <param name="height">Image height.</param>
+            <param name="format">Image intensity format.</param>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.IntensityImage2DReader.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:AtomicusChart.ValueData.DataReaders.Intensity2DFormat">
+            <summary>
+            Contains available two-dimensional image intensity formats.
+            </summary>
+        </member>
+        <member name="F:AtomicusChart.ValueData.DataReaders.Intensity2DFormat.CompressedByte">
+            <summary>
+            The format represents compressed integer values that should be normalized in range [0; byte.MaxValue].
+            </summary>
+        </member>
+        <member name="F:AtomicusChart.ValueData.DataReaders.Intensity2DFormat.CompressedShort">
+            <summary>
+            The format represents compressed integer values that should be normalized in range [0; short.MaxValue].
+            </summary>
+        </member>
+        <member name="F:AtomicusChart.ValueData.DataReaders.Intensity2DFormat.Float">
+            <summary>
+            The format represents real values as float numbers.
+            </summary>
+        </member>
+        <member name="T:AtomicusChart.ValueData.DataReaders.IrregularValueSurfaceDataReader">
+            <summary>
+            Represents implementation of <see cref="T:AtomicusChart.ValueData.DataReaders.ValueSurfaceDataReader"/> with build-in two-dimensional triangulation that may be used for irregular surfaces.
+            </summary>
+        </member>
+        <member name="E:AtomicusChart.ValueData.DataReaders.IrregularValueSurfaceDataReader.ContoursChanged">
+            <inheritdoc/>
+        </member>
+        <member name="P:AtomicusChart.ValueData.DataReaders.IrregularValueSurfaceDataReader.ValueRange">
+            <summary>
+            Gets the reader value range.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.IrregularValueSurfaceDataReader.#ctor(AtomicusChart.Interface.Data.Vector3F[],System.Single[],System.Int32,System.Nullable{AtomicusChart.Interface.Data.OneAxisBounds})">
+            <summary>
+            Initializes new instance of <see cref="T:AtomicusChart.ValueData.DataReaders.IrregularValueSurfaceDataReader"/>.
+            </summary>
+            <param name="positions">Positions array.</param>
+            <param name="values">Data values array.</param>
+            <param name="triangulationOrthoAxisIndex">Triangulation ortho-axis index.</param>
+            <param name="valueRange">Data value range.</param>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.IrregularValueSurfaceDataReader.#ctor(AtomicusChart.Interface.Data.Vector3F[],System.Single[],System.Int32,AtomicusChart.Interface.VertexMask[],System.Nullable{AtomicusChart.Interface.Data.OneAxisBounds})">
+            <summary>
+            Initializes new instance of <see cref="T:AtomicusChart.ValueData.DataReaders.IrregularValueSurfaceDataReader"/>.
+            </summary>
+            <param name="positions">Positions array.</param>
+            <param name="values">Data values array.</param>
+            <param name="triangulationOrthoAxisIndex">Triangulation ortho-axis index.</param>
+            <param name="vertexMasks">Vertex masks array.</param>
+            <param name="valueRange">Data value range.</param>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.IrregularValueSurfaceDataReader.InitializeResources(AtomicusChart.Interface.DataReaders.IResourceWriter1D,AtomicusChart.Interface.DataReaders.IResourceWriter1D,AtomicusChart.Interface.DataReaders.IResourceWriter1D,AtomicusChart.Interface.DataReaders.IResourceWriter1D,AtomicusChart.Interface.DataReaders.IResourceWriter1D,AtomicusChart.Interface.DataReaders.IResourceWriter1D)">
+            <inheritdoc/>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.IrregularValueSurfaceDataReader.UpdateValues(System.Single[],System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Update the reader values.
+            </summary>
+            <param name="newValues">Values source array.</param>
+            <param name="sourceIndex">Source index.</param>
+            <param name="length">Values count.</param>
+            <param name="destinationIndex">Destination index.</param>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.IrregularValueSurfaceDataReader.UpdateVertexMasks(AtomicusChart.Interface.VertexMask[],System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Update the reader values.
+            </summary>
+            <param name="newMasks">Masks array.</param>
+            <param name="sourceIndex">Source index.</param>
+            <param name="length">Masks count.</param>
+            <param name="destinationIndex">Destination index.</param>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.IrregularValueSurfaceDataReader.GetSections(System.Collections.Generic.IEnumerable{System.Single})">
+            <inheritdoc/>
+        </member>
+        <member name="T:AtomicusChart.ValueData.DataReaders.StructuredValueSurfaceDataReader">
+            <summary>
+            Represents implementation of <see cref="T:AtomicusChart.ValueData.DataReaders.ValueSurfaceDataReader"/> siutable for structured value surfaces.
+            </summary>
+        </member>
+        <member name="E:AtomicusChart.ValueData.DataReaders.StructuredValueSurfaceDataReader.ContoursChanged">
+            <inheritdoc/>
+        </member>
+        <member name="P:AtomicusChart.ValueData.DataReaders.StructuredValueSurfaceDataReader.ValueRange">
+            <summary>
+            Gets the reader value range.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.StructuredValueSurfaceDataReader.#ctor(AtomicusChart.Interface.Data.Vector3F[],System.Single[],System.Int32,System.Int32,System.Nullable{AtomicusChart.Interface.Data.OneAxisBounds})">
+            <summary>
+            Initilizes new instance of <see cref="T:AtomicusChart.ValueData.DataReaders.StructuredValueSurfaceDataReader"/>.
+            </summary>
+            <param name="positions">Positions array.</param>
+            <param name="values">Values array.</param>
+            <param name="width">Grid width.</param>
+            <param name="height">Grid height.</param>
+            <param name="valueRange">data value range.</param>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.StructuredValueSurfaceDataReader.#ctor(AtomicusChart.Interface.Data.Vector3F[],System.Single[],AtomicusChart.Interface.VertexMask[],System.Int32,System.Int32,System.Nullable{AtomicusChart.Interface.Data.OneAxisBounds})">
+            <summary>
+            Initilizes new instance of <see cref="T:AtomicusChart.ValueData.DataReaders.StructuredValueSurfaceDataReader"/>.
+            </summary>
+            <param name="positions">Positions array.</param>
+            <param name="values">Values array.</param>
+            <param name="vertexMasks">Vertex masks array.</param>
+            <param name="width">Grid width.</param>
+            <param name="height">Grid height.</param>
+            <param name="valueRange">data value range.</param>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.StructuredValueSurfaceDataReader.InitializeResources(AtomicusChart.Interface.DataReaders.IResourceWriter1D,AtomicusChart.Interface.DataReaders.IResourceWriter1D,AtomicusChart.Interface.DataReaders.IResourceWriter1D,AtomicusChart.Interface.DataReaders.IResourceWriter1D,AtomicusChart.Interface.DataReaders.IResourceWriter1D,AtomicusChart.Interface.DataReaders.IResourceWriter1D)">
+            <inheritdoc/>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.StructuredValueSurfaceDataReader.UpdatePositions(AtomicusChart.Interface.Data.Vector3F[],System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Updates the reader positions.
+            </summary>
+            <param name="newPositions">Source positions array.</param>
+            <param name="sourceIndex">Source index.</param>
+            <param name="length">Item count.</param>
+            <param name="destinationIndex">Destination index.</param>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.StructuredValueSurfaceDataReader.UpdateValues(System.Single[],System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Updates the reader values.
+            </summary>
+            <param name="newValues">Source values array.</param>
+            <param name="sourceIndex">Source index.</param>
+            <param name="length">Item count.</param>
+            <param name="destinationIndex">Destination index.</param>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.StructuredValueSurfaceDataReader.UpdateVertexMasks(AtomicusChart.Interface.VertexMask[],System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Updates the reader vertex masks.
+            </summary>
+            <param name="newMasks">Source masks array.</param>
+            <param name="sourceIndex">Source index.</param>
+            <param name="length">Item count.</param>
+            <param name="destinationIndex">Destination index.</param>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.StructuredValueSurfaceDataReader.GetSections(System.Collections.Generic.IEnumerable{System.Single})">
+            <inheritdoc/>
+        </member>
+        <member name="T:AtomicusChart.ValueData.DataReaders.UniformValueSurfaceDataReader">
+            <summary>
+            Represents implementation of <see cref="T:AtomicusChart.ValueData.DataReaders.ValueSurfaceDataReader"/> siutable for uniform value surface presentation.
+            </summary>
+        </member>
+        <member name="E:AtomicusChart.ValueData.DataReaders.UniformValueSurfaceDataReader.ContoursChanged">
+            <inheritdoc/>
+        </member>
+        <member name="P:AtomicusChart.ValueData.DataReaders.UniformValueSurfaceDataReader.ValueRange">
+            <summary>
+            Gets the reader value range.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.ValueData.DataReaders.UniformValueSurfaceDataReader.Origin">
+            <summary>
+            Gets or sets the raeder origin position.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.ValueData.DataReaders.UniformValueSurfaceDataReader.DirectionX">
+            <summary>
+            Gets or sets the reader X direction vector.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.ValueData.DataReaders.UniformValueSurfaceDataReader.DirectionY">
+            <summary>
+            Gets or sets the reader Y direction vector.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.ValueData.DataReaders.UniformValueSurfaceDataReader.Step">
+            <summary>
+            Gets or sets the reader direction step.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.ValueData.DataReaders.UniformValueSurfaceDataReader.ValueScale">
+            <summary>
+            Gets or sets the reader value scale coefficient responsible for picks height.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.UniformValueSurfaceDataReader.#ctor(System.Single[],AtomicusChart.Interface.Data.Vector2Int,System.Nullable{AtomicusChart.Interface.Data.OneAxisBounds})">
+            <summary>
+            Initializes new instance of <see cref="T:AtomicusChart.ValueData.DataReaders.UniformValueSurfaceDataReader"/>.
+            </summary>
+            <param name="values">Values array.</param>
+            <param name="size">Surface grid size.</param>
+            <param name="valueRange">Surface value range.</param>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.UniformValueSurfaceDataReader.#ctor(System.Single[],AtomicusChart.Interface.Data.Vector2Int,AtomicusChart.Interface.VertexMask[],System.Nullable{AtomicusChart.Interface.Data.OneAxisBounds})">
+            <summary>
+            Initializes new instance of <see cref="T:AtomicusChart.ValueData.DataReaders.UniformValueSurfaceDataReader"/>.
+            </summary>
+            <param name="values">Values array.</param>
+            <param name="size">Surface grid size.</param>
+            <param name="vertexMasks">Vertex masks array.</param>
+            <param name="valueRange">Surface value range.</param>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.UniformValueSurfaceDataReader.InitializeResources(AtomicusChart.Interface.DataReaders.IResourceWriter1D,AtomicusChart.Interface.DataReaders.IResourceWriter1D,AtomicusChart.Interface.DataReaders.IResourceWriter1D,AtomicusChart.Interface.DataReaders.IResourceWriter1D,AtomicusChart.Interface.DataReaders.IResourceWriter1D,AtomicusChart.Interface.DataReaders.IResourceWriter1D)">
+            <inheritdoc/>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.UniformValueSurfaceDataReader.UpdateValues(System.Single[],System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Updates the reader values.
+            </summary>
+            <param name="newValues">Source values array.</param>
+            <param name="sourceIndex">Source index.</param>
+            <param name="length">Item count.</param>
+            <param name="destinationIndex">Destination index.</param>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.UniformValueSurfaceDataReader.UpdateVertexMasks(AtomicusChart.Interface.VertexMask[],System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Updates the reader values.
+            </summary>
+            <param name="newMasks">Source masks array.</param>
+            <param name="sourceIndex">Source index.</param>
+            <param name="length">Item count.</param>
+            <param name="destinationIndex">Destination index.</param>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.UniformValueSurfaceDataReader.GetSections(System.Collections.Generic.IEnumerable{System.Single})">
+            <inheritdoc/>
+        </member>
+        <member name="E:AtomicusChart.ValueData.DataReaders.UniformValueSurfaceDataReader.PropertyChanged">
+            <inheritdoc/>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.UniformValueSurfaceDataReader.OnPropertyChanged(System.String)">
+            <summary>
+            call <see cref="E:AtomicusChart.ValueData.DataReaders.UniformValueSurfaceDataReader.PropertyChanged"/> event.
+            </summary>
+            <param name="propertyName">Property name</param>
+        </member>
+        <member name="T:AtomicusChart.ValueData.DataReaders.PositionValueMaskDataReader">
+            <summary>
+            Represents base class for position, vertex masks and values data reader.
+            </summary>
+        </member>
+        <member name="E:AtomicusChart.ValueData.DataReaders.PositionValueMaskDataReader.DataChanged">
+            <inheritdoc/>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.PositionValueMaskDataReader.OnDataChanged(AtomicusChart.ValueData.DataReaders.IPositionValueMaskDataWriter)">
+            <summary>
+            Call this method to notify about the reader data content changes.
+            </summary>
+            <param name="dataWriter">Changed data writer.</param>
+        </member>
+        <member name="P:AtomicusChart.ValueData.DataReaders.PositionValueMaskDataReader.VertexCount">
+            <summary>
+            Gets the reader vertex count.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.PositionValueMaskDataReader.#ctor(System.Int32)">
+            <summary>
+            Initializes new instance of <see cref="T:AtomicusChart.Interface.DataReaders.PositionMaskDataReader"/>.
+            </summary>
+            <param name="vertexCount">Reader initial storage.</param>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.PositionValueMaskDataReader.InitializeResources(AtomicusChart.Interface.DataReaders.IResourceWriter1D,AtomicusChart.Interface.DataReaders.IResourceWriter1D,AtomicusChart.Interface.DataReaders.IResourceWriter1D)">
+            <summary>
+            Writes data to the resource writers.
+            </summary>
+            <param name="positionsWriter">Positions writer.</param>
+            <param name="valuesWriter">Values writer.</param>
+            <param name="masksWriter">Vertex masks writer.</param>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.PositionValueMaskDataReader.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:AtomicusChart.ValueData.DataReaders.IPositionValueMaskDataWriter">
+            <summary>
+            Represents interface responsible for positions, values and vertex masks writing.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.IPositionValueMaskDataWriter.Write(AtomicusChart.Interface.DataReaders.IResourceWriter1D,AtomicusChart.Interface.DataReaders.IResourceWriter1D,AtomicusChart.Interface.DataReaders.IResourceWriter1D)">
+            <summary>
+            Writes data to the resource writers.
+            </summary>
+            <param name="positionsWriter">Positions writer.</param>
+            <param name="valuesWriter">Values writer.</param>
+            <param name="masksWriter">Vertex masks writer.</param>
+        </member>
+        <member name="T:AtomicusChart.ValueData.DataReaders.ValueSurfaceDataReader">
+            <summary>
+            Represents base class for value surface data reader.
+            </summary>
+        </member>
+        <member name="E:AtomicusChart.ValueData.DataReaders.ValueSurfaceDataReader.DataChanged">
+            <inheritdoc/>
+        </member>
+        <member name="E:AtomicusChart.ValueData.DataReaders.ValueSurfaceDataReader.VertexCountChanged">
+            <summary>
+            The event is invoked any time the reader vertex count is changed.
+            </summary>
+        </member>
+        <member name="E:AtomicusChart.ValueData.DataReaders.ValueSurfaceDataReader.IndexCountChanged">
+            <summary>
+            The event is invoked any time the reader index count is changed.
+            </summary>
+        </member>
+        <member name="E:AtomicusChart.ValueData.DataReaders.ValueSurfaceDataReader.WireframeIndexCountChanged">
+            <summary>
+            The event is invoked any time the reader wireframe index count is changed.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.ValueSurfaceDataReader.OnDataChanged(AtomicusChart.ValueData.DataReaders.IValueSurfaceDataWriter)">
+            <summary>
+            Call this method to notify about the reader data content changes.
+            </summary>
+            <param name="dataWriter">Data writer.</param>
+        </member>
+        <member name="P:AtomicusChart.ValueData.DataReaders.ValueSurfaceDataReader.VertexCount">
+            <summary>
+            Gets the reader vertex count.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.ValueData.DataReaders.ValueSurfaceDataReader.IndexCount">
+            <summary>
+            Gets the reader index count.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.ValueData.DataReaders.ValueSurfaceDataReader.WireframeIndexCount">
+            <summary>
+            Gets the reader wireframe index count.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.ValueSurfaceDataReader.InitializeResources(AtomicusChart.Interface.DataReaders.IResourceWriter1D,AtomicusChart.Interface.DataReaders.IResourceWriter1D,AtomicusChart.Interface.DataReaders.IResourceWriter1D,AtomicusChart.Interface.DataReaders.IResourceWriter1D,AtomicusChart.Interface.DataReaders.IResourceWriter1D,AtomicusChart.Interface.DataReaders.IResourceWriter1D)">
+            <summary>
+            Writes the reader data.
+            </summary>
+            <param name="positionsWriter">Positions writer.</param>
+            <param name="normalWriter">Normals writer.</param>
+            <param name="valueWriter">Values writer.</param>
+            <param name="indexWriter">Index writer.</param>
+            <param name="wireframeIndexWriter">Wireframe index writer.</param>
+            <param name="vertexMasksWriter">Vertex masks writer.</param>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.ValueSurfaceDataReader.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:AtomicusChart.ValueData.DataReaders.IValueSurfaceDataWriter">
+            <summary>
+            Represents value surface data writer.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.ValueData.DataReaders.IValueSurfaceDataWriter.Write(AtomicusChart.Interface.DataReaders.IResourceWriter1D,AtomicusChart.Interface.DataReaders.IResourceWriter1D,AtomicusChart.Interface.DataReaders.IResourceWriter1D,AtomicusChart.Interface.DataReaders.IResourceWriter1D,AtomicusChart.Interface.DataReaders.IResourceWriter1D,AtomicusChart.Interface.DataReaders.IResourceWriter1D)">
+            <summary>
+            Writes value surface data.
+            </summary>
+            <param name="positionsWriter">Positions resource writer.</param>
+            <param name="normalWriter">Normals resource writer.</param>
+            <param name="valueWriter">Values resource writer.</param>
+            <param name="indexWriter">Indices resource writer.</param>
+            <param name="wireframeIndexWriter">Wireframe indices resource writer.</param>
+            <param name="vertexMasksWriter">Vertex masks resource writer.</param>
+        </member>
+        <member name="T:AtomicusChart.ValueData.DataReaders.ValueSurfaceDataReaderChangedHandler">
+            <summary>
+            Represents <see cref="T:AtomicusChart.ValueData.DataReaders.ValueSurfaceDataReader"/> data changed delegate.
+            </summary>
+            <param name="sender">Sender instance.</param>
+            <param name="dataWriter">Data writer instance.</param>
+        </member>
+        <member name="T:AtomicusChart.ValueData.Legend.ValueSeriesPreviewDrawer">
+            <summary>
+            Class for drawing preview of series.
+            </summary>
+        </member>
+        <member name="M:AtomicusChart.ValueData.Legend.ValueSeriesPreviewDrawer.DrawPreview(AtomicusChart.ValueData.PresentationData.ValueSeries,AtomicusChart.Core.IColorMapOwner)">
+            <summary>
+             Draw preview bitmap from concrete primitive.
+            </summary>
+            <param name="primitive">Primitive for draw.</param>
+            <param name="chart">Chart for drawing preview.</param>
+            <returns>Preview bitmap.</returns>
+            <exception cref="T:System.ArgumentException">Argument of method is null.</exception>
+        </member>
+        <member name="T:AtomicusChart.ValueData.PresentationData.ValuePoints">
+            <summary>
+            Represents render data for points visualization that are colored using color legend.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.ValueData.PresentationData.ValuePoints.ColorMapContainer">
+            <summary>
+            Gets or sets the data color map.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.ValueData.PresentationData.ValuePoints.Reader">
+            <summary>
+            Gets or sets the points data reader.
+            </summary>
+        </member>
+        <member name="T:AtomicusChart.ValueData.PresentationData.ValueRasterData">
+            <summary>
+            Represents render data for two-dimensional images visualization that are colored using color legend.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.ValueData.PresentationData.ValueRasterData.ColorMapContainer">
+            <summary>
+            Gets or sets the data color map.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.ValueData.PresentationData.ValueRasterData.Reader">
+            <summary>
+            Gets or sets image data reader.
+            </summary>
+        </member>
+        <member name="T:AtomicusChart.ValueData.PresentationData.ValueSeries">
+            <summary>
+            Represents render data for series visualization that is colored using color legend.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.ValueData.PresentationData.ValueSeries.ColorMapContainer">
+            <summary>
+            Gets or sets the data color map.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.ValueData.PresentationData.ValueSeries.Reader">
+            <summary>
+            Gets or sets the series data reader.
+            </summary>
+        </member>
+        <member name="T:AtomicusChart.ValueData.PresentationData.ValueSurface">
+            <summary>
+            Represents render data may be used for visualization of surfaces that are colored using color legend.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.ValueData.PresentationData.ValueSurface.ColorMapContainer">
+            <summary>
+            Gets or sets the data color map.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.ValueData.PresentationData.ValueSurface.HighlightColor">
+            <summary>
+            Gets or sets the surface highlight color.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.ValueData.PresentationData.ValueSurface.PresentationType">
+            <summary>
+            Gets or sets the surface presentation type.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.ValueData.PresentationData.ValueSurface.Opacity">
+            <summary>
+            Gets or sets the surface opacity.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.ValueData.PresentationData.ValueSurface.Reader">
+            <summary>
+            Gets or sets the surface data reader.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.ValueData.PresentationData.ValueSurface.Material">
+            <summary>
+            Gets or sets the surface render material.
+            </summary>
+        </member>
+        <member name="T:AtomicusChart.ValueData.PresentationData.ValueSurfacePresentationType">
+            <summary>
+            Contains available types of <see cref="T:AtomicusChart.ValueData.PresentationData.ValueSurface"/> presentation.
+            </summary>
+        </member>
+        <member name="F:AtomicusChart.ValueData.PresentationData.ValueSurfacePresentationType.Solid">
+            <summary>
+            Only solid part is visible.
+            </summary>
+        </member>
+        <member name="F:AtomicusChart.ValueData.PresentationData.ValueSurfacePresentationType.Wireframe">
+            <summary>
+            Only multicolor wireframe part is visible.
+            </summary>
+        </member>
+        <member name="F:AtomicusChart.ValueData.PresentationData.ValueSurfacePresentationType.SolidAndWireframe">
+            <summary>
+            Solid and single color wireframe part is visible.
+            </summary>
+        </member>
+        <member name="T:AtomicusChart.ValueData.Properties.PreviewResources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.ValueData.Properties.PreviewResources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.ValueData.Properties.PreviewResources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.ValueData.Properties.PreviewResources.points">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.ValueData.Properties.PreviewResources.rasterdata">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:AtomicusChart.ValueData.Properties.PreviewResources.surface">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="T:AtomicusChart.ValueData.Shaders.ValueDataShaders">
+            <summary>
+            Contains chart value data module shader registration logic.
+            </summary>
+        </member>
+    </members>
+</doc>
