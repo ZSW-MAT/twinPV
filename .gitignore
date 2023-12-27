@@ -1,0 +1,27 @@
+#Ignore files build by Visual Studio
+*.user
+*.aps
+*.pch
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.bak
+*.cache
+*.ilk
+*.log
+#*.dll
+#*.pdb
+#*.xml
+#*.exe
+#*.exe.config
+#*.xsd
+#*.sbr
+.vs/
+obj/
+#bin/
+[Rr]elease*/
+_ReSharper*/
+packages/
+output/
