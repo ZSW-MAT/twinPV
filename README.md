@@ -15,7 +15,7 @@ If you use the code or the information of this repository, please cite this repo
 > IEEE Journal of Photovoltaics 12, 1154–1161 (2022)
 
 ## Use of the code and program
-For the use of the simulation program this repository offers either the possibility to execute the executable which is available directly in the main directory. Alternatively, the code can be executed via a suitable IDE. Microsoft Visual Studio is the recommended IDE for this. Additionally, the plotting libary AtmoicusChart is necessary for compiling the code. One can get a trial version of the libary at https://atomicuschart.com/.
+For the use of the simulation program this repository offers either the possibility to execute the executable ("twinPV.exe") which is available in the following directory: twinPV/bin/Debug/. Alternatively, the code can be executed via a suitable IDE. Microsoft Visual Studio is the recommended IDE for this. Additionally, the plotting libary AtmoicusChart is necessary for compiling the code. One can get a trial version of the libary at https://atomicuschart.com/.
 
 ## Screenshots
 The following screenshots demostrate the look of the program. For further details, tutorial videos (in German) are available on YouTube (https://www.youtube.com/playlist?list=PLmH0I8-LTep-DmE2RSmIBFM5AjIt8xvOH) to guide users through the software.
